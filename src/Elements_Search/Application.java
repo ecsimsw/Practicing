@@ -75,31 +75,21 @@ public class Application {
         do {
             System.out.print("Please enter [#] or [name] of PeriodicElement :");
 
-            try {
-                Element e = UserInput.getElement();
-                PeriodicElement element = getPeriodicElement(elements, e);
-                System.out.print(element + " ");
+            Element e = UserInput.getElement();
 
-                State state = PeriodicElement.getState(element);
-                System.out.println(state);
-            }
-            catch (IllegalArgumentException IAE){    /// 아까 날린 예외 (이름 잘못 예외)를 여기서 처리해
-                System.out.println("Entered wrong name\n");
-                continue;   // 다시 받기
-            }
-            catch (Exception exception){  /// 아까 날린 예외중 남은 예외를 여기서 처리해
-
-                if(exception.getMessage().equals("wrong number")){ // 숫자 오류일 경우
-                    System.out.println("Enter number fronm 1 to "+ elements.length+"\n");
-                }
-                else{   // 무슨 다른 알 수 없는 오류 일 경우
-                    System.out.println(exception.getMessage()+"\n");
-                }
-
-                continue; // 다시 받기
+            if(e == null){
+                System.out.println("Error :: wrong input");
+                System.out.println();
+                continue;
             }
 
-            System.out.println(); // 줄바꿈
+            PeriodicElement element = getPeriodicElement(elements, e);
+            System.out.print(element + " ");
+
+            State state = PeriodicElement.getState(element);
+            System.out.println(state);
+
+            System.out.println();
         } while (!UserInput.getExitKey());
     }
 }

@@ -33,7 +33,7 @@ public class UserInput {
     }
 
     //getElement from user input(String -> Element)  "1" or "HYDROGEN" -> HYDROGEN
-    public static Element getElement() throws Exception {
+    public static Element getElement() {
         Element element = null;
 
         int inputNumber = 0;
@@ -41,34 +41,43 @@ public class UserInput {
 
         String str = input.nextLine();
 
-        if(Application.isNumberic(str)){  ///// 입력받은게 숫자인지 문자인지 알아야 HYDROGEN인지 1 인지 알거아니야아ㅣㅓㄴㅇ리ㅏㅓㄴㅇㅁ러ㅣㅏ 그래서 내가 만들었다. 어디에? Application에
-            inputNumber = Integer.parseInt(str);  /// 숫자면 숫자로 바꿔
+        if(Application.isNumberic(str)){
+            inputNumber = Integer.parseInt(str);
 
-            Element[] elements = Element.values(); /// Element 요소를 쭉 배열로 받아. 그럼 HYDROGEN이 배열 몇번이겠어? 0번 인덱스지? 그래서 inputNumber가 1이면 배열의 0번방을 꺼내는거야
+            Element[] elements = Element.values();
 
-            if(inputNumber<1 || inputNumber > elements.length)  /// 입력받은 숫자가 1미만이거나, 요소 개수보다 많으면 돼 안돼? 안돼지 그럼 예외를 날려 어디로 main으로!
+            if(inputNumber<1 || inputNumber > elements.length)
             {
-                throw new Exception("wrong number");
+                return null;
             }
 
             element = elements[inputNumber-1];
 
             return element;
         }
+
         else{
-            inputName = str.toUpperCase();  ////////////////////////// 다 대문자로 바꿔버려@!!!!! 이렇게하면 대소문자 노상관이라구 어이어이
+            inputName = str.toUpperCase();
 
-            try{
-                element = Element.valueOf(inputName); ////// inputName에 해당 하는 값을 받아, HYDROGEN이면 1
-            }
-            catch (IllegalArgumentException IAE){ /// 원소가 아닌 이름이 입력되면 예외를 넘기는거야 어디로? main문으로
-                 throw IAE;
+            Element[] elements = Element.values();
+
+            boolean inElement = false;
+
+            for(Element e : elements){
+                if(e.name().equals(inputName)){
+                    inElement = true;
+                    break;
+                }
             }
 
-            System.out.println(element);
+            if(inElement){
+                element = Element.valueOf(inputName);
+                return element;
+            }
+            else{
+                return null;
+            }
         }
-
-        return element;
     }
 
     public static String getString1() {
@@ -86,7 +95,6 @@ public class UserInput {
         value = input.nextDouble();
         return value;
     }
-
 }
 
 
