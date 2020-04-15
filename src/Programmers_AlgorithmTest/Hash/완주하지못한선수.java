@@ -10,6 +10,8 @@ public class 완주하지못한선수 {
 
         String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};
         String[] completion = {"marina", "josipa", "nikola", "filipa"};
+
+        System.out.println(Hash(participant, completion));
     }
     public static String Hash(String[] participant, String[] completion)
     {
