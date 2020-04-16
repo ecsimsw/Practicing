@@ -9,7 +9,7 @@ public class 위장 {
     }
 
     public static void Hash(){
-        String[][] input = {
+        String[][] clothes = {
                 {"hat","headgear"}
                 ,{"sunglasses","eyewear"}
                 ,{"turbun","headgear"}
@@ -17,18 +17,13 @@ public class 위장 {
 
         HashMap<String, Integer> hm = new HashMap();
 
-        for(String[] entry : input){ hm.put(entry[1], hm.getOrDefault(entry[1],0)+1); }
+        for(String[] entry : clothes){ hm.put(entry[1], hm.getOrDefault(entry[1],0)+1); }
 
         int answer = 1;
-        for(Integer count : hm.values()){
-            answer *= (count+1);
-        }
+        for(Integer count : hm.values()){ answer *= (count+1); }
 
         answer--;
-
-        System.out.println(answer);
     }
-
 }
 /*
 스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.
