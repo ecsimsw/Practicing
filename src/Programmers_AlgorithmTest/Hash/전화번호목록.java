@@ -1,6 +1,5 @@
 package Programmers_AlgorithmTest.Hash;
 
-
 import java.util.Arrays;
 
 public class 전화번호목록 {
