@@ -1,5 +1,7 @@
 package Programmers_AlgorithmTest.Stack_Queue;
 
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class 탑 {
@@ -7,22 +9,35 @@ public class 탑 {
         Stack();
      }
      static void Stack(){
-        int[] heights =new int[]{6,9,5,7,4};
+        int[] heights =new int[]{6,9,5,3,7,4};
         int[] answers = new int[heights.length];
 
-         Stack<Integer> stack = new Stack<Integer>() ;
+         Stack<Integer> stack_height = new Stack<Integer>();
+         Stack<Integer> stack_index = new Stack<Integer>();
 
-         int left, now;
-         for(int i=heights.length-1; i>-1; i--){
-             left = i-1;
-             now = i;
+         for(int index = heights.length-1; index>-1; index--){
+             while(true) {
+                 if (stack_height.isEmpty()) {
+                     stack_height.push(heights[index]);
+                     stack_index.push(index);
+                     break;
+                 }
+                 else {
+                     if (heights[index] > stack_height.peek()) {
+                         stack_height.pop();
+                         answers[stack_index.pop()] = index+1;
+                     }
+                     else{
+                         stack_height.push(heights[index]);
+                         stack_index.push(index);
+                         break;
+                     }
+                 }
+             }
+         }
 
-             if(heights[left]<heights[now){
-                 stack.push(heights[now]);
-             }
-             else{
-                 
-             }
+         for(int a : answers){
+             System.out.println(a);
          }
     }
 }
