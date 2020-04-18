@@ -8,7 +8,6 @@ public class UserInput {
         return input.nextLine();
     }
 
-
     public static int getInteger() {
         int value = 0;
         value = Integer.parseInt(input.nextLine());
@@ -22,6 +21,19 @@ public class UserInput {
         return value;
     }
 
+    public static char getKey() {
+        System.out.println("Press q-key to exit or enter-key to continue : ");
+        String str = input.nextLine();
+        if(str.contentEquals("q"))
+            return 'q';
+        else if(str.contentEquals("p"))
+            return 'p';
+        else if(str.contentEquals("n"))
+            return 'n';
+        else
+            return ' ';
+
+    }
 
     public static boolean getExitKey() {
         System.out.print("Press q-key to exit or enter-key to continue : ");

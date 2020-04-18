@@ -2,7 +2,7 @@ package Programmers_AlgorithmTest;
 
 import java.util.*;
 
-public class first {
+public class DevMaching_2020 {
     static public void main(String[] args){
         System.out.println(solution3(new int[]{3,7,2,8,6,4,5,1},3));
 
@@ -102,17 +102,6 @@ public class first {
            }
        }
 
-       ArrayList<Integer> wrongIndex = new ArrayList<>();
-
-       while (true){
-           for(int index =0; index < numbers.length; index++){
-               if(Math.abs(numbers[index]-numbers[index+1])< K){
-                   wrongIndex.add(index);
-               }
-           }
-
-           if(wrongIndex.size() == 1)
-               return 1;
-       }
+       return 0;
     }
 }
