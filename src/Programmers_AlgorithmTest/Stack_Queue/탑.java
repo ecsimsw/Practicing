@@ -35,10 +35,6 @@ public class 탑 {
                  }
              }
          }
-
-         for(int a : answers){
-             System.out.println(a);
-         }
     }
 }
 

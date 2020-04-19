@@ -27,11 +27,6 @@ public class 프린터 {
         }
 
          while(true){
-             for(int q : queue){
-                 System.out.print(q);
-             }
-             System.out.println("\n index: "+location);
-
             while (queue.peek() != order.peek()) {
                 queue.offer(queue.poll());
                 location = (location == 0) ? queue.size()-1 : location - 1;
@@ -46,7 +41,7 @@ public class 프린터 {
         }
 
          answer++;
-         
+
         return answer;
     }
 }
