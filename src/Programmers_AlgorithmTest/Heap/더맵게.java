@@ -10,61 +10,9 @@ public class 더맵게 {
         System.out.println(solution(scoville,k));
     }
     public static int solution(int[] scoville, int K) {
-        int answer = 0;
+        int answer =0;
 
-        Arrays.sort(scoville);
 
-        int mixed = 0;
-
-        LinkedList<Integer> scovilleList = new LinkedList<Integer>();
-
-        for(int i : scoville){
-            scovilleList.add(i);
-        }
-
-        int size = scovilleList.size();
-        int index = size;
-
-        while (true){
-            if(scovilleList.peek()>=K) break;
-
-            mixed = scovilleList.get(0) + scovilleList.get(1)*2;
-            size--;
-            scovilleList.poll();
-            scovilleList.poll();
-            index = size-2;
-
-            System.out.println("mixed : "+mixed + "  size : "+size + "  real : "+scovilleList.size());
-
-            if(size<2){
-                if(mixed<K) return -1;
-                else return answer++;
-            }
-
-            if(scovilleList.getLast()<mixed){
-                scovilleList.add(mixed);
-            }
-            else{
-                while (index>-1){
-                    if(scovilleList.get(index)>mixed){
-                        index--;
-                    }
-                    else{
-                        scovilleList.add(index+1,mixed);
-                        break;
-                    }
-                }
-            }
-
-            for(int i :scovilleList)
-            {
-                System.out.print(i + " |  ");
-            }
-            System.out.println();
-
-            answer++;
-
-        }
 
         return answer;
     }
