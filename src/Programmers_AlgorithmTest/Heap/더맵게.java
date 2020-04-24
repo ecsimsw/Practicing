@@ -2,17 +2,37 @@ package Programmers_AlgorithmTest.Heap;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class 더맵게 {
     static public void main(String[] args){
-        int[] scoville = new int[]{1,2,3,9,10,10,0,898,29,12};
-        int k =9;
+        int[] scoville = new int[]{10, 12};
+        int k =34;
         System.out.println(solution(scoville,k));
     }
     public static int solution(int[] scoville, int K) {
         int answer =0;
 
+        Queue<Integer> pq = new PriorityQueue();
 
+        for(int i : scoville) pq.add(i);
+
+        while(pq.peek()<K){
+            int min_first = pq.poll();
+            int min_second = pq.poll();
+            int mix = min_first + min_second*2;
+
+            pq.add(mix);
+
+            answer++;
+
+            if(pq.size() <2){
+                if(pq.peek() >= K){ return answer; }
+                return -1;
+            }
+
+        }
 
         return answer;
     }
