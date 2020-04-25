@@ -4,23 +4,28 @@ import java.util.Arrays;
 
 public class Hclass {
     public static void main(String[] args){
-        int[] citations = new int[]{0,0,0,2,2};
+        int[] citations = new int[]{0};
         System.out.print(solution(citations));
     }
 
-    static int solution(int[] citations) {
-        int answer=0;
+    static  public int solution(int[] citations) {
+        int answer=1;
         Arrays.sort(citations);
-        int h=0;
-        for(int index = citations.length-1; index>-1; index--){
-            h =citations.length - index;
 
-            if(citations[index] <= h){
-                break;
+        if(citations[citations.length-1]==0) return 0;
+
+        int h=1;
+        for(h=1; h<citations.length+1; h++){
+            System.out.println("1 :" +citations[citations.length-h]);
+            System.out.println("2 : "+h);
+            if(h>citations[citations.length-h])
+            {
+                answer = h-1;
+                return answer;
             }
+            System.out.println("2 : "+h);
         }
-
-        answer= h;
+        answer = h-1;
         return answer;
     }
 }
