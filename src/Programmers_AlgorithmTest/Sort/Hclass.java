@@ -4,47 +4,20 @@ import java.util.Arrays;
 
 public class Hclass {
     public static void main(String[] args){
-        int[] citations = new int[]{0,0,1,1,4,6,6,9,2,3,10};
+        int[] citations = new int[]{0,0,0,2,2};
         System.out.print(solution(citations));
     }
 
     static int solution(int[] citations) {
         int answer=0;
         Arrays.sort(citations);
+        int h=0;
+        for(int index = citations.length-1; index>-1; index--){
+            h =citations.length - index;
 
-        int index_nextNumber=1;
-        int index_nowNumber = citations[0];
-        int h = citations[index_nowNumber];
-        int moreThanH=0;
-
-        while(index_nowNumber < citations.length){
-            for(int i = index_nowNumber; i< citations.length; i++){
-                if(index_nowNumber<citations[i]){
-                    index_nextNumber= i;
-                    break;
-                }
+            if(citations[index] <= h){
+                break;
             }
-            if(index_nextNumber < citations.length){
-                if(h>=citations[index_nextNumber]){
-                    index_nowNumber = index_nextNumber;
-
-                    for(int i = index_nowNumber; i< citations.length; i++){
-                        if(index_nowNumber<citations[i]){
-                            index_nextNumber= i;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if(h == citations[index_nowNumber]) moreThanH = citations.length - index_nowNumber;
-            else if(h > citations[index_nowNumber]) moreThanH = citations.length - index_nowNumber-1;
-
-            System.out.println("h : "+h + "  index : "+index_nowNumber + "  moreThanH  : "+moreThanH);
-
-            if(h == moreThanH) break;
-            else if(h < moreThanH){ h++;}
-            else if(h> moreThanH){h--; break;}
         }
 
         answer= h;
