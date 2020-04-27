@@ -53,7 +53,7 @@ public class UserInput {
 
         String str = input.nextLine();
 
-        if(Application.isNumberic(str)){
+        if(Application_.isNumberic(str)){
             inputNumber = Integer.parseInt(str);
 
             Element[] elements = Element.values();
