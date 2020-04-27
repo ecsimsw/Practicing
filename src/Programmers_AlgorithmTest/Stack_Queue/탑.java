@@ -17,15 +17,16 @@ public class 탑 {
              left = i-1;
              now = i;
 
-             if(heights[left]<heights[now]){
+             if(heights[left]<heights[now){
                  stack.push(heights[now]);
              }
              else{
-
+                 
              }
          }
     }
 }
+
 /*
 문제 설명
 수평 직선에 탑 N대를 세웠습니다. 모든 탑의 꼭대기에는 신호를 송/수신하는 장치를 설치했습니다.
