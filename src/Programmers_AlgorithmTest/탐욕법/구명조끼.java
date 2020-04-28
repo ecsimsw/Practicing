@@ -1,6 +1,7 @@
 package Programmers_AlgorithmTest.탐욕법;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class 구명조끼 {
     public static void main(String[] args) {
@@ -14,7 +15,7 @@ public class 구명조끼 {
         int answer = 0;
 
         Arrays.sort(people);
-
+        
         int light =0;
         int heavy = people.length-1;
 
