@@ -1,13 +1,32 @@
 package Programmers_AlgorithmTest.탐욕법;
 
+import java.util.Arrays;
+
 public class 구명조끼 {
     public static void main(String[] args) {
-        int[] people = new int[]{};
+        int[] people = new int[]{70,50,80,50};
+        int limit = 100;
 
+        System.out.println(solution(people, limit));
     }
 
-    public int solution(int[] people, int limit) {
+    static int solution(int[] people, int limit) {
         int answer = 0;
+
+        Arrays.sort(people);
+
+        int light =0;
+        int heavy = people.length-1;
+
+        while(light<heavy){
+            if(light == heavy){ answer++; break; }
+
+            if(people[light]+ people[heavy] <= limit){ light++; }
+
+            answer++;
+            heavy--;
+        }
+
         return answer;
     }
 }
