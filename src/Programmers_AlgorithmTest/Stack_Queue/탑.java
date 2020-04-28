@@ -1,40 +1,37 @@
 package Programmers_AlgorithmTest.Stack_Queue;
 
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Stack;
 
 public class 탑 {
     public static void main(String[] args) {
-        Stack();
-     }
-     static void Stack(){
-        int[] heights =new int[]{6,9,5,3,7,4};
-        int[] answers = new int[heights.length];
+        solution(new int[]{1,2,3});
+    }
+      static  public int[] solution(int[] heights) {
+            int[] answer = new int[heights.length];
 
-         Stack<Integer> stack_height = new Stack<Integer>();
-         Stack<Integer> stack_index = new Stack<Integer>();
+            Stack<Integer> stack_height = new Stack<Integer>();
+            Stack<Integer> stack_index = new Stack<Integer>();
 
-         for(int index = heights.length-1; index>-1; index--){
-             while(true) {
-                 if (stack_height.isEmpty()) {
-                     stack_height.push(heights[index]);
-                     stack_index.push(index);
-                     break;
-                 }
-                 else {
-                     if (heights[index] > stack_height.peek()) {
-                         stack_height.pop();
-                         answers[stack_index.pop()] = index+1;
-                     }
-                     else{
-                         stack_height.push(heights[index]);
-                         stack_index.push(index);
-                         break;
-                     }
-                 }
-             }
-         }
+            for (int index = heights.length - 1; index > -1; index--) {
+                while (true) {
+                    if (stack_height.isEmpty()) {
+                        stack_height.push(heights[index]);
+                        stack_index.push(index);
+                        break;
+                    } else {
+                        if (heights[index] > stack_height.peek()) {
+                            stack_height.pop();
+                            answer[stack_index.pop()] = index + 1;
+                        } else {
+                            stack_height.push(heights[index]);
+                            stack_index.push(index);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return answer;
     }
 }
 

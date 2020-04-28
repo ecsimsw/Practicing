@@ -1,6 +1,6 @@
 package Elements_Search;
 
-public class Application {
+public class Application_ {
     private static PeriodicElement[] elements = {
             new PeriodicElement(1, "H", "HYDROGEN", 1.008),
             new PeriodicElement(2, "HE", "HELIUM", 4.0026),
