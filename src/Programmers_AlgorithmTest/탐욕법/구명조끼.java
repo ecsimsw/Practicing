@@ -3,7 +3,7 @@ package Programmers_AlgorithmTest.탐욕법;
 public class 구명조끼 {
     public static void main(String[] args) {
         int[] people = new int[]{};
-        
+
     }
 
     public int solution(int[] people, int limit) {
