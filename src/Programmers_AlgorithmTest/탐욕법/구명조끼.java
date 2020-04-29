@@ -15,7 +15,7 @@ public class 구명조끼 {
         int answer = 0;
 
         Arrays.sort(people);
-        
+
         int light =0;
         int heavy = people.length-1;
 
