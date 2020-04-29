@@ -13,38 +13,51 @@ public class 타겟넘버 {
     static int solution(int[] numbers, int target) {
         int answer = 0;
 
-        Arrays.sort(numbers);
+        answer = dfs(0,0,numbers,target);
+      
+        return answer;
+    }
 
-        LinkedList<Integer> sum = null;
-        LinkedList<Integer> resultSumset = new LinkedList<>();
-
-        for(int i=0; i<numbers.length; i++){
-            sum = makeSumSet(resultSumset, numbers[i],sum);
+    static int dfs(int preSum, int index, int[] numbers, int target){
+        if(index == numbers.length)
+        {
+            if(preSum == target) return 1;
+            else{ return 0; }
         }
 
-        for(int i : sum){ if(i == target){answer++;} }
+        return dfs(preSum + numbers[index], index+1, numbers, target)
+          + dfs(preSum - numbers[index], index+1, numbers, target);
+    }
+
+
+    public int solution2(int[] numbers, int target) {
+        int answer = 0;
+
+        LinkedList<Integer> sum = null;
+
+        for(int i=0; i<numbers.length; i++){
+            sum = addition(numbers[i],sum);
+        }
+
+        for(int i : sum) { if(i==target) answer++;}
 
         return answer;
     }
 
-    static LinkedList<Integer> makeSumSet(LinkedList<Integer> resultSumset, int a, LinkedList<Integer> setSum){
-        resultSumset.clear();
+    LinkedList<Integer> addition(int a, LinkedList<Integer> preSum){
+        LinkedList<Integer> result = new LinkedList<Integer>();
 
-        if(setSum == null){
-            resultSumset.add(a);
-            resultSumset.add(-a);
-
-            return new LinkedList<Integer>(resultSumset);
+        if(preSum == null){
+            result.add(a);
+            result.add(-a);
         }
         else{
-            for(int i : setSum){
-                resultSumset.add(a+i);
-                resultSumset.add(-a+i);
+            for(int i : preSum){
+                result.add(a+i);
+                result.add(-a+i);
             }
-
-            setSum.clear();
-            setSum.addAll(resultSumset);
         }
-        return setSum;
+
+        return result;
     }
 }
