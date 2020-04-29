@@ -16,32 +16,35 @@ public class 타겟넘버 {
         Arrays.sort(numbers);
 
         LinkedList<Integer> sum = null;
+        LinkedList<Integer> resultSumset = new LinkedList<>();
 
         for(int i=0; i<numbers.length; i++){
-            sum = makeSumSet(numbers[i],sum);
+            sum = makeSumSet(resultSumset, numbers[i],sum);
         }
 
-        for(int i : sum){
-            if(i==target) answer++;
-        }
+        for(int i : sum){ if(i == target){answer++;} }
 
         return answer;
     }
 
-    static LinkedList<Integer> makeSumSet(int a, LinkedList<Integer> setSum){
-        LinkedList<Integer> resultSumset = new LinkedList<Integer>();
+    static LinkedList<Integer> makeSumSet(LinkedList<Integer> resultSumset, int a, LinkedList<Integer> setSum){
+        resultSumset.clear();
 
         if(setSum == null){
             resultSumset.add(a);
             resultSumset.add(-a);
+
+            return new LinkedList<Integer>(resultSumset);
         }
         else{
             for(int i : setSum){
                 resultSumset.add(a+i);
                 resultSumset.add(-a+i);
             }
-        }
 
-        return resultSumset;
+            setSum.clear();
+            setSum.addAll(resultSumset);
+        }
+        return setSum;
     }
 }
