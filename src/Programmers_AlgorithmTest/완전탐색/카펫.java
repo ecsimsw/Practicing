@@ -1,5 +1,7 @@
 package Programmers_AlgorithmTest.완전탐색;
 
+import java.util.Scanner;
+
 public class 카펫 {
     static public void main(String[] args){
         int brown = 10;

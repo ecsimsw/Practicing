@@ -5,52 +5,71 @@ import java.util.*;
 
 public class Application {
     public static void main(String[] args){
+        LinkedList<Integer> linkedlist = new LinkedList<>();
 
-        Car[] cars = new Car[]{new Car(11,2),new Car(15,4), new Car(4,1), new Car(11,5)};
+        linkedlist.offer(1);
+        linkedlist.add(2);
+        linkedlist.addFirst(3);
+        linkedlist.addLast(4);
+        linkedlist.addAll(linkedlist);
 
-        Arrays.sort(cars);
-
-        for(Car c : cars){
-            System.out.print(c.fuelEfficiency + "   ");
+        for(int i : linkedlist){
+            System.out.print(i);
         }
         System.out.println();
 
-        Arrays.sort(cars, new CmpCarAges());
-
-        for(Car c : cars){
-            System.out.print(c.age + "   ");
+        HashSet<Integer> hashSet1 = new HashSet<>(linkedlist);
+        for(int i : hashSet1){
+            System.out.print(i);
         }
+
         System.out.println();
 
-        CmpCarAges cmpCarAges = new CmpCarAges();
-        System.out.print(cmpCarAges.compare(new Car(1,2) , new Car(1,3)));
-    }
-}
-class Car implements Comparable{
-    int fuelEfficiency;
-    int age;
 
-    @Override
-    public int compareTo(Object o) {
-        if(o instanceof Car){
-            Car car = (Car)o;
-            int originRule = (this.fuelEfficiency > car.fuelEfficiency)?1 : (this.fuelEfficiency<car.fuelEfficiency)? -1: 0;
-            return -originRule;
+        HashSet<Integer> hashSet2 = new LinkedHashSet<>(linkedlist);
+        for(int i : hashSet2){
+            System.out.print(i);
         }
-        return 0;
-    }
 
-    public Car(int fe, int age){
-        this.fuelEfficiency = fe;
-        this.age = age;
+        System.out.println();
+
+Student A = new Student(1,"apple");
+Student B = new Student(2,"banana");
+Student C = new Student(3,"grape");
+Student D = new Student(1,"apple");
+
+HashSet<Student> class1 = new HashSet<>();
+
+class1.add(A);
+class1.add(B);
+class1.add(C);
+class1.add(D);
+
+        for(Student s : class1){
+            System.out.print(s.name+ "   ");
+        }
     }
 }
 
-class CmpCarAges implements Comparator{
+class Student{
+    int number;
+    String name;
+
+    public Student(int number, String name){
+        this.number = number;
+        this.name = name;
+    }
+
     @Override
-    public int compare(Object o1, Object o2) {
-        if(o1 instanceof Car && o2 instanceof Car)
-            return ((Car) o1).age > ((Car) o2).age ? 1 : ((Car)o1).age < ((Car)o2).age ? -1 : 0;
-        return 0;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return number == student.number && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, name);
     }
 }
