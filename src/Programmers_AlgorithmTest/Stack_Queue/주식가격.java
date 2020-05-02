@@ -10,7 +10,7 @@ public class 주식가격 {
     }
 
     static public int[] solution(int[] prices) {
-        int[] answer = {};
+        int[] answer;
 
         Stack<Integer> answers = new Stack<>();
 
@@ -19,31 +19,21 @@ public class 주식가격 {
             int next = index+1;
             int remain =0;
             while(next < prices.length){
-                if(prices[now]<=prices[next]) {
-                    remain++;
-                    next++;
-                    System.out.print(next + "  ");
-                }
-                else{
-                    System.out.println("put");
-                    answers.add(remain);
-                    break;
-                }
+                remain++;
+                if(prices[now]<=prices[next]) { next++; }
+                else { answers.add(remain);break; }
 
-                if(next == prices.length){
-                    System.out.println("put");
-                    answers.add(remain);
-                    break;
-                }
+                if(next == prices.length){ answers.add(remain);break; }
             }
-            System.out.println();
         }
-        System.out.println("stack");
+        answers.add(0);
+
+        answer = new int[answers.size()];
+        int index=0;
+
         for(int i : answers){
-            System.out.print(i + "  ");
+            answer[index++] = i;
         }
-
-
 
         return answer;
     }
