@@ -1,53 +1,33 @@
 package javaPracticing;
 
-
 import java.util.*;
 
 public class Application {
+    private final String str="";
+
     public static void main(String[] args) {
 
-        HashSet<Student> hs = new HashSet<>();
+        Application.<Integer>getID(123);
 
-        Student a = new Student(1, "A");
-        Student b = new Student(2, "B");
-        Student A = new Student(1, "A");
+    }
+    public static <T> T getID(T id){return (T)id;}
+}
+class Parent{
+   static public void sayHi(){
+       System.out.println("parent");
+   }
+}
 
-        System.out.println(a.equals(A));
-        System.out.println(a.hashCode());
-        System.out.println(A.hashCode());
-
-        hs.add(a);
-        hs.add(b);
-        hs.add(A);
-
-        for(Student s : hs){
-            System.out.print(s.name);
-        }
+class Child extends Parent{
+    static public void sayHi(){
+        System.out.println("child");
     }
 }
 
-class Student{
-    int number;
-    String name;
+class Student<T>{
+    T name;
 
-    public Student(int number, String name){
-        this.number = number;
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return number == student.number && Objects.equals(name, student.name);
-    }
-
-    /*
-    @Override
-    public int hashCode() {
-        return Objects.hash(number, name);
-    }
-    */
-
+    public T getName(T name){ this.name = name; return name; }
+    public <S> T toT1(S id){return (T)id;}
+    public <T> T getId(T id){return (T)id;}
 }
