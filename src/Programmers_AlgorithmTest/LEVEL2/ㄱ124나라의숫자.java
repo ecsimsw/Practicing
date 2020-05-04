@@ -5,18 +5,38 @@ import java.util.LinkedList;
 public class ㄱ124나라의숫자 {
     public static void main(String[] args) {
        // int n = 4567456;
-        int n = 3;
+        int n = 546;
 
-        System.out.println(solution(n));
+        System.out.println(solution2(n));
+    }
+
+    static public String solution2(int n){
+        String answer ="";
+        int k = 0;
+
+        while (n>0){
+
+            System.out.println("n : "+n);
+
+            k = n%3;
+            n = n/3;
+
+            if(k ==0){
+                n--;
+                k = 4;
+            }
+
+            System.out.println("n : "+n);
+
+            answer = k+answer;
+        }
+
+        return answer;
     }
 
     static public String solution(int n) {
         String answer = "";
 
-        int answer_int = 0;
-        int digit =0;
-
-        LinkedList<Integer> linkedList = new LinkedList<Integer>();
         StringBuilder sb = new StringBuilder();
 
         while(true){
@@ -51,13 +71,6 @@ public class ㄱ124나라의숫자 {
         }
 
         answer =sb.toString();
-
-
-
-        //Integer answer_temp = Integer.parseInt(sb.toString());
-
-        //answer= answer_temp.toString();
-
         return answer;
     }
 }
