@@ -1,7 +1,5 @@
 package Programmers_AlgorithmTest.LEVEL2;
 
-import java.util.LinkedList;
-
 public class ㄱ124나라의숫자 {
     public static void main(String[] args) {
        // int n = 4567456;
