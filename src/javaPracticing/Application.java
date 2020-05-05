@@ -10,6 +10,12 @@ public class Application {
 
         FruitBox<Apple> appleBox = new FruitBox<>();
 
+        try{
+            appleBox.clone();
+        }catch (Exception e){
+
+        }
+
         appleBox.add(apple1);
         appleBox.add(apple2);
 
@@ -32,10 +38,15 @@ class Apple extends Fruit{}
 
 class FruitBox<T extends Fruit> extends Box<T> {}
 
-class Box<T>{
+class Box<T> {
     ArrayList<T> list = new ArrayList<>();
     void add(T item){list.add(item);}
     T get(int i){return list.get(i);}
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
 
 /*
