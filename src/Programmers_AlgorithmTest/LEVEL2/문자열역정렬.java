@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class 정렬1 {
+public class 문자열역정렬 {
     static void main(String[] args){
         solution1("asdfasdfZ");
     }
