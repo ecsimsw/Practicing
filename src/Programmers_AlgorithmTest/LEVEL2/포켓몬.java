@@ -1,7 +1,7 @@
 package Programmers_AlgorithmTest.LEVEL2;
 import java.util.*;
 
-class Solution {
+class 포켓몬{
     public int solution(int[] nums) {
         int answer = 0;
 
