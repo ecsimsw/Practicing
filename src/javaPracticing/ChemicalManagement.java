@@ -1,13 +1,13 @@
 package javaPracticing;
 
-import javax.script.ScriptContext;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.util.*;
 
-public class ChemicalManagement {
+public class ChemicalManagement{
     static public void main(String[] args){
+
         System.setProperty("file.encoding","UTF-8");
         try{
             Field charset = Charset.class.getDeclaredField("defaultCharset");
@@ -23,14 +23,22 @@ public class ChemicalManagement {
 
         while(onLoop){
             System.out.print("Enter file path : ");
+
             Scanner sc = new Scanner(System.in);
             String filePath = sc.nextLine();
+            try {
+                java.net.URLDecoder.decode(filePath, "UTF-8");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
             List<String> lines = readText(filePath);
-            List<String> parsedLines = parseToCSV(lines);
 
-            boolean result = saveAsCSV(defNewFilePath(filePath), parsedLines);
-            printResult(result);
+            if(lines != null){
+                List<String> parsedLines = parseToCSV(lines);
+                boolean result = saveAsCSV(defNewFilePath(filePath), parsedLines);
+                printResult(result);
+            }
 
             onLoop = askExecuteAgain();
         }
@@ -53,6 +61,7 @@ public class ChemicalManagement {
             }
         }catch (IOException e){
             e.printStackTrace();
+            return null;
         }finally {
             if (fr != null) {
                 try { fr.close(); }catch (Exception e){ e.printStackTrace(); }
@@ -175,10 +184,10 @@ public class ChemicalManagement {
 
     static void printInfo(){
         System.out.println("\nMade by Jinhwan");
-        System.out.println("\nFile is saved as CSV file with separator !");
+        System.out.println("File is saved as CSV file with separator !\n");
     }
 
-     static void printResult(boolean result){
+    static void printResult(boolean result){
         if(result){
             System.out.println("\nSucceed");
         }else{
