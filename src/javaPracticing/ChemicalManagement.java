@@ -2,10 +2,21 @@ package javaPracticing;
 
 import javax.script.ScriptContext;
 import java.io.*;
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class ChemicalManagement {
     static public void main(String[] args){
+        System.setProperty("file.encoding","UTF-8");
+        try{
+            Field charset = Charset.class.getDeclaredField("defaultCharset");
+            charset.setAccessible(true);
+            charset.set(null,null);
+        }
+        catch(Exception e){
+        }
+
         printInfo();
 
         boolean onLoop = true;
@@ -167,7 +178,7 @@ public class ChemicalManagement {
         System.out.println("\nFile is saved as CSV file with separator !");
     }
 
-    static void printResult(boolean result){
+     static void printResult(boolean result){
         if(result){
             System.out.println("\nSucceed");
         }else{
