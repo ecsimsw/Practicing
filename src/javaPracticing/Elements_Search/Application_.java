@@ -1,4 +1,4 @@
-package Elements_Search;
+package javaPracticing.Elements_Search;
 
 public class Application_ {
     private static PeriodicElement[] elements = {

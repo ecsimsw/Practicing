@@ -1,4 +1,4 @@
-package Elements_Search;
+package javaPracticing.Elements_Search;
 
 public enum Element {
     HYDROGEN(1),

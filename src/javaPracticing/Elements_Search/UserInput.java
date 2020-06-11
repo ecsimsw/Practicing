@@ -1,4 +1,4 @@
-package Elements_Search;
+package javaPracticing.Elements_Search;
 
 import java.util.Scanner;
 public class UserInput {
