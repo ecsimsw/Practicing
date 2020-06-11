@@ -32,28 +32,28 @@ public class 중첩반복문대체하기 {
 }
 
 class 조합 {
-    static public void main(String[] args){
-        LinkedList<String> results = new LinkedList<String>();
-        pick(5, new LinkedList<>(), 2, results);
+static public void main(String[] args){
+    LinkedList<String> results = new LinkedList<String>();
+    pick(5, new LinkedList<>(), 2, results);
 
-        for(String str : results) System.out.println(str);
+    for(String str : results) System.out.println(str);
+}
+
+static void pick(int n, LinkedList<Integer>picked, int toPick, LinkedList<String> r){
+    if(toPick == 0){
+        StringBuilder sb = new StringBuilder();
+        for(int i : picked)
+            sb.append(Integer.valueOf(i));
+        r.add(sb.toString());
     }
 
-    static void pick(int n, LinkedList<Integer>picked, int toPick, LinkedList<String> r){
-        if(toPick == 0){
-            StringBuilder sb = new StringBuilder();
-            for(int i : picked)
-                sb.append(Integer.valueOf(i));
-            r.add(sb.toString());
-        }
+    int smallest = picked.isEmpty() == true ? 0 : picked.getLast()+1;
 
-        int smallest = picked.isEmpty() == true ? 0 : picked.getLast()+1;
-
-        for(int i = smallest; i<=n; i++){
-            picked.addLast(i);
-            pick(n, picked, toPick-1, r);
-            picked.pollLast();
-        }
+    for(int i = smallest; i<=n; i++){
+        picked.addLast(i);
+        pick(n, picked, toPick-1, r);
+        picked.pollLast();
     }
+}
 }
 
