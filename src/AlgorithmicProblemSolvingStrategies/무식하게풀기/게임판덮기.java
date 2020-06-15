@@ -17,44 +17,51 @@ public class 게임판덮기 {
         System.out.println(fillBoard(0,0,board,12));
     }
 
-    static int[] typesG = {1,1,-1,-1,0};
-    static int[] typesS = {1,-1,-1,1,0};
-    static int[] score = {-3,-3,-3,-3,0};
+    static int[] typesG = {1,1,-1,-1};
+    static int[] typesS = {1,-1,-1,1};
+    static int[] score = {-3,-3,-3,-3};
+
     static public int fillBoard(int s, int g, boolean[][] board, int left){
-        System.out.println(s+" "+g + " "+left );
-        for(int i =0; i<board.length; i++){
+        System.out.println(s+ "  "  +g);
+        for(int i=0; i<board.length; i++){
             for(int j=0; j<board[0].length; j++){
-                System.out.print(board[i][j] + "  ");
+                System.out.print(board[i][j] +" ");
             }
             System.out.println();
         }
 
         if(s >= board.length-1 && g>board.length){
-            if(left == 0) {System.out.println("====== 1"); return 1;}
-            else{System.out.println("======= 0"); return 0;}
+            if(left == 0) {
+                System.out.println("===FOUND===");
+                return 1;
+            }
+            else{
+                return 0;
+            }
         }
 
         if(g>=board[0].length){ s ++; g = 0; }
 
-        if(board[s][g] == true){return fillBoard(s, g+1, board, left);}
-
-        int count = 0;
-        for(int i =0; i<4; i++){
-            if(s+typesS[i] < board.length && s+typesS[i] > -1 && g+typesG[i] < board[0].length && g+typesG[i] > -1){
-                if(!board[s+typesS[i]][g] && !board[s+typesS[i]][g+typesG[i] ]) {
-                    System.out.println("type : "+ i);
-                    board[s][g] = true;
-                    board[s + typesS[i]][g] = true;
-                    board[s + typesS[i]][g + typesG[i]] = true;
-                    count += fillBoard(s, g+1, board, left+score[i]);
-                    board[s][g] = false;
-                    board[s + typesS[i]][g] = false;
-                    board[s + typesS[i]][g + typesG[i]] = false;
+        int count =0;
+        if(board[s][g] == false) {
+            for(int i =0; i<4; i++) {
+                if (s + typesS[i] < board.length && s + typesS[i] > -1 && g + typesG[i] < board[0].length && g + typesG[i] > -1) {
+                    if (!board[s + typesS[i]][g] && !board[s + typesS[i]][g + typesG[i]]) {
+                        board[s][g] = true;
+                        board[s + typesS[i]][g] = true;
+                        board[s + typesS[i]][g + typesG[i]] = true;
+                        count += fillBoard(s, g + 1, board, left + score[i]);
+                        board[s][g] = false;
+                        board[s + typesS[i]][g] = false;
+                        board[s + typesS[i]][g + typesG[i]] = false;
+                    }
                 }
             }
+
+            return count + fillBoard(s,g+1,board,left);
         }
 
-        return count + fillBoard(s, g + 1, board, left);
+        return count;
     }
 }
 
