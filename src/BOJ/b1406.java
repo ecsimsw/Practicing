@@ -9,43 +9,82 @@ public class b1406 {
         String str = in.readLine();
         int n = Integer.parseInt(in.readLine());
 
-        String[] command = new String[n];
+        LinkedList<Character> characters = new LinkedList<>();
+        ListIterator<Character> iter = characters.listIterator();
 
-        for(int i=0; i<n; i++){
-            command[i] = in.readLine();
+        for(char chars : str.toCharArray()){
+            iter.add(chars);
         }
 
-        LinkedList<String> strList = new LinkedList<>(Arrays.asList(str.split("")));
-
-        int cursor = strList.size();
-
-        for(String c : command){
-            String[] splitedCommand = c.split(" ");
+        for(int i=0; i<n; i++){
+            char[] splitedCommand = in.readLine().toCharArray();
 
             switch (splitedCommand[0]) {
-                case "L":
-                    cursor = cursor > 0 ? cursor - 1 : cursor;
+                case 'L':
+                    if(iter.hasPrevious())
+                        iter.previous();
                     break;
-                case "D":
-                    cursor = cursor < strList.size() ? cursor + 1 : cursor;
+                case 'D':
+                    if(iter.hasNext())
+                        iter.next();
                     break;
-                case "B":
-                    if (cursor != 0) {
-                        strList.remove(cursor-1);
-                        cursor--;
+                case 'B':
+                    if (iter.hasPrevious()) {
+                        iter.previous();
+                        iter.remove();
                     }
                     break;
-                case "P":
-                    strList.add(cursor, splitedCommand[1]);
-                    cursor++;
+                case 'P':
+                    iter.add(splitedCommand[2]);
                     break;
             }
         }
-        StringBuilder sb = new StringBuilder();
-
-        for(String s : strList){
-            sb.append(s);
+        for(char c : characters){
+            System.out.print(c);
         }
-        System.out.print(sb.toString());
     }
 }
+
+/*
+public class b1406 {
+    public static void main(String[] args) throws Exception{
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = in.readLine();
+        int n = Integer.parseInt(in.readLine());
+
+        LinkedList<Character> characters = new LinkedList<>();
+        for(char chars : str.toCharArray()){
+            characters.add(chars);
+        }
+
+        int cursor = characters.size();
+        int len = cursor;
+
+        for(int i=0; i<n; i++){
+            char[] splitedCommand = in.readLine().toCharArray();
+
+            switch (splitedCommand[0]) {
+                case 'L':
+                    cursor = cursor != 0 ? cursor - 1 : cursor;
+                    break;
+                case 'D':
+                    cursor = cursor != len ? cursor + 1 : cursor;
+                    break;
+                case 'B':
+                    if (cursor != 0) {
+                        characters.remove(--cursor);
+                    }
+                    break;
+                case 'P':
+                    characters.add(cursor++, splitedCommand[2]);
+                    len++;
+                    break;
+            }
+        }
+        for(char c : characters){
+            System.out.print(c);
+        }
+    }
+}
+*/
