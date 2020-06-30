@@ -1,4 +1,4 @@
-package java20final;
+package javaPracticing.java20final;
 
 public class Java20Final1 {
 	public static void main(String[] args) {

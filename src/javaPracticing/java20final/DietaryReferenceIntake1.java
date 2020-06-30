@@ -1,4 +1,4 @@
-package java20final;
+package javaPracticing.java20final;
 
 public class DietaryReferenceIntake1 {
 	private Gender1 gender;

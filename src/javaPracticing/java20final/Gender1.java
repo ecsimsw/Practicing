@@ -1,4 +1,4 @@
-package java20final;
+package javaPracticing.java20final;
 
 public enum Gender1 {
 	MALE, FEMALE;

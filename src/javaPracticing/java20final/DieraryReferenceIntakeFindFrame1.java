@@ -1,4 +1,4 @@
-package java20final;
+package javaPracticing.java20final;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

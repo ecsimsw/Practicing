@@ -1,6 +1,4 @@
-package java20final;
-
-import java20final.*;
+package javaPracticing.java20final;
 
 public enum AgeRange1 {
 	AGE_6_TO_8, 

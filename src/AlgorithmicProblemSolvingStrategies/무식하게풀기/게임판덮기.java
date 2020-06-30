@@ -22,17 +22,8 @@ public class 게임판덮기 {
     static int[] score = {-3,-3,-3,-3};
 
     static public int fillBoard(int s, int g, boolean[][] board, int left){
-        System.out.println(s+ "  "  +g);
-        for(int i=0; i<board.length; i++){
-            for(int j=0; j<board[0].length; j++){
-                System.out.print(board[i][j] +" ");
-            }
-            System.out.println();
-        }
-
         if(s >= board.length-1 && g>board.length){
             if(left == 0) {
-                System.out.println("===FOUND===");
                 return 1;
             }
             else{
