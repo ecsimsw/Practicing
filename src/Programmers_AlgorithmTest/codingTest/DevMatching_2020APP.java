@@ -1,4 +1,4 @@
-package codingTest;
+package Programmers_AlgorithmTest.codingTest;
 
 import java.util.*;
 
