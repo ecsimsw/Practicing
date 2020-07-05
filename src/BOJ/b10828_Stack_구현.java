@@ -2,7 +2,7 @@ package BOJ;
 
 import java.io.*;
 
-public class boj10828 {
+public class b10828_Stack_구현 {
     public static void main(String[] args) throws Exception{
          BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
          int n = Integer.parseInt(br.readLine());

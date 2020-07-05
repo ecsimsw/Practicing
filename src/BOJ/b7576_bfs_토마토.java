@@ -22,38 +22,24 @@ public class b7576_bfs_토마토 {
             }
         }
 
-        boolean[][] checker = new boolean[s_len][g_len];
+        Queue<Point_7576> queue = new LinkedList<>();
 
-        Queue<Point_7576> queue = new LinkedList<Point_7576>();
+        int[] m_s = new int[]{0, 1, 0, -1};
+        int[] m_g = new int[]{1, 0, -1, 0};
 
-        int[] move_s = new int[]{0, 1, 0, -1};
-        int[] move_g = new int[]{1, 0, -1, 0};
 
-        int day =0;
-        // first day
         for (int i = 0; i < s_len; i++) {
             for (int j = 0; j < g_len; j++) {
-                if (board[i][j] == 1 && checker[i][j] == false) {
+                if (board[i][j] == 1) {
                     int s = i;
                     int g = j;
 
-                    for (int m = 0; m < 4; m++) {
-                        int next_s = s + move_s[m];
-                        int next_g = g + move_g[m];
-
-                        if (next_g > -1 && next_s > -1 && next_g < g_len && next_s < s_len) {
-                            if (board[next_s][next_g] == 0 && checker[next_s][next_g] == false) {
-                                board[next_s][next_g] = 1;
-                                checker[next_s][next_g] = true;
-                                queue.offer(new Point_7576(next_s, next_g));
-                            }
-                        }
-                    }
+                    queue.offer(new Point_7576(s, g));
                 }
             }
         }
 
-        // day off
+        int day =-1;
         while (!queue.isEmpty()) {
             int numberOfTomato = queue.size();
             for (int ripe = 0; ripe < numberOfTomato ; ripe++) {
@@ -63,13 +49,12 @@ public class b7576_bfs_토마토 {
                 int g = p.g;
 
                 for (int m = 0; m < 4; m++) {
-                    int next_s = s + move_s[m];
-                    int next_g = g + move_g[m];
+                    int next_s = s + m_s[m];
+                    int next_g = g + m_g[m];
 
                     if (next_g > -1 && next_s > -1 && next_g < g_len && next_s < s_len) {
-                        if (board[next_s][next_g] == 0 && checker[next_s][next_g] == false) {
+                        if (board[next_s][next_g] == 0) {
                             board[next_s][next_g] = 1;
-                            checker[next_s][next_g] = true;
 
                             queue.offer(new Point_7576(next_s, next_g));
                         }
