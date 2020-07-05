@@ -1,7 +1,6 @@
 package BOJ;
 
 import java.io.BufferedReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.io.*;
@@ -39,17 +38,17 @@ public class b1926_BFS {
         int[] move_s = new int[]{0,1,0,-1};
         int[] move_g = new int[]{1,0,-1,0};
 
-        Queue<Point> queue =new LinkedList<>();
+        Queue<Point_1926> queue =new LinkedList<>();
         for(int i =0; i<s_len; i++){
             for(int j=0; j<g_len; j++){
                 if(vis[i][j]==false && board[i][j] == 1){
                     count++;
                     vis[i][j] = true;
-                    queue.offer(new Point(i,j));
+                    queue.offer(new Point_1926(i,j));
                     System.out.println("new "+i+" "+j);
                     now_size=1;
                     while(queue.isEmpty()==false){
-                        Point p = queue.poll();
+                        Point_1926 p = queue.poll();
                         s = p.s;
                         g = p.g;
 
@@ -60,7 +59,7 @@ public class b1926_BFS {
                             if(next_s>=0 && next_g>=0 && next_s<s_len && next_g<g_len){
                                 if(board[next_s][next_g]==1 && vis[next_s][next_g]==false){
                                     now_size++;
-                                    queue.offer(new Point(next_s,next_g));
+                                    queue.offer(new Point_1926(next_s,next_g));
                                     System.out.println(next_s+" "+next_g);
                                     vis[next_s][next_g] = true;
                                 }
@@ -77,11 +76,11 @@ public class b1926_BFS {
     }
 }
 
-class Point{
+class Point_1926 {
     int s;
     int g;
 
-    public Point(int s, int g){
+    public Point_1926(int s, int g){
         this.s = s;
         this.g = g;
     }
