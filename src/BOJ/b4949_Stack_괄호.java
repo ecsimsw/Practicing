@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class boj4949 {
+public class b4949_Stack_괄호 {
     public static void main(String[] args) throws Exception{
 
         BufferedReader br = new BufferedReader(new InputStreamReader((System.in)));

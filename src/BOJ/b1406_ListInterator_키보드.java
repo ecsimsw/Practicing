@@ -2,7 +2,7 @@ package BOJ;
 import java.io.*;
 import java.util.*;
 
-public class b1406 {
+public class b1406_ListInterator_키보드 {
     public static void main(String[] args) throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
