@@ -22,6 +22,7 @@ public class Application {
         System.out.println(Juicer.makeJuice(appleBox));
     }
 }
+
 class Juice{}
 
 class Juicer{
