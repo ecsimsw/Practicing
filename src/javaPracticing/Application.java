@@ -1,69 +1,29 @@
 package javaPracticing;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Application {
     public static void main(String[] args) {
+        int h=0;
 
-        Apple apple1 = new Apple();
-        Apple apple2 = new Apple();
-
-        FruitBox<Apple> appleBox = new FruitBox<>();
-
-        try{
-            appleBox.clone();
-        }catch (Exception e){
-
+        for(int i=1; i<=10; ++i)
+        {
+            // 루틴 시작
+            h+=i;
+            // 루틴 끝
         }
 
-        appleBox.add(apple1);
-        appleBox.add(apple2);
+        h=0;
+        int i=1;
+        while(true){
+            if(!(i<=10)) break;
+            // 루틴 시작
+            h+=i;
+            // 루틴 끝
+            ++i;
+        }
 
-        System.out.println(Juicer.makeJuice(appleBox));
+        System.out.print(h);
     }
 }
-
-class Juice{}
-
-class Juicer{
-    static <T extends Fruit> String makeJuice(FruitBox<T> box){
-        String tmp = "";
-        for(Fruit f : box.list){tmp +="apple  / ";}
-        tmp+="juice";
-        return tmp;
-    }
-}
-
-class Fruit{ }
-class Apple extends Fruit{}
-
-class FruitBox<T extends Fruit> extends Box<T> {}
-
-class Box<T> {
-    ArrayList<T> list = new ArrayList<>();
-    void add(T item){list.add(item);}
-    T get(int i){return list.get(i);}
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-}
-
-/*
-class Card<T>{
-    T cardNumber;
-
-    public Card(T cardNumber){
-        this.cardNumber = cardNumber;
-    }
-}
-class Student {
-    public void tagCard(Card<?> card) {
-        String a = card.cardNumber.toString();
-        a += "123";
-        System.out.println(card.cardNumber);
-    }
-}
-
- */
