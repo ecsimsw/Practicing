@@ -1,69 +1,28 @@
 package javaPracticing;
 
-import java.util.ArrayList;
-
 public class Application {
     public static void main(String[] args) {
+        func(5,new MyClass());
+    }
 
-        Apple apple1 = new Apple();
-        Apple apple2 = new Apple();
+    static MyClass A = new MyClass();
 
-        FruitBox<Apple> appleBox = new FruitBox<>();
+    public static void func(int i, MyClass B){
 
-        try{
-            appleBox.clone();
-        }catch (Exception e){
+        //A = new MyClass();
 
-        }
+        if(i == 1){return;}
 
-        appleBox.add(apple1);
-        appleBox.add(apple2);
+        i--;
+        System.out.println("1 : "+B.value);
+        A.value = B.value +1;
+        System.out.println("2 : "+B.value);
 
-        System.out.println(Juicer.makeJuice(appleBox));
+
+        func(i, B);
     }
 }
 
-class Juice{}
-
-class Juicer{
-    static <T extends Fruit> String makeJuice(FruitBox<T> box){
-        String tmp = "";
-        for(Fruit f : box.list){tmp +="apple  / ";}
-        tmp+="juice";
-        return tmp;
-    }
+class MyClass{
+    int value = 5;
 }
-
-class Fruit{ }
-class Apple extends Fruit{}
-
-class FruitBox<T extends Fruit> extends Box<T> {}
-
-class Box<T> {
-    ArrayList<T> list = new ArrayList<>();
-    void add(T item){list.add(item);}
-    T get(int i){return list.get(i);}
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-}
-
-/*
-class Card<T>{
-    T cardNumber;
-
-    public Card(T cardNumber){
-        this.cardNumber = cardNumber;
-    }
-}
-class Student {
-    public void tagCard(Card<?> card) {
-        String a = card.cardNumber.toString();
-        a += "123";
-        System.out.println(card.cardNumber);
-    }
-}
-
- */
