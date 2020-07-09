@@ -1,28 +1,29 @@
 package javaPracticing;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+
 public class Application {
     public static void main(String[] args) {
-        func(5,new MyClass());
+        int h=0;
+
+        for(int i=1; i<=10; ++i)
+        {
+            // 루틴 시작
+            h+=i;
+            // 루틴 끝
+        }
+
+        h=0;
+        int i=1;
+        while(true){
+            if(!(i<=10)) break;
+            // 루틴 시작
+            h+=i;
+            // 루틴 끝
+            ++i;
+        }
+
+        System.out.print(h);
     }
-
-    static MyClass A = new MyClass();
-
-    public static void func(int i, MyClass B){
-
-        //A = new MyClass();
-
-        if(i == 1){return;}
-
-        i--;
-        System.out.println("1 : "+B.value);
-        A.value = B.value +1;
-        System.out.println("2 : "+B.value);
-
-
-        func(i, B);
-    }
-}
-
-class MyClass{
-    int value = 5;
 }
