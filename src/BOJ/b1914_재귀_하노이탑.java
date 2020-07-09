@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.util.Arrays;
 
 public class b1914_재귀_하노이탑 {
+
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
