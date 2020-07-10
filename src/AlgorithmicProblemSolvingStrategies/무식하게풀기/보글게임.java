@@ -36,7 +36,6 @@ static boolean hasWord(int s, int g, LinkedList<Integer> word,int next, int[][] 
         for(int i = 0; i<nextG.length; i++){
             int temp = word.pollFirst();
             if(hasWord(s+nextS[i], g+nextG[i], word, i, board)){
-                System.out.println(word.size()+" "+ i);
                 return true;
             }
             word.offerFirst(temp);
@@ -45,7 +44,6 @@ static boolean hasWord(int s, int g, LinkedList<Integer> word,int next, int[][] 
     else{
         int temp = word.pollFirst();
         if(hasWord(s+nextS[next], g+nextG[next], word, next, board)){
-            System.out.println(word.size()+" "+ next);
             return true;
         }
         word.offerFirst(temp);
