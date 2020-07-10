@@ -7,6 +7,7 @@ public class b1673_규칙_치킨쿠폰 {
     static public void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+
         while(true){
             String line = br.readLine();
 
