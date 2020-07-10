@@ -15,6 +15,7 @@ public class 숫자조합 {
         for (String s : list) {
             System.out.println(s);
         }
+
     }
     public static void comb(StringBuilder str, LinkedList<String> list){
         if(str.length() == 0) return;
