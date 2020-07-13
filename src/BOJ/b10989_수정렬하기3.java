@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-
 public class b10989_수정렬하기3{
     static public void main(String[] args)throws Exception{
 
