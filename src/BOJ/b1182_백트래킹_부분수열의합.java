@@ -13,48 +13,44 @@ public class b1182_백트래킹_부분수열의합 {
         S = Integer.parseInt(str[1]);
 
         str = br.readLine().split(" ");
-        for(int i =0; i<n; i++){
-            S_arr[i]= Integer.parseInt(str[i]);
-        }
-        Arrays.sort(S_arr);
+        S_arr = new int[n];
+        for(int i =0; i<n; i++){ S_arr[i]= Integer.parseInt(str[i]); }
 
-        System.out.print(sol());
+        int r = func(0, 0);
+        if(S == 0){ System.out.println(r-1); }
+        else { System.out.println(r); }
     }
 
     static int n;
     static int[] S_arr;
     static int S;
 
-    static int sol(){
+    static int func(int[] set, int index){
+        if(index == n) { return 0; }
+
         int result =0;
 
-        for(int i=n; i>-1; i--){
-            result += func(new int[i], 0);
-        }
+        set[index] = S_arr[index];
+        func(set, index+1);
+
+        set[index] = 0;
+        func(set, index+1);
 
         return result;
     }
 
-    static int func(int[] arr, int index){
-        if(arr.length-index ==0) return 0;
 
-        int result=0;
-        if(index==0){
-            arr[0] = S_arr[n-arr.length];
-            index++;
-            if(arr[0] == S) result++;
+    static int func(int sum, int index){
+        if(index == n) {
+            if(sum == S)
+                return 1;
+            else
+                return 0;
         }
-        for(int i=n-arr.length+1; i<n; i++){
-            if(arr[index-1] >= S_arr[i]) continue;
-            arr[index] = S_arr[i];
+        int result =0;
 
-            int sum =0;
-            for(int num : arr){ sum+=num; }
-            if(sum == S) result++;
-
-            result += func(arr, index+1);
-            arr[index] = 0;
-        }
+        result += func(sum + S_arr[index], index+1);
+        result += func(sum, index+1);
 
         return result;
     }
