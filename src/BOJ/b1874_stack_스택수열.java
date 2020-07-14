@@ -11,47 +11,46 @@ public class b1874_stack_스택수열 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Queue<Integer> queue = new LinkedList<>();
+        int n = Integer.parseInt(br.readLine());
+
         Stack<Integer> stack = new Stack<>();
+        int[] queue = new int[n];
 
-        int n = 1;
+        for(int i =0; i<n; i++){
+            queue[i] = (Integer.parseInt(br.readLine()));
+        }
+        int q= 0;
 
-        queue.offer(4);
-        queue.offer(3);
-        queue.offer(6);
-        queue.offer(8);
-        queue.offer(7);
-        queue.offer(5);
-        queue.offer(2);
-        queue.offer(1);
-
+        StringBuilder sb = new StringBuilder();
+        int number = 1;
         boolean isAble = true;
         while(true){
             if(stack.isEmpty()) {
-                System.out.println("push "+n);
-                stack.push(n);
-                n++;
+                if(number > n) { break;}
+                sb.append("+\n");
+                stack.push(number);
+                number++;
             }
 
-            if(stack.peek() == queue.peek()){
-                System.out.println("pop "+stack.peek());
+            if(stack.peek() == queue[q]){
+                sb.append("-\n");
                 stack.pop();
-                queue.poll();
-                n++;
+                q++;
             }
 
-            else if(stack.peek() < queue.peek()){
-                System.out.println("push "+n);
-                stack.push(n);
-                n++;
+            else if(stack.peek() < queue[q]){
+                sb.append("+\n");
+                stack.push(number);
+                number++;
             }
 
-            else if(stack.peek() > queue.peek()){
+            else if(stack.peek() > queue[q]){
                 isAble =false;
                 break;
             }
-
-            if(n > 8) break;
         }
+        sb.delete(sb.length()-1, sb.length());
+        if(isAble) System.out.println(sb);
+        else System.out.println("NO");
     }
 }
