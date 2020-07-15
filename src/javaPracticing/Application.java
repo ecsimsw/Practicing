@@ -1,7 +1,7 @@
 package javaPracticing;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Application {
     static Long nowTime;
@@ -13,49 +13,72 @@ public class Application {
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) {
-        int n =0;
 
-        n =5000;
-        nowTime = System.currentTimeMillis();
-        printPR(n);
-        takenTime_1 = System.currentTimeMillis() - nowTime;
+        Set<MyClass> set = new HashSet<MyClass>();
 
-        n =5000;
-        sb.delete(0, sb.length());
-        nowTime = System.currentTimeMillis();
-        printSB(n);
-        System.out.println(sb);
-        takenTime_2 = System.currentTimeMillis() - nowTime;
+        MyClass my1 = new MyClass("hi");
+        MyClass my2 = new MyClass("hi");
+        MyClass my3 = new MyClass("hello");
 
-        n= 5000;
-        nowTime = System.currentTimeMillis();
-        for (int i = 0; i < n; i++)
-            System.out.print("from 1 to 2 \n");
-        takenTime_3 = System.currentTimeMillis() - nowTime;
+        set.add(my1);
+        set.add(my2);
+        set.add(my3);
 
-        n=5000;
-        sb.delete(0, sb.length());
-        nowTime = System.currentTimeMillis();
-        for (int i = 0; i < n; i++)
-            sb.append("from 1 to 2 \n");
-        System.out.println(sb);
-        takenTime_4 = System.currentTimeMillis() - nowTime;
+        for(MyClass c : set){
+            System.out.println(c.data + " "+ c.hashCode());
+        }
 
-        System.out.println(takenTime_1);
-        System.out.println(takenTime_2);
-        System.out.println(takenTime_3);
-        System.out.println(takenTime_4);
+        List<MyClass> list = new LinkedList<>(set);
+
+        Collections.sort(list);
+
+        for(MyClass c : list){
+            System.out.println(c.data + " "+ c.hashCode());
+        }
+
+        Collections.sort(list, Collections.reverseOrder());
+
+        for(MyClass c : list){
+            System.out.println(c.data + " "+ c.hashCode());
+        }
+
+        Collections.sort(list, new Comparator<MyClass>() {
+            @Override
+            public int compare(MyClass o1, MyClass o2) {
+                return 0;
+            }
+        });
+    }
+}
+
+class MyClass implements Comparable{
+    String data;
+    public MyClass(String string){this.data =string;}
+
+    int hashFunction(String data){
+        int hash=0;
+        for(char c : data.toCharArray()){ hash += c; }
+        return hash;
     }
 
-    static void printPR(int i){
-        System.out.print(i+ " from 1 to 2 \n");
-        if(i==0){ return; }
-        printPR(i-1);
+    public int hashCode(){
+        return hashFunction(this.data);
     }
 
-    static void printSB(int i){
-        sb.append(i + " from 1 to 2 \n");
-        if(i==0){ return; }
-        printSB(i-1);
+    public boolean equals(Object o){
+        if(o instanceof MyClass){
+            return this.hashCode() == o.hashCode(); }
+
+        else{ return false; }
+    }
+
+    public int compareTo(Object o){
+        int result =0;
+
+        if(o instanceof MyClass){
+            result = o.hashCode() > this.hashCode() ? -1 : 1;
+        }
+
+        return result;
     }
 }
