@@ -2,9 +2,9 @@ package BOJ;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.PriorityQueue;
 
-public class b11650_정렬_좌표정렬하기 {
+public class b11651_정렬_좌표정렬하기2 {
     static class Point implements Comparable{
         int x;
         int y;
@@ -14,9 +14,9 @@ public class b11650_정렬_좌표정렬하기 {
         public int compareTo(Object o){
             if(o instanceof Point){
                 Point temp = (Point)o;
-                if(this.x < temp.x) return -1;
-                else if(this.x ==temp.x){
-                    if(this.y < temp.y) return -1;
+                if(this.y < temp.y) return -1;
+                else if(this.y ==temp.y){
+                    if(this.x < temp.x) return -1;
                     else return 1;
                 }
                 else return 1;
@@ -46,6 +46,7 @@ public class b11650_정렬_좌표정렬하기 {
             Point p = pq.poll();
             System.out.println(p.toString());
         }
-    }
-}
 
+    }
+
+}
