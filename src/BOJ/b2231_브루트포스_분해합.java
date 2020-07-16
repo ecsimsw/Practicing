@@ -3,8 +3,6 @@ package BOJ;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import java.util.Scanner;
-
 public class b2231_브루트포스_분해합 {
     public static void main(String[] args)throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
