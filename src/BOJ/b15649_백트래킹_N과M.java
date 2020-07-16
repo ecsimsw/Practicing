@@ -3,7 +3,7 @@ package BOJ;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class b15649_순열_N과M {
+public class b15649_백트래킹_N과M {
     static public void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] line = br.readLine().split(" ");
