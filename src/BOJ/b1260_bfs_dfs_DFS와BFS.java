@@ -35,52 +35,52 @@ public class b1260_bfs_dfs_DFS와BFS {
 
         Stack<Integer> stack = new Stack<>();
 
-        stack.push(startNode);
-        sb.append(startNode+" ");
-        checker_dfs[startNode] = true;
+stack.push(startNode);
+sb.append(startNode+" ");
+checker_dfs[startNode] = true;
 
-        while(!stack.isEmpty()){
-            int point = stack.peek();
-            int next =0;
-            for(int i = 1; i<=n; i++){
-                if(checker_dfs[i]== false ){
-                    if(lines_dfs[point][i] || lines_dfs[i][point]){
-                        next= i;
-                        break;
-                    }
-                }
-            }
-
-            if(next ==0 ){
-                stack.pop();
-            }
-            else{
-                checker_dfs[next] = true;
-                stack.push(next);
-                sb.append(next+" ");
+while(!stack.isEmpty()){
+    int point = stack.peek();
+    int next =0;
+    for(int i = 1; i<=n; i++){
+        if(checker_dfs[i]== false ){
+            if(lines_dfs[point][i] || lines_dfs[i][point]){
+                next= i;
+                break;
             }
         }
-        sb.append("\n");
+    }
 
-        Queue<Integer> queue = new LinkedList<>();
+    if(next ==0 ){
+        stack.pop();
+    }
+    else{
+        checker_dfs[next] = true;
+        stack.push(next);
+        sb.append(next+" ");
+    }
+}
+sb.append("\n");
 
-        queue.offer(startNode);
-        checker_bfs[startNode] = true;
-        sb.append(startNode + " ");
+Queue<Integer> queue = new LinkedList<>();
 
-        while(!queue.isEmpty()){
-           int point = queue.poll();
+queue.offer(startNode);
+checker_bfs[startNode] = true;
+sb.append(startNode + " ");
 
-           for(int i=1; i<n+1; i++){
-               if(checker_bfs[i] == false){
-                   if(lines_bfs[i][point] || lines_bfs[point][i]){
-                       queue.offer(i);
-                       checker_bfs[i] =true;
-                       sb.append(i+" ");
-                   }
-               }
+while(!queue.isEmpty()){
+   int point = queue.poll();
+
+   for(int i=1; i<n+1; i++){
+       if(checker_bfs[i] == false){
+           if(lines_bfs[i][point] || lines_bfs[point][i]){
+               queue.offer(i);
+               checker_bfs[i] =true;
+               sb.append(i+" ");
            }
-        }
-        System.out.print(sb);
+       }
+   }
+}
+System.out.print(sb);
     }
 }
