@@ -15,7 +15,7 @@ public class b11047_그리디_동전 {
         for(int i=0; i<n; i++){
             coins[i] = Integer.parseInt(br.readLine());
         }
-        
+
         int cnt=0;
         int left = k;
 
