@@ -23,8 +23,6 @@ public class b1931_그리디_회의실배정 {
 
         Arrays.sort(classes);
 
-        boolean[] isUsed = new boolean[n];
-
         int preEnd =0;
         int index = 0;
         int cnt =0;
