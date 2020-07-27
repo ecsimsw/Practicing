@@ -13,41 +13,23 @@ public class Application {
     static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) {
+        String line ="\"$MSE\"{\"1안녕하세요\"}\"$MSE\"{\"2안녕하세요\"}\"$MSE\"{\"3안녕하세요\"}";
+        List<String> strings = new ArrayList<>();
 
-        Set<MyClass> set = new HashSet<MyClass>();
+        StringBuilder sb = new StringBuilder(line);
+        int from=0, to =0;
 
-        MyClass my1 = new MyClass("hi");
-        MyClass my2 = new MyClass("hi");
-        MyClass my3 = new MyClass("hello");
-
-        set.add(my1);
-        set.add(my2);
-        set.add(my3);
-
-        for(MyClass c : set){
-            System.out.println(c.data + " "+ c.hashCode());
-        }
-
-        List<MyClass> list = new LinkedList<>(set);
-
-        Collections.sort(list);
-
-        for(MyClass c : list){
-            System.out.println(c.data + " "+ c.hashCode());
-        }
-
-        Collections.sort(list, Collections.reverseOrder());
-
-        for(MyClass c : list){
-            System.out.println(c.data + " "+ c.hashCode());
-        }
-
-        Collections.sort(list, new Comparator<MyClass>() {
-            @Override
-            public int compare(MyClass o1, MyClass o2) {
-                return 0;
+        while(true) {
+            from = sb.indexOf("\"$MSE", to);
+            to = sb.indexOf("\"$MSE", from+1);
+            if(to == -1 ){
+                strings.add(sb.substring(from,sb.length()));
+                break;
             }
-        });
+            strings.add(sb.substring(from,to));
+        }
+
+        for(String s : strings) System.out.println(s);
     }
 }
 
