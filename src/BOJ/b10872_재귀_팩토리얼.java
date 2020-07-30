@@ -16,4 +16,3 @@ public class b10872_재귀_팩토리얼 {
         return n * fact(n-1);
     }
 }
-
