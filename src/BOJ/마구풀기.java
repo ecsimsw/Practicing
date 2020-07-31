@@ -1,9 +1,96 @@
 package BOJ;
 
 import java.io.*;
-import java.util.Stack;
+import java.util.*;
 
-class b2493{
+class b1463_bfs{
+    static public void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(n);
+
+        int cnt=0;
+        boolean finish= false;
+        while(true){
+            int cycle = queue.size();
+            for(int i=0; i<cycle; i++) {
+                n = queue.poll();
+                if (n == 1) {
+                    finish =true;
+                    break;
+                }
+
+                if (n % 3 == 0) queue.offer(n / 3);
+                if (n % 2 == 0) queue.offer(n / 2);
+                queue.offer(n - 1);
+            }
+            if(finish) break;
+            cnt++;
+        }
+        System.out.print(cnt);
+    }
+}
+class b19532{
+    static public void main(String[] args)throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        Long[] nums = new Long[6];
+        String[] numbers = br.readLine().split(" ");
+        for(int i=0; i<6; i++){
+            nums[i] = Long.parseLong(numbers[i]);
+        }
+
+        Long a,b,c,d,e,f;
+
+        a = nums[0];
+        b = nums[1];
+        c = nums[2];
+        d = nums[3];
+        e = nums[4];
+        f = nums[5];
+
+        Long a_ = a*d;
+        Long b_ = b*d;
+        Long c_ = c*d;
+
+        Long d_ = d*a;
+        Long e_ = e*a;
+        Long f_ = f*a;
+
+        Long y_ = b_-e_;
+        Long i_ = c_-f_;
+
+        if(a ==0){
+            if(b == 0){
+                System.out.print(0+" "+0);
+                return;
+            }
+            long y = c/b;
+            long x = (f-e*y)/d;
+
+            System.out.print(x+" "+y);
+            return;
+        }
+
+        if(y_==0) {
+            long y = 0l;
+            long x = c/a;
+
+            System.out.print(x+" "+y);
+            return;
+        }
+
+        double y = (double)i_/y_;
+        double x = (-b*y+c)/a;
+
+        System.out.print((long)x+" "+(long)y);
+    }
+}
+
+class b2493_stack{
     static public void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
