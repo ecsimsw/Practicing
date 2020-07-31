@@ -1,9 +1,7 @@
 package BOJ;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//04:13
 public class b12100_시뮬레이션_2048 {
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -146,7 +144,7 @@ public class b12100_시뮬레이션_2048 {
                 }
             }
             for(int s =0; s<board.length; s++){
-                 for(int g=0; g<board[0].length-1; g++) {
+                for(int g=0; g<board[0].length-1; g++) {
                     if(board[s][g] == board[s][g+1]){
                         board[s][g] = 2*board[s][g];
 
