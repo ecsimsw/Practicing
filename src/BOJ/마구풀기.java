@@ -3,6 +3,114 @@ package BOJ;
 import java.io.*;
 import java.util.*;
 
+class b1085{
+    static public void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] str = br.readLine().split(" ");
+        int x = Integer.parseInt(str[0]);
+        int y = Integer.parseInt(str[1]);
+        int w = Integer.parseInt(str[2]);
+        int h = Integer.parseInt(str[3]);
+
+        int dif_x= Math.min(x-0,w-x);
+        int dif_y = Math.min(y-0, h-y);
+
+        System.out.print(Math.min(dif_x,dif_y));
+    }
+}
+
+class b4153{
+    static public void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringBuilder sb = new StringBuilder();
+
+        while(true) {
+            String[] str = br.readLine().split(" ");
+            int a = Integer.parseInt(str[0]);
+            int b = Integer.parseInt(str[1]);
+            int c = Integer.parseInt(str[2]);
+            if(a==0&&b==0&&c==0) break;
+
+            boolean r1 = Math.pow(a,2) == Math.pow(b,2)+Math.pow(c,2);
+            boolean r2 = Math.pow(b,2) == Math.pow(a,2)+Math.pow(c,2);
+            boolean r3 = Math.pow(c,2) == Math.pow(a,2)+Math.pow(b,2);
+
+            if(r1 || r2 || r3) sb.append("right \n");
+            else sb.append("wrong \n");
+        }
+
+        System.out.print(sb);
+    }
+}
+
+class b2164{
+    static public void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = Integer.parseInt(br.readLine());
+
+        LinkedList<Integer> list = new LinkedList<>();
+
+        for(int i=n; i>=1; i--){
+            list.add(i);
+        }
+
+        while(list.size()>1){
+            list.removeLast();
+            int temp = list.pollLast();
+            list.addFirst(temp);
+        }
+        System.out.print(list.poll());
+    }
+}
+
+class b2581_소수_소수찾기 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int M = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+
+        boolean[] notPrime = new boolean[10001];
+
+        for(int i=3; i<=N; i++){
+            if(i%2 ==0) continue;
+            if(notPrime[i]==true) continue;
+
+            int m = 3;
+            while(true){
+                if(i*m > N) break;
+                notPrime[i*m] = true;
+                m+=2;
+            }
+        }
+        int min=10000;
+        int sum=0;
+        if(M<3 && N>=2){
+            //System.out.println("2");
+            min =2;
+            sum =2;
+        }
+        for(int i=M; i<=N; i++ ) {
+            if(i==1) continue;
+            if(notPrime[i]==false && i%2!=0){
+                if(min>i) min =i;
+                sum+=i;
+            }
+        }
+
+        if(sum == 0){
+            System.out.print("-1");
+            return;
+        }
+
+        System.out.println(sum);
+        System.out.print(min);
+    }
+}
+
 class b1929_소수_소수찾기 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
