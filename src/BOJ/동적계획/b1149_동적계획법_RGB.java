@@ -3,7 +3,7 @@ package BOJ.동적계획;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class b1149_백트래킹_RGB {
+public class b1149_동적계획법_RGB {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
