@@ -23,7 +23,6 @@ public class b2156_동적계획법_포도주시식 {
         dpBoard[1] = board[1] +board[0];
         dpBoard[2] = Math.max(dpBoard[1],Math.max(board[0],board[1])+board[2]);
 
-        int max=0;
         for(int i=3; i<n; i++){
             dpBoard[i] = Math.max(dpBoard[i-1],Math.max(dpBoard[i-3]+board[i-1], dpBoard[i-2])+board[i]);
         }
