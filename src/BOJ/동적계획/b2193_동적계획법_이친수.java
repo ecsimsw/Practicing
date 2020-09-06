@@ -15,10 +15,7 @@ public class b2193_동적계획법_이친수 {
         }
 
         dpBoard = new long[n][2];
-        dp(0,0);
-        dp(0,1);
-
-        System.out.println(dpBoard[0][0] + dpBoard[0][1]);
+        System.out.println(dp(0,0)+dp(0,1));
     }
 
     static long[][] dpBoard;
@@ -34,15 +31,15 @@ public class b2193_동적계획법_이친수 {
             return 1;
         }
 
+        long r;
         if(bi == 0) {
-            long r = dp(index+1, 0)+ dp(index+1,1);
-            dpBoard[index][bi] = r;
-            return r;
+            r = dp(index+1, 0)+ dp(index+1,1);
+
         }
         else{
-            long r = dp(index+1,0);
-            dpBoard[index][bi] = r;
-            return r;
+            r = dp(index+1,0);
         }
+        dpBoard[index][bi] = r;
+        return r;
     }
 }
