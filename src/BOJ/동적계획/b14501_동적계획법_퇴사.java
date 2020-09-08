@@ -41,15 +41,20 @@ public class b14501_동적계획법_퇴사 {
     static int[] dp;
 
     static int dp(int day){
-        if(day > n) return 0;
+        if(day > n) {
+            System.out.println("day: " + day);
+            return 0;
+        }
 
-        if(dp[day]!=-1) return dp[day];
+        if(dp[day]!=-1) { return dp[day]; }
 
         if(board_T[day]+day-1 > n){
+            dp[day] = dp(day+1);
             return dp(day+1);
         }
 
         dp[day] = Math.max(board_P[day]+dp(day+board_T[day]), dp(day+1));
+
         return dp[day];
     }
 }
