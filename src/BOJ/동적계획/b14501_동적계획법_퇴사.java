@@ -4,7 +4,57 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+
 public class b14501_동적계획법_퇴사 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        n = Integer.parseInt(br.readLine());
+        board_T = new int[n+1];
+        board_P = new int[n+1];
+        String[] line;
+        for(int i =1; i<=n; i++){
+            line = br.readLine().split(" ");
+            board_T[i] = Integer.parseInt(line[0]);
+            board_P[i] = Integer.parseInt(line[1]);
+        }
+
+        dp = new int[n+1];
+
+        for(int i=0; i<n+1; i++){
+            dp[i] = -1;
+        }
+
+        dp(1);
+
+        int max = 0;
+        for(int i : dp){
+            if(i> max) max = i;
+        }
+        System.out.print(max);
+    }
+
+    static int n;
+
+    static int[] board_T;
+    static int[] board_P;
+    static int[] dp;
+
+    static int dp(int day){
+        if(day > n) return 0;
+
+        if(dp[day]!=-1) return dp[day];
+
+        if(board_T[day]+day-1 > n){
+            return dp(day+1);
+        }
+
+        dp[day] = Math.max(board_P[day]+dp(day+board_T[day]), dp(day+1));
+        return dp[day];
+    }
+}
+
+class b14501_동적계획법_퇴사_ {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
 
