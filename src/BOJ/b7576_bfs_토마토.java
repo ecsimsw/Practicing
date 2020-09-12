@@ -6,7 +6,6 @@ import java.io.*;
 
 public class b7576_bfs_토마토 {
     static public void main(String[] args)throws Exception {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] splited = br.readLine().split(" ");
         int g_len = Integer.parseInt(splited[0]);
