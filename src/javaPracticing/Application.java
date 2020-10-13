@@ -1,44 +1,59 @@
 package javaPracticing;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 public class Application {
     public static void main(String[] args) {
-        List<DashBoard> dashBoardList = new ArrayList<>();
+                long start = 0;
+                long end = 0;
 
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "long"));
-        //
-        dashBoardList.add(new DashBoard("wide", "short"));
-        //
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
-        dashBoardList.add(new DashBoard("narrow", "short"));
+                int inRoopSize = 100;
+                int maxRoopSize = 10000000;
 
-        setType(dashBoardList);
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                ArrayList<Double> result = new ArrayList<Double>();
 
-        for(DashBoard d : dashBoardList){
-            System.out.println(d.width.charAt(0)+" "+ d.height.charAt(0)+" "+d.type);
-        }
+                Double[] arr = new Double[10000000];
+
+                for (int i = 0; i < maxRoopSize; i++)
+                    list.add(i);
+
+                // Iterator 사용 시 실행 시간
+                Iterator<Integer> itr = list.iterator();
+                int sum =0;
+                int last = 0;
+                while (itr.hasNext()) {
+                    last = itr.next();
+                }
+                System.out.println("----Iterator 사용 시----" + last);
+                for (int idx = 0; idx < inRoopSize; idx++) {
+                    start = System.nanoTime(); // 시작시간
+                    sum += last;
+                    end = System.nanoTime(); // 끝나는 시간
+                }
+
+                System.out.println( ((double)(end - start)/100000) + "(sec)");
+                System.out.println(sum);
+
+                result = new ArrayList<Double>();
+
+                // Size 받아온 코드 실행 시간
+
+                sum = 0;
+                System.out.println("-----Size 받아오는 방법 사용 시----- "+ list.get(list.size()-1));
+                for (int idx = 0; idx < inRoopSize; idx++) {
+                    start = System.nanoTime();
+                    int size = list.size();
+                    sum += list.get(size-1);
+                    end = System.nanoTime();
+                }
+
+                System.out.println( ((double)(end - start)/100000) + "(sec)");
+                System.out.println(sum);
+
     }
 
     static void setType(List<DashBoard> dashBoardList){
@@ -53,7 +68,6 @@ public class Application {
 
         while(iterator.hasNext()){
             now=iterator.next();
-
             if(now.width.equals("wide")){
                 now.type=0;
                 shortStack =0;
@@ -102,14 +116,19 @@ public class Application {
                     }
                     else if(shortStack == 2){
                         now.type =0;
-                        longStack =0;
-                        shortStack =0;
+                        System.out.println("now "+now.width+" "+now.height + " : 0"+" "+now.hashCode());
+                        prev = iterator.previous();
                         prev = iterator.previous();
                         prev.type=2;
+                        System.out.println("prev "+prev.width+" "+prev.height + " : 2"+" "+prev.hashCode());
                         prev = iterator.previous();
                         prev.type =1;
+                        System.out.println("prev "+prev.width+" "+prev.height + " : 1" + " "+prev.hashCode() );
+
                         iterator.next();
                         iterator.next();
+                        longStack =0;
+                        shortStack =0;
                     }
                     else if(shortStack == 3){
                         now.type =0;
@@ -122,13 +141,24 @@ public class Application {
         }
     }
 }
+
+
 class DashBoard{
+    static int h =0;
+
     String width;
     String height;
     int type;
+    int hash;
 
-    public DashBoard(String w, String h){
-        this.width = w;
-        this.height = h;
+    public DashBoard(String width, String height){
+        this.width = width;
+        this.height = height;
+        this.hash = h++;
+    }
+
+    @Override
+    public int hashCode(){
+        return hash;
     }
 }
