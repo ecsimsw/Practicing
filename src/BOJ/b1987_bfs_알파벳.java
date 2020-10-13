@@ -3,7 +3,7 @@ package BOJ;
 import java.io.*;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Set;
 
 public class b1987_bfs_알파벳 {
     public static void main(String[] args) throws Exception{
@@ -17,23 +17,26 @@ public class b1987_bfs_알파벳 {
         R = Integer.parseInt(splited[0]);
         C = Integer.parseInt(splited[1]);
 
-//        board = new char[R][C];
-//
-//        for(int i=0; i<R; i++){
-//            String line = br.readLine();
-//            splited = line.split(" ");
-//
-//            for(int j=0; j<C; j++){
-//                board[i][j] = splited[j].charAt(0);
-//            }
-//        }
+        board = new char[R][C];
 
-        board = new char[][]{
-                {'C','A','A','B'},
-                {'A','D','C','B'}
-        };
+        for(int i=0; i<R; i++){
+            String line = br.readLine();
+            splited = line.split("");
 
+            for(int j=0; j<C; j++){
+                board[i][j] = splited[j].charAt(0);
+            }
+        }
 
+        int s = 0;
+        int g = 0;
+
+        Set<Character> passed = new HashSet<>();
+        passed.add(board[s][g]);
+        max = 1;
+        int r = search(s,g, passed);
+
+        System.out.println(r);
     }
 
     static char[][] board;
@@ -44,20 +47,31 @@ public class b1987_bfs_알파벳 {
     static int[] move_g = {0,0,1,-1};
     static int[] move_s = {1,-1,0,0};
 
-    static int bfs(){
+    static int max= 0;
 
-        Queue<Integer> queue_g = new LinkedList();
-        Queue<Integer> queue_s = new LinkedList();
+    static int search(int s, int g, Set<Character> passed){
+        for(int i=0; i<4; i++){
 
-        HashSet<Character> passed = new HashSet<>();
 
-        queue_g.offer(0);
-        queue_s.offer(0);
+            int next_s = s+move_s[i];
+            int next_g = g+move_g[i];
 
-        while(!queue_g.isEmpty()){
-            int s = queue_s.poll();
-            int g = queue_g.poll();
+            if(next_s<0 || next_s >= R){continue;}
+            if(next_g<0 || next_g >= C){continue;}
+
+            char c = board[next_s][next_g];
+            if(passed.contains(c)){continue;}
+
+            passed.add(c);
+
+            int point = passed.size();
+            if(point > max){ max = point; }
+
+            search(next_s, next_g, passed);
+            passed.remove(c);
         }
+
+        return max;
     }
 
 }
