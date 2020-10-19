@@ -69,7 +69,7 @@ public class b2468_bfs_안전영역 {
                 }
             }
         }
-        
+
 
         if(safeCount > max_count){
             max_height = height;
