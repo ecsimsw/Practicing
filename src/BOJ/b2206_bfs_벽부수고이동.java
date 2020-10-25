@@ -1,3 +1,13 @@
+/*
+6 4
+0100
+0110
+0000
+0000
+0111
+0000
+ */
+
 package BOJ;
 
 import java.util.*;
@@ -66,6 +76,10 @@ public class b2206_bfs_벽부수고이동 {
             if(score < min){
                 min = score;
             }
+            visited[s][g] = false;
+            stack_s.pollLast();
+            stack_g.pollLast();
+            return;
         }
 
         for(int i=0; i<4; i++){
@@ -81,6 +95,7 @@ public class b2206_bfs_벽부수고이동 {
                 stack_s.offer(next_s);
                 stack_g.offer(next_g);
                 dfs(score+1);
+                visited[next_s][next_g] = false;
                 stack_s.pollLast();
                 stack_g.pollLast();
             }
@@ -90,8 +105,10 @@ public class b2206_bfs_벽부수고이동 {
                 stack_s.offer(next_s);
                 stack_g.offer(next_g);
                 dfs(score+1);
+                visited[next_s][next_g] = false;
                 stack_s.pollLast();
                 stack_g.pollLast();
+                brkWall = false;
             }
         }
     }
