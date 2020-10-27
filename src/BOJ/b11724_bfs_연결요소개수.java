@@ -18,6 +18,7 @@ public class b11724_bfs_연결요소개수 {
         for(int i=0; i<line; i++){
             strings = br.readLine().split(" ");
             board[Integer.parseInt(strings[0])][Integer.parseInt(strings[1])] =1;
+            board[Integer.parseInt(strings[1])][Integer.parseInt(strings[0])] =1;
         }
 
         int count =0;
