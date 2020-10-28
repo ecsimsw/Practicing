@@ -24,9 +24,7 @@ public class StopWatch {
         thread.start();
 
         System.out.println("stop with and key");
-        while(true){
-            br.readLine(); break;
-        }
+        br.readLine();
 
         thread.interrupt();
         System.out.println("\n");
