@@ -3,6 +3,30 @@ package BOJ;
 import java.io.*;
 import java.util.*;
 
+class b9251_LCS{
+    static public void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String s1 = br.readLine();
+        String s2 = br.readLine();
+
+        char[] s1_chars = s1.toCharArray();
+        char[] s2_chars = s2.toCharArray();
+        boolean[] used = new boolean[s2_chars.length];
+
+        int score=0;
+
+        for(char c1 : s1_chars){
+            for(int i =0; i<s2_chars.length; i++){
+                if(c1 == s2_chars[i]){
+                    if(!used[i]){ used[i]=true; score++; System.out.print(c1); break; }
+                }
+            }
+        }
+
+        System.out.println(score);
+    }
+}
+
 class b10816_숫자카드2{
     static public void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
