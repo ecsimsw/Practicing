@@ -3,30 +3,29 @@ package BOJ;
 import java.io.*;
 import java.util.*;
 
-class b9251_LCS{
+class b3009_네번째점{
     static public void main(String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s1 = br.readLine();
-        String s2 = br.readLine();
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
-        char[] s1_chars = s1.toCharArray();
-        char[] s2_chars = s2.toCharArray();
-        boolean[] used = new boolean[s2_chars.length];
+        int[] xArr = new int[3];
+        int[] yArr = new int[3];
 
-        int score=0;
-
-        for(char c1 : s1_chars){
-            for(int i =0; i<s2_chars.length; i++){
-                if(c1 == s2_chars[i]){
-                    if(!used[i]){ used[i]=true; score++; System.out.print(c1); break; }
-                }
-            }
+        for(int i=0; i<3; i++){
+            String[] nums = br.readLine().split(" ");
+            xArr[i] = Integer.parseInt(nums[0]);
+            yArr[i] = Integer.parseInt(nums[1]);
         }
 
-        System.out.println(score);
+        int difX =0;
+        int difY =0;
+
+        difX = (xArr[0] == xArr[1])? xArr[2] : (xArr[0] == xArr[2]) ? xArr[1] : xArr[0];
+        difY = (yArr[0] == yArr[1])? yArr[2] : (yArr[0] == yArr[2]) ? yArr[1] : yArr[0];
+
+        System.out.println(difX + " "+ difY);
+
     }
 }
-
 class b10816_숫자카드2{
     static public void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
