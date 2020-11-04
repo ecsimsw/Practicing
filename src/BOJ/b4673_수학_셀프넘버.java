@@ -33,12 +33,7 @@ public class b4673_수학_셀프넘버 {
         }
         if(sum > N-1) return;
 
-        if(arr[sum] == true){
-            return;
-        }
-        else{
-            arr[sum] = true;
-            d(sum);
-        }
+        if(arr[sum] == true){ return; }
+        else{ arr[sum] = true; d(sum); }
     }
 }
