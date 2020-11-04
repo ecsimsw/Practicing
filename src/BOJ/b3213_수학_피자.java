@@ -29,20 +29,13 @@ public class b3213_수학_피자 {
         int total_cnt =0;
 
         // pair 1 3
-        if(cnt_1 < cnt_3){
-            cnt_3 = cnt_3 - cnt_1;
-            total_cnt += cnt_1;
-            cnt_1 = 0;
-        }
-        else if(cnt_1 == cnt_3){
+        if(cnt_1 > cnt_3){
             cnt_1 = cnt_1 - cnt_3;
             total_cnt += cnt_3;
-            cnt_3 =0;
         }
         else{
-            total_cnt += cnt_1;
+            total_cnt += cnt_3;
             cnt_1=0;
-            cnt_3=0;
         }
 
         // pair 2
@@ -52,8 +45,26 @@ public class b3213_수학_피자 {
 
         // pair 2 1
 
-        if()
+        if(cnt_2 == 1){
+            if(cnt_1 >= 2){
+                total_cnt+=1;
+                cnt_1 -= 2;
+            }
+            else if(cnt_1 >=1 ){
+                total_cnt+=1;
+                cnt_1 -= 1;
+            }
+            else{
+                total_cnt+=1;
+            }
+        }
 
+        // pair 4
+        pair = cnt_1/4;
+        total_cnt += pair;
+        if(cnt_1%4 !=0) total_cnt+=1;
+
+        System.out.println(total_cnt);
     }
 }
 
