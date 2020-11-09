@@ -51,10 +51,6 @@ public class 소풍 {
                         used.add(j);
                         last = i;
                         if(picnic(student, map, last)) {
-                            for(int u :used){
-                                System.out.print(u);
-                            }
-                            System.out.println();
                             answer++;
                         }
                         used.pollLast();
