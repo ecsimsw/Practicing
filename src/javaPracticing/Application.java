@@ -1,68 +1,52 @@
 package javaPracticing;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.*;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Apple apple1 = new Apple();
-        Apple apple2 = new Apple();
 
-        FruitBox<Apple> appleBox = new FruitBox<>();
 
-        try{
-            appleBox.clone();
-        }catch (Exception e){
-
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(5);
+        list.addFirst(5);
+        list.set(3,5);
+        if(br.readLine().equals("a")){
+            list.add(5);
         }
+        Collections.sort(list);
 
-        appleBox.add(apple1);
-        appleBox.add(apple2);
+        Integer[] arr = list.toArray(new Integer[10]);
 
-        System.out.println(Juicer.makeJuice(appleBox));
+        Integer[] arr_ = new Integer[]{1,5,6,74,5};
+
+        List list_ = new LinkedList(Arrays.asList(arr));
+
+        list_.add(1);
+
     }
-}
-class Juice{}
 
-class Juicer{
-    static <T extends Fruit> String makeJuice(FruitBox<T> box){
-        String tmp = "";
-        for(Fruit f : box.list){tmp +="apple  / ";}
-        tmp+="juice";
-        return tmp;
-    }
-}
+    static int[] swap(int x, int  y){
+        int temp = x;
+        x = y;
+        y = temp;
 
-class Fruit{ }
-class Apple extends Fruit{}
+        int[] r = new int[2];
+        r[0] = x;
+        r[1] = y;
 
-class FruitBox<T extends Fruit> extends Box<T> {}
-
-class Box<T> {
-    ArrayList<T> list = new ArrayList<>();
-    void add(T item){list.add(item);}
-    T get(int i){return list.get(i);}
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        return r;
     }
 }
 
-/*
-class Card<T>{
-    T cardNumber;
+class MyClass{
+    public int value;
 
-    public Card(T cardNumber){
-        this.cardNumber = cardNumber;
+    public MyClass(int x){
+        value = x;
     }
 }
-class Student {
-    public void tagCard(Card<?> card) {
-        String a = card.cardNumber.toString();
-        a += "123";
-        System.out.println(card.cardNumber);
-    }
-}
-
- */
