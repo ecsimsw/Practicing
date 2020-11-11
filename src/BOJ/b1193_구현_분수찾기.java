@@ -26,17 +26,13 @@ public class b1193_구현_분수찾기 {
             s = index;
             m = 1;
 
-            for(int i=1; i<dif; i++){
-                s--;
-                m++;
+            for(int i=1; i<dif; i++){ s--;m++;
             }
         }else{
             s = 1;
             m = index;
 
-            for(int i=1; i<dif; i++){
-                s++;
-                m--;
+            for(int i=1; i<dif; i++){ s++;m--;
             }
         }
         System.out.println(s+"/"+m);
