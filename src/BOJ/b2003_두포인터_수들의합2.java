@@ -12,7 +12,7 @@ public class b2003_두포인터_수들의합2 {
         int n = Integer.parseInt(strs[0]);
         int s = Integer.parseInt(strs[1]);
 
-        arr= new int[n];
+        int[] arr= new int[n];
 
         strs = br.readLine().split(" ");
 
@@ -23,45 +23,34 @@ public class b2003_두포인터_수들의합2 {
         int start = 0;
         int end = 0;
 
-        int sum = 0;
-        int preSum = arr[0];
+        int sum = arr[0];
 
         while(true){
-            if(start != end){ sum = preSum + arr[end]; }
-            else{ sum = preSum; }
-
-            if(sum < s){
-                preSum = sum;
-                if(end < n ) end++;
-            }
-            else if(sum == s){
-                System.out.println(start + " "+ end);
-
+            System.out.println(start+ " "+ end +" "+sum );
+            if(sum == s){
                 totalCnt++;
-                preSum = sum - arr[start];
-                if(start == end) end++;
-                else{ start++; }
+
+                sum -= arr[start];
+                start++;
+                end++;
+                if(end < n){ sum+= arr[end]; }
+            }
+            else if(sum < s){
+                end++;
+                if(end < n){ sum += arr[end]; }
+                else{
+                    sum -= arr[start];
+                    start++;
+                }
             }
             else if(sum > s){
-                preSum = sum - arr[start];
+                sum -= arr[start];
                 start++;
             }
 
-            if(start >= n || end >= n){
-                break;
-            }
+            if(start >= n ){ break; }
         }
 
         System.out.println(totalCnt);
-    }
-
-    static int[] arr;
-
-    static int sumWhile(int start, int end){
-        int sum =0;
-        for(int i = start; i<=end; i++){
-            sum += arr[i];
-        }
-        return sum;
     }
 }
