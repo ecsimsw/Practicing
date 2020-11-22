@@ -12,7 +12,7 @@ interface Ifunction{
     }
 }
 
-public class PracticingLamda {
+class PracticingLamda {
     public static void main(String[] args) {
 
         int x = 10;
