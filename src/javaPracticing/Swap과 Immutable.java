@@ -39,23 +39,17 @@ class MyClass{
 
 class App2 {
     public static void main(String[] args) throws Exception{
+        Integer a = 10;
+        Integer b = 10;
 
-        Integer i = 128;
-
-        changeInteger(i);
-
-        System.out.println(i);
-
-        MyClass myClass = new MyClass(10);
-
-        Integer b = 128;
-
-        System.out.println(System.identityHashCode(i));
+        System.out.println(System.identityHashCode(a));
         System.out.println(System.identityHashCode(b));
 
-        changeClass(myClass);
+        a = -128;
+        b = -128;
 
-        System.out.println(System.identityHashCode(myClass.value));
+        System.out.println(System.identityHashCode(a));
+        System.out.println(System.identityHashCode(b));
     }
 
     static void changeClass(MyClass a){
