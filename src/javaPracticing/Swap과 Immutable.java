@@ -40,17 +40,22 @@ class MyClass{
 class App2 {
     public static void main(String[] args) throws Exception{
 
-        Integer i = 10;
+        Integer i = 128;
 
         changeInteger(i);
 
         System.out.println(i);
-//
-//        MyClass myClass = new MyClass(10);
-//
-//        changeClass(myClass);
-//
-//        System.out.println(myClass.value);
+
+        MyClass myClass = new MyClass(10);
+
+        Integer b = 128;
+
+        System.out.println(System.identityHashCode(i));
+        System.out.println(System.identityHashCode(b));
+
+        changeClass(myClass);
+
+        System.out.println(System.identityHashCode(myClass.value));
     }
 
     static void changeClass(MyClass a){
