@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Stream연습 {
+class Stream연습1 {
     public static void main(String[] args) throws Exception{
 
         // list 추가 동시에 초기화. Arrays.asList()
@@ -63,6 +63,48 @@ public class Stream연습 {
 
     public static List<Integer> sortReverse(List<Integer> list){
         return list.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList());
+    }
+
+}
+
+
+class Stream연습2 {
+    public static void main(String[] args) throws Exception{
+
+        System.out.println(isAllMatch(1,3));
+
+        System.out.println(isAnyMatch(0));
+
+        System.out.println(countMatch(3));
+
+        for(int i : concatStream("153", "456")){
+            System.out.print(i + " ");
+        }
+    }
+
+    static List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,1,1));
+
+    public static boolean isAllMatch(int min, int max){
+        return list.stream().allMatch(x-> x>= min && x<=max);
+    }
+
+    public static boolean isAnyMatch(int min){
+        return list.stream().anyMatch(x-> x==min);
+    }
+
+    public static Integer[] listToArray(){
+        return list.toArray(new Integer[0]);
+    }
+
+    public static int countMatch(int max){
+        return (int)list.stream().filter(x-> x<max).count();
+    }
+
+    public static List<Integer> concatStream(String a, String b){
+        Stream<Integer> streamA = Arrays.stream(a.split("")).map(Integer::parseInt);
+        Stream<Integer> streamB = Arrays.stream(b.split("")).map(Integer::parseInt);
+
+        return Stream.concat(streamA, streamB).collect(Collectors.toList());
     }
 
 }
