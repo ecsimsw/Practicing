@@ -37,7 +37,7 @@ class Stream연습1 {
 
     }
 
-    // collect(Collectors.toList) : stream to list
+    // collect(Collectors.toList) : 자료형 변환
     public static List<Integer> streamToList(Stream<Integer> stream){
         return stream.collect(Collectors.toList());
     }
@@ -84,10 +84,12 @@ class Stream연습2 {
 
     static List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,1,1));
 
+    // allMatch : 모두 일치하는지 확인
     public static boolean isAllMatch(int min, int max){
         return list.stream().allMatch(x-> x>= min && x<=max);
     }
 
+    // anyMatch : 하나라도 일치하는지 확인
     public static boolean isAnyMatch(int min){
         return list.stream().anyMatch(x-> x==min);
     }
@@ -96,10 +98,13 @@ class Stream연습2 {
         return list.toArray(new Integer[0]);
     }
 
+    // count : 조건 부합 요소 개수 세기
     public static int countMatch(int max){
         return (int)list.stream().filter(x-> x<max).count();
     }
 
+    // concat : stream 합치기
+    // map : 요소를 특정 값으로 모두 변환시킴
     public static List<Integer> concatStream(String a, String b){
         Stream<Integer> streamA = Arrays.stream(a.split("")).map(Integer::parseInt);
         Stream<Integer> streamB = Arrays.stream(b.split("")).map(Integer::parseInt);
