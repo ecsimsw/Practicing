@@ -17,11 +17,16 @@ public class RacingGame {
     }
 
     public void play(){
+        printRacingResultMsg();
         do{
             tryMovingCar();
             printRoundScore();
             endRound();
         }while(isGameEnd());
+    }
+
+    private void printRacingResultMsg(){
+        OutputView.printRacingResultMsg();
     }
 
     private boolean isGameEnd(){
@@ -33,7 +38,9 @@ public class RacingGame {
     }
 
     private void printRoundScore(){
-
+        carList.stream()
+                .forEach(car -> OutputView.printRoundScore(car.name, car.position));
+        OutputView.printRoundSeparator();
     }
 
     private void endRound(){
