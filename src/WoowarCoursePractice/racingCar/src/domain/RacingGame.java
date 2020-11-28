@@ -3,6 +3,7 @@ package WoowarCoursePractice.racingCar.src.domain;
 import WoowarCoursePractice.racingCar.src.view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final List<Car> carList;
@@ -49,7 +50,13 @@ public class RacingGame {
     }
 
     private void printWinner(){
-        List winner = GameRule.findWinner(carList);
-        OutputView.printWinner(winner);
+        List winnerNames = getWinnerNames();
+        OutputView.printWinner(winnerNames);
+    }
+
+    private List getWinnerNames(){
+        return GameRule.findWinner(carList).stream()
+                .map(car -> car.name)
+                .collect(Collectors.toList());
     }
 }
