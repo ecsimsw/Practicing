@@ -28,11 +28,7 @@ public class RacingGame {
     private void printRacingResultMsg(){
         OutputView.printRacingResultMsg();
     }
-
-    private boolean isGameEnd(){
-        return totalRound == currentRound;
-    }
-
+    
     private void tryMovingCar(){
         carList.stream().forEach(car-> car.tryMove());
     }
@@ -45,5 +41,9 @@ public class RacingGame {
 
     private void endRound(){
         currentRound++;
+    }
+
+    private boolean isGameEnd(){
+        return totalRound == currentRound;
     }
 }
