@@ -42,6 +42,7 @@ public class Application {
     private static int askRoundCount(Scanner scanner){
         try{
             String inputRoundCount = readRoundCount(scanner);
+            InputValidator.isValidTryCountInput(inputRoundCount);
             return Integer.parseInt(inputRoundCount);
         }catch (IllegalArgumentException IA){
             IA.printStackTrace();
