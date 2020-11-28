@@ -11,6 +11,7 @@ public class OutputView {
 
     public static void  printRacingResultMsg(){
         printMsg(RACING_RESULT_MESSAGE);
+        printMsg(SEPARATOR_ROUND);
     }
 
     public static void printRoundScore(String name, int postion){
