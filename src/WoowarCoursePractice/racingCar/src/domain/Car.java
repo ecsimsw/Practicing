@@ -6,8 +6,8 @@ public class Car {
     private static final int MAX_MOVE = 9;
     private static final int MIN_MOVE = 0;
 
-    private final String name;
-    private int position;
+    public final String name;
+    public int position;
 
     public Car(String name){
         this.name = name;
