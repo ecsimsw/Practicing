@@ -11,9 +11,8 @@ public class CarListGenerator {
 
     public static List<Car> createCarList(String nameLine, String nameSeparator){
         List<Car> carList = new ArrayList<>();
-        for(String name : nameLine.split(nameSeparator)){
-            carList.add(new Car(name));
-        }
+        Arrays.stream(nameLine.split(","))
+                .forEach(name -> carList.add(new Car(name)));
         return carList;
     }
 }
