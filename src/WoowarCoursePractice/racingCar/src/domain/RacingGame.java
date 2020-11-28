@@ -23,6 +23,7 @@ public class RacingGame {
             printRoundScore();
             endRound();
         }while(!isGameEnd());
+        printWinner();
     }
 
     private void printRacingResultMsg(){
@@ -45,5 +46,10 @@ public class RacingGame {
 
     private boolean isGameEnd(){
         return totalRound == currentRound;
+    }
+
+    private void printWinner(){
+        List winner = GameRule.findWinner(carList);
+        OutputView.printWinner(winner);
     }
 }
