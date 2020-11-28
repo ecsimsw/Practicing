@@ -22,13 +22,13 @@ public class RacingGame {
             tryMovingCar();
             printRoundScore();
             endRound();
-        }while(isGameEnd());
+        }while(!isGameEnd());
     }
 
     private void printRacingResultMsg(){
         OutputView.printRacingResultMsg();
     }
-    
+
     private void tryMovingCar(){
         carList.stream().forEach(car-> car.tryMove());
     }
