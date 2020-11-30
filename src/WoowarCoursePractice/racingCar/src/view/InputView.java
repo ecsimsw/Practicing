@@ -15,6 +15,9 @@ public class InputView {
         OutputView.printMsg(ASK_CAR_NAME_MESSAGE);
         OutputView.printMsg(SEPARATOR_CAR_NAME_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
+
+        
+
         return SCANNER.nextLine();
     }
 
