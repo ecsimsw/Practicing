@@ -1,4 +1,4 @@
-package WoowarCoursePractice.baseballGame.java.baseball;
+package WoowarCoursePractice.baseballGame.baseball;
 
 import java.util.Scanner;
 

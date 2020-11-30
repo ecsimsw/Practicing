@@ -1,4 +1,4 @@
-package WoowarCoursePractice.baseballGame.java.utils;
+package WoowarCoursePractice.baseballGame.utils;
 
 import java.util.Random;
 
