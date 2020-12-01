@@ -19,6 +19,7 @@ public class InputView {
             String userInput = getInput(scanner);
             return CarsFactory.createCars(userInput);
         } catch (IllegalArgumentException IAE) {
+            IAE.printStackTrace();
             return getCars(scanner);
         }
     }
