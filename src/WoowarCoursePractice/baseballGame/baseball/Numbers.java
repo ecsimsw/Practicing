@@ -1,4 +1,4 @@
-package WoowarCoursePractice.baseballGame.utils;
+package WoowarCoursePractice.baseballGame.baseball;
 
 import java.util.List;
 import java.util.stream.Stream;

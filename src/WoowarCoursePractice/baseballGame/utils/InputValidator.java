@@ -1,5 +1,7 @@
 package WoowarCoursePractice.baseballGame.utils;
 
+import WoowarCoursePractice.baseballGame.baseball.Numbers;
+
 import java.util.Arrays;
 
 public class InputValidator {

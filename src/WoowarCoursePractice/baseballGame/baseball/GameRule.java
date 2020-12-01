@@ -1,4 +1,6 @@
-package WoowarCoursePractice.baseballGame.utils;
+package WoowarCoursePractice.baseballGame.baseball;
+
+import WoowarCoursePractice.baseballGame.baseball.Numbers;
 
 public class GameRule {
 

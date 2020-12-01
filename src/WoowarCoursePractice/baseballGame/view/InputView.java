@@ -1,6 +1,6 @@
 package WoowarCoursePractice.baseballGame.view;
 
-import WoowarCoursePractice.baseballGame.utils.Numbers;
+import WoowarCoursePractice.baseballGame.baseball.Numbers;
 import WoowarCoursePractice.baseballGame.utils.NumbersFactory;
 
 import java.util.Scanner;
