@@ -4,6 +4,9 @@ import WoowarCoursePractice.racingCar.src.utils.InputValidator;
 import WoowarCoursePractice.racingCar.src.utils.RandomUtils;
 
 public class Car{
+    public static final int NAME_LENGTH_MIN = 1;
+    public static final int NAME_LENGTH_MAX = 5;
+
     private static final int MAX_MOVE = 9;
     private static final int MIN_MOVE = 0;
     private static final int CONDITION_VALUE_TO_MOVE = 4;
