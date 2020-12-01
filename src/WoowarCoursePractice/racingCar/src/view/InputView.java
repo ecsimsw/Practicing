@@ -13,20 +13,27 @@ public class InputView {
 
     private InputView(){}
 
-    public static Cars getCars(Scanner scanner){
+    public static Cars getCars(Scanner scanner) {
         OutputView.printMsg(ASK_CAR_NAME_MESSAGE);
-        try{
+
+        try {
             String userInput = getInput(scanner);
             return CarsFactory.createCars(userInput);
-        }catch (IllegalArgumentException IAE){
+        } catch (IllegalArgumentException IAE) {
             return getCars(scanner);
         }
     }
 
-    public static String askNumberOfRound(Scanner scanner){
+    public static int getTotalRound(Scanner scanner) {
         OutputView.printMsg(ASK_NUMBER_OF_ROUND_MESSAGE);
         OutputView.printMsg(SEPARATOR_LINE);
-        return scanner.nextLine();
+
+        try {
+            return Integer.parseInt(getInput(scanner));
+        } catch (IllegalArgumentException IAE) {
+            IAE.printStackTrace();
+            return getTotalRound(scanner);
+        }
     }
 
     private static String getInput(Scanner scanner){
