@@ -1,7 +1,5 @@
 package WoowarCoursePractice.baseballGame.baseball;
 
-import WoowarCoursePractice.baseballGame.baseball.Numbers;
-
 public class GameRule {
 
     private GameRule(){}

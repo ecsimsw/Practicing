@@ -11,27 +11,27 @@ public class InputValidator {
 
     private InputValidator(){}
 
-    public static void checkValidNumber(String input) throws IllegalArgumentException{
-        if(!isValidLength(input, Numbers.LEN)){
+    public static void checkValidNumber(String input) throws IllegalArgumentException {
+        if (!isValidLength(input, Numbers.LEN)) {
             throw new IllegalArgumentException(INVALID_LENGTH);
         }
 
-        if(!isAllDifferent(input)){
+        if (!isAllDifferent(input)) {
            throw new IllegalArgumentException(INVALID_DUPLICATED);
         }
 
-        if(!isInRange(input, Numbers.MIN, Numbers.MAX)){
+        if (!isInRange(input, Numbers.MIN, Numbers.MAX)) {
             throw new IllegalArgumentException(INVALID_RANGE);
         }
 
     }
 
-    private static boolean isValidLength(String input, int len){
+    private static boolean isValidLength(String input, int len) {
         return input.length() == len;
     }
 
-    private static boolean isInRange(String input, int min, int max){
-        if(!isNumeric(input)){
+    private static boolean isInRange(String input, int min, int max) {
+        if (!isNumeric(input)) {
             return false;
         }
 
@@ -41,15 +41,15 @@ public class InputValidator {
     }
 
     private static boolean isNumeric(String input){
-        try{
+        try {
             Integer.parseInt(input);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    private static boolean isAllDifferent(String input){
+    private static boolean isAllDifferent(String input) {
         return Arrays.stream(input.split(""))
                 .distinct()
                 .count() == input.length();

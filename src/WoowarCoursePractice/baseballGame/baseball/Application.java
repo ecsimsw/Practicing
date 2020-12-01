@@ -11,13 +11,13 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        do{
+        do {
             BaseballGame baseballGame = new BaseballGame(scanner);
             baseballGame.play();
-        }while(checkPlayAgain(scanner));
+        } while(checkPlayAgain(scanner));
     }
 
-    private static boolean checkPlayAgain(Scanner scanner){
+    private static boolean checkPlayAgain(Scanner scanner) {
         return InputView.getPlayAgainButton(scanner) == PLAY_BUTTON_AGAIN;
     }
 }
