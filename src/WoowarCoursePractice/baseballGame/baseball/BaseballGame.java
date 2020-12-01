@@ -3,12 +3,9 @@ package WoowarCoursePractice.baseballGame.baseball;
 import WoowarCoursePractice.baseballGame.utils.GameRule;
 import WoowarCoursePractice.baseballGame.utils.Numbers;
 import WoowarCoursePractice.baseballGame.utils.NumbersFactory;
-import WoowarCoursePractice.baseballGame.utils.RandomUtils;
 import WoowarCoursePractice.baseballGame.view.InputView;
 import WoowarCoursePractice.baseballGame.view.OutputView;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class BaseballGame {

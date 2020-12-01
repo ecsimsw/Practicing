@@ -29,7 +29,9 @@ public class NumbersFactory {
         return rand;
     }
 
-    public static Numbers createNumbers(String number){
+    public static Numbers createNumbers(String number) {
+        InputValidator.checkValidNumber(number);
+
         List numberList = Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
