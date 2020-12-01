@@ -2,6 +2,7 @@ package WoowarCoursePractice.baseballGame.baseball;
 
 import WoowarCoursePractice.baseballGame.utils.GameRule;
 import WoowarCoursePractice.baseballGame.utils.Numbers;
+import WoowarCoursePractice.baseballGame.utils.NumbersFactory;
 import WoowarCoursePractice.baseballGame.utils.RandomUtils;
 import WoowarCoursePractice.baseballGame.view.InputView;
 import WoowarCoursePractice.baseballGame.view.OutputView;
@@ -20,7 +21,7 @@ public class BaseballGame {
     }
 
     public void play(){
-        Numbers target = setTargetNumber();
+        Numbers target = NumbersFactory.createRandomNumbers();
 
         while(!isGameEnd){
             Numbers guess = InputView.getNumbers(scanner);
@@ -32,27 +33,6 @@ public class BaseballGame {
             checkGameOver(strikeCnt);
         }
         OutputView.printGameOver();
-    }
-
-    private Numbers setTargetNumber(){
-        List<Integer> targetList = new ArrayList<>();
-
-        while(targetList.size() < Numbers.LEN){
-            int rand = getRandWithoutDuplicate(targetList);
-            targetList.add(rand);
-        }
-
-        return new Numbers(targetList);
-    }
-
-    private int getRandWithoutDuplicate(List list){
-        int rand;
-
-        do{
-            rand = RandomUtils.nextInt(Numbers.MIN, Numbers.MAX);
-        }while(list.contains(rand));
-
-        return rand;
     }
 
     private void checkGameOver(int strikeCnt){
