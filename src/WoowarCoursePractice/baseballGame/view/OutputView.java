@@ -5,7 +5,7 @@ public class OutputView {
     private final static String PRINT_STRIKE_CNT_MESSAGE = "스트라이크 ";
     private final static String PRINT_NOTHING_MESSAGE = "낫싱";
     private final static String SEPARATOR_ROUND = "\n";
-
+    private final static String GAME_OVER_MESSAGE = "다 맞췄습니다.";
     private OutputView(){}
 
     public static void printScore(int strikeCnt, int ballCnt){
@@ -35,9 +35,11 @@ public class OutputView {
         }
     }
 
+    public static void printGameOver(){
+        printMsg(GAME_OVER_MESSAGE);
+    }
+
     public static void printMsg(Object msg){
         System.out.print(msg);
     }
-
-
 }

@@ -29,7 +29,9 @@ public class BaseballGame {
             int ballCnt = GameRule.countBall(target, guess);
 
             OutputView.printScore(strikeCnt, ballCnt);
+            checkGameOver(strikeCnt);
         }
+        OutputView.printGameOver();
     }
 
     private Numbers setTargetNumber(){
@@ -51,6 +53,12 @@ public class BaseballGame {
         }while(list.contains(rand));
 
         return rand;
+    }
+
+    private void checkGameOver(int strikeCnt){
+        if(GameRule.checkAllCorrect(strikeCnt)){
+            isGameEnd = true;
+        }
     }
 }
 

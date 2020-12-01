@@ -16,4 +16,8 @@ public class GameRule {
                 .count()
                 - countStrike(target, guess);
     }
+
+    public static boolean checkAllCorrect(int strikeCnt){
+        return strikeCnt == Numbers.LEN;
+    }
 }
