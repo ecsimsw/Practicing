@@ -34,11 +34,13 @@
 - #### racingGame
     - Application : 경주에 활동될 자동차 이름과, 경주 라운드 횟수를 결정하고 이를 넘겨 racingGame을 실행시킨다. 
     - RacingGame : 경주 자동차들의 시도를 진행하고 라운드마다 위치를 출력한다. 시도 횟수만큼 이를 반복한다.
-    - GameRule : 경주 자동차가 전진할 조건, 우승 조건을 결정한다.
+    - Car : 경주 자동차를 클래스
+    - Cars : 경주 자동차 객체 리스트를 포장한 컬렉션 클래스
+    - Rounds : 경주 시도 횟수를 포장하여 시도 횟수를 업데이트하고, 경주가 종료되었는지 확인하기 위한 객체
     
 - #### utils
     - InputValidator : 사용자 입력이 유효한지 검증한다.
-    - CarListGenerator : 경주 자동차를 생성해서, List에 포함시킨다.
+    - CarsFactory : 경주 자동차를 생성해서, List에 포함시킨 후, Cars 객체 생성
     - RnadomUtils : 범위 내 임의의 숫자를 리턴한다.
     
 - #### view
