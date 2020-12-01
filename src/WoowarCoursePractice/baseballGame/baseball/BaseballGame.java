@@ -4,6 +4,7 @@ import WoowarCoursePractice.baseballGame.utils.GameRule;
 import WoowarCoursePractice.baseballGame.utils.Numbers;
 import WoowarCoursePractice.baseballGame.utils.RandomUtils;
 import WoowarCoursePractice.baseballGame.view.InputView;
+import WoowarCoursePractice.baseballGame.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class BaseballGame {
 
             int strikeCnt = GameRule.countStrike(target, guess);
             int ballCnt = GameRule.countBall(target, guess);
+
+            OutputView.printScore(strikeCnt, ballCnt);
         }
     }
 
