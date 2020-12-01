@@ -11,20 +11,11 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
 
-        final Cars cars = setRacingCars(scanner);
+        final Cars cars = InputView.getCars(scanner);
         final int totalRound = askRoundCount(scanner);
 
         RacingGame racingGame = new RacingGame(cars, totalRound);
         racingGame.play();
-    }
-
-    private static Cars setRacingCars(Scanner scanner){
-        String nameInput = readCarName(scanner);
-        return CarsFactory.createCars(nameInput);
-    }
-
-    private static String readCarName(Scanner scanner){
-        return InputView.askCarNames(scanner);
     }
 
     private static int askRoundCount(Scanner scanner){

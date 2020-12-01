@@ -19,7 +19,7 @@ public class InputValidator {
         return line.length() >= min && line.length() <= max;
     }
 
-    public static void isValidTryCountInput(String line) throws IllegalArgumentException{
+    public static void isValidTryCountInput(String line){
         if(!isNumeric(line)){
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }

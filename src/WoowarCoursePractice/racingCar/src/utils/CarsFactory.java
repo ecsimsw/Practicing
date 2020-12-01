@@ -13,7 +13,7 @@ public class CarsFactory {
 
     private CarsFactory(){}
 
-    public static Cars createCars(String nameLine){
+    public static Cars createCars(String nameLine) {
         List carList = Arrays.stream(nameLine.split(SEPARATOR_CAR_NAME))
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());

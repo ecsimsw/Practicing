@@ -12,7 +12,7 @@ public class Car implements Comparable<Car>{
     public final String name;
     public int position;
 
-    public Car(String name) throws IllegalArgumentException{
+    public Car(String name) {
         InputValidator.checkValidCarName(name);
 
         this.name = name;

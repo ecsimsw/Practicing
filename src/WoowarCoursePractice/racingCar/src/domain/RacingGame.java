@@ -18,17 +18,13 @@ public class RacingGame {
     }
 
     public void play(){
-        printRacingResultMsg();
+        OutputView.printRacingResultMsg();
         do{
             cars.move();
             printRoundScore();
             endRound();
         }while(!isGameEnd());
         printWinner();
-    }
-
-    private void printRacingResultMsg(){
-        OutputView.printRacingResultMsg();
     }
 
     private void printRoundScore(){
