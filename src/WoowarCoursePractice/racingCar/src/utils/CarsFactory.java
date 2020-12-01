@@ -3,7 +3,6 @@ package WoowarCoursePractice.racingCar.src.utils;
 import WoowarCoursePractice.racingCar.src.domain.Car;
 import WoowarCoursePractice.racingCar.src.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

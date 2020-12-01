@@ -3,7 +3,6 @@ package WoowarCoursePractice.racingCar.src.view;
 import WoowarCoursePractice.racingCar.src.domain.Cars;
 import WoowarCoursePractice.racingCar.src.utils.CarsFactory;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -36,7 +35,7 @@ public class InputView {
         }
     }
 
-    private static String getInput(Scanner scanner){
+    private static String getInput(Scanner scanner) {
         return scanner.nextLine();
     }
 }

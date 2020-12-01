@@ -4,15 +4,15 @@ public class Rounds {
     private final int totalRound;
     private int currentRound = 0;
 
-    public Rounds(int totalRound){
+    public Rounds(int totalRound) {
         this.totalRound = totalRound;
     }
 
-    public void endRound(){
+    public void endRound() {
         currentRound++;
     }
 
-    public boolean isEndAllRounds(){
+    public boolean isEndAllRounds() {
         return currentRound >= totalRound;
     }
 }

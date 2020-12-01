@@ -6,27 +6,28 @@ public class RacingGame {
     private final Cars cars;
     private final Rounds rounds;
 
-    public RacingGame(Cars cars, int totalRound){
+    public RacingGame(Cars cars, int totalRound) {
         this.cars = cars;
         rounds = new Rounds(totalRound);
     }
 
-    public void play(){
+    public void play() {
         OutputView.printRacingResultMsg();
-        do{
+
+        do {
             cars.move();
             printRoundScore();
             rounds.endRound();
-        }while(!rounds.isEndAllRounds());
+        } while (!rounds.isEndAllRounds());
         printWinner();
     }
 
-    private void printRoundScore(){
+    private void printRoundScore() {
         cars.printPosition();
         OutputView.printRoundSeparator();
     }
 
-    private void printWinner(){
+    private void printWinner() {
         OutputView.printWinner(cars.getWinnerNames());
     }
 }

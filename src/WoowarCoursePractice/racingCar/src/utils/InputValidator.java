@@ -7,13 +7,13 @@ public class InputValidator {
 
     private InputValidator(){}
 
-    public static void checkValidCarName(String name) throws IllegalArgumentException{
-        if(!isValidLength(name, NAME_LENGTH_MIN, NAME_LENGTH_MAX)) {
+    public static void checkValidCarName(String name) {
+        if (!isValidLength(name, NAME_LENGTH_MIN, NAME_LENGTH_MAX)) {
             throw new IllegalArgumentException("이름은 1자 이상, 5자 이하 입니다.");
         }
     }
 
-    private static boolean isValidLength(String line,int min,int max){
+    private static boolean isValidLength(String line, int min,int max) {
         return line.length() >= min && line.length() <= max;
     }
 }
