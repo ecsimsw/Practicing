@@ -1,4 +1,4 @@
-package javaPracticing.ChemicalManagement;
+package personalProjects.ChemicalManagement;
 
 import java.io.*;
 import java.lang.reflect.Field;

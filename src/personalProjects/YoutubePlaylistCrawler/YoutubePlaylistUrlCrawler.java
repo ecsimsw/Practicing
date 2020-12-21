@@ -1,4 +1,4 @@
-package javaPracticing;
+package personalProjects.YoutubePlaylistCrawler;
 
 import java.io.File;
 import java.io.FileNotFoundException;

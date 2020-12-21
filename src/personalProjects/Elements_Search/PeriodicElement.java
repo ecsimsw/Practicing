@@ -1,4 +1,4 @@
-package javaPracticing.Elements_Search;
+package personalProjects.Elements_Search;
 
 public class PeriodicElement {
     private int number;
