@@ -2,8 +2,6 @@ package personalProjects.KitechBusReader.view;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 
 public class FileView extends JFrame {
@@ -22,7 +20,7 @@ public class FileView extends JFrame {
         super("KITECH 버스 태그 기록 조회");
 
         setMenuBar();
-
+        setDateRange();
         setUserDataFile();
         setHistoryFile();
 
@@ -37,14 +35,34 @@ public class FileView extends JFrame {
         contentPane.add(scrollPane);
     }
 
-    private void setMenuBar(){
+    private void setMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu settingMenu = getSettingMenuOnMenuBar();
         menuBar.add(settingMenu);
         setJMenuBar(menuBar);
     }
 
-    private JMenu getSettingMenuOnMenuBar(){
+    private void setDateRange(){
+        JLabel fromLabel = new JLabel("시작 일자");
+        fromLabel.setBounds(55, 103, 70, 15);
+        contentPane.add(fromLabel);
+
+        JTextField dateFrom = new JTextField(10);
+        dateFrom.setBounds(126, 100, 100, 23);
+        dateFrom.setText("yyyy-dd-mm");
+        contentPane.add(dateFrom);
+
+        JLabel toLabel = new JLabel("종료 일자");
+        toLabel.setBounds(250, 103, 70, 15);
+        contentPane.add(toLabel);
+
+        JTextField dateTo = new JTextField(10);
+        dateTo.setBounds(321, 100, 100, 23);
+        dateTo.setText("yyyy-dd-mm");
+        contentPane.add(dateTo);
+    }
+
+    private JMenu getSettingMenuOnMenuBar() {
         JMenu settingMenu = new JMenu("Setting");
 
         // 설정 메뉴 생성
@@ -59,13 +77,13 @@ public class FileView extends JFrame {
         return settingMenu;
     }
 
-    private void setUserDataFile(){
+    private void setUserDataFile() {
         JLabel lblNewLabel = new JLabel("사원 정보");
-        lblNewLabel.setBounds(55, 40, 70, 15);
+        lblNewLabel.setBounds(55, 42, 70, 15);
         contentPane.add(lblNewLabel);
 
         JButton readFileBtn = new JButton("파일 열기");
-        readFileBtn.setBounds(499, 40, 120, 23);
+        readFileBtn.setBounds(499, 39, 120, 23);
         contentPane.add(readFileBtn);
 
         JTextField txtFileName = new JTextField();
@@ -75,9 +93,9 @@ public class FileView extends JFrame {
         txtFileName.setColumns(10);
     }
 
-    private void setHistoryFile(){
+    private void setHistoryFile() {
         JLabel lblNewLabel = new JLabel("이용 내역");
-        lblNewLabel.setBounds(55, 70, 70, 15);
+        lblNewLabel.setBounds(55, 72, 70, 15);
         contentPane.add(lblNewLabel);
 
         JButton readFileBtn = new JButton("파일 열기");
@@ -91,9 +109,9 @@ public class FileView extends JFrame {
         txtFileName.setColumns(10);
     }
 
-    private String readFilePath(){
+    private String readFilePath() {
         JFileChooser jfc = new JFileChooser();
-        if(jfc.showOpenDialog(FileView.this)== JFileChooser.APPROVE_OPTION){
+        if (jfc.showOpenDialog(FileView.this) == JFileChooser.APPROVE_OPTION) {
             return jfc.getSelectedFile().toString();
         }
         return null;
