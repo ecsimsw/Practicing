@@ -1,4 +1,4 @@
-package WoowarCoursePractice.baseballGame.utils;
+package WoowarCoursePractice.baseballGame.baseball;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -10,23 +10,23 @@ public class Numbers {
 
     private final List<Integer> numberList;
 
-    public Numbers(List numberList){
+    public Numbers(List numberList) {
         this.numberList = numberList;
     }
 
-    public Stream<Integer> getStream(){
+    public Stream<Integer> getStream() {
         return numberList.stream();
     }
 
-    public int get(int index){
-        return numberList.get(index);
+    public int get(int index) {
+        return numberList.get(index) ;
     }
 
-    public int indexOf(int object){
+    public int indexOf(int object) {
         return numberList.indexOf(object);
     }
 
-    public boolean contains(int object){
+    public boolean contains(int object) {
         return numberList.contains(object);
     }
 }

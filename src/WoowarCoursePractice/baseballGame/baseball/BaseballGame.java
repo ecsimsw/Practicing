@@ -1,7 +1,5 @@
 package WoowarCoursePractice.baseballGame.baseball;
 
-import WoowarCoursePractice.baseballGame.utils.GameRule;
-import WoowarCoursePractice.baseballGame.utils.Numbers;
 import WoowarCoursePractice.baseballGame.utils.NumbersFactory;
 import WoowarCoursePractice.baseballGame.view.InputView;
 import WoowarCoursePractice.baseballGame.view.OutputView;
@@ -13,14 +11,14 @@ public class BaseballGame {
     private final Scanner scanner;
     private boolean isGameEnd = false;
 
-    public BaseballGame(Scanner scanner){
+    public BaseballGame(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public void play(){
+    public void play() {
         Numbers target = NumbersFactory.createRandomNumbers();
 
-        while(!isGameEnd){
+        while (!isGameEnd) {
             Numbers guess = InputView.getNumbers(scanner);
 
             int strikeCnt = GameRule.countStrike(target, guess);
@@ -32,8 +30,8 @@ public class BaseballGame {
         OutputView.printGameOver();
     }
 
-    private void checkGameOver(int strikeCnt){
-        if(GameRule.checkAllCorrect(strikeCnt)){
+    private void checkGameOver(int strikeCnt) {
+        if (GameRule.checkAllCorrect(strikeCnt)) {
             isGameEnd = true;
         }
     }

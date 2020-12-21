@@ -3,7 +3,6 @@ package WoowarCoursePractice.racingCar.src.utils;
 import WoowarCoursePractice.racingCar.src.domain.Car;
 import WoowarCoursePractice.racingCar.src.domain.Cars;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +12,7 @@ public class CarsFactory {
 
     private CarsFactory(){}
 
-    public static Cars createCars(String nameLine){
+    public static Cars createCars(String nameLine) {
         List carList = Arrays.stream(nameLine.split(SEPARATOR_CAR_NAME))
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());

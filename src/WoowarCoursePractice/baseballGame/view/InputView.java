@@ -1,6 +1,6 @@
 package WoowarCoursePractice.baseballGame.view;
 
-import WoowarCoursePractice.baseballGame.utils.Numbers;
+import WoowarCoursePractice.baseballGame.baseball.Numbers;
 import WoowarCoursePractice.baseballGame.utils.NumbersFactory;
 
 import java.util.Scanner;
@@ -12,16 +12,16 @@ public class InputView {
     public static Numbers getNumbers(Scanner scanner) {
         OutputView.printMsg(ASK_NUMBER_MESSAGE);
 
-        try{
+        try {
             String input = getInput(scanner);
             return NumbersFactory.createNumbers(input);
-        }catch (IllegalArgumentException IAE){
+        } catch (IllegalArgumentException IAE) {
             IAE.printStackTrace();
             return getNumbers(scanner);
         }
     }
 
-    public static int getPlayAgainButton(Scanner scanner){
+    public static int getPlayAgainButton(Scanner scanner) {
         OutputView.printMsg(ASK_PLAY_AGAIN_BUTTON);
 
         String input = getInput(scanner);
@@ -29,7 +29,7 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    private static String getInput(Scanner scanner){
+    private static String getInput(Scanner scanner) {
         return scanner.nextLine();
     }
 }
