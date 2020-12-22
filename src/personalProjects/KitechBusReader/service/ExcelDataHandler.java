@@ -40,7 +40,7 @@ public class ExcelDataHandler {
             for (int rowindex = 0; rowindex < rows; rowindex++) {
                 HSSFRow row = sheet.getRow(rowindex);
                 if (row != null) {
-                    String pid = getCellData(row.getCell(PID_INDEX));
+                    String pid = String.format("%06d", Integer.parseInt(getCellData(row.getCell(PID_INDEX))));
                     String name = getCellData(row.getCell(NAME_INDEX));
                     String section = getCellData(row.getCell(SECTION_INDEX));
                     String cardId = getCellData(row.getCell(CARDID_INDEX));
