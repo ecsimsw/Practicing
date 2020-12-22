@@ -1,11 +1,27 @@
 package personalProjects.KitechBusReader.view;
 
+import personalProjects.KitechBusReader.controller.MainController;
+import personalProjects.KitechBusReader.view.buttonListener.MenuActionListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileView extends JFrame {
-    private JPanel contentPane = new JPanel();
+    private final JTextField firstBusFilePath = new JTextField();
+    private final JTextField secondBusFilePath = new JTextField();
+    private final JTextField thirdBusFilePath = new JTextField();
+    private final JTextField fourthBusFilePath = new JTextField();
+    private final JTextField dateFrom = new JTextField(10);
+    private final JTextField dateTo = new JTextField(10);
+    private final JPanel contentPane = new JPanel();
 
     public static void run() {
         try {
@@ -21,8 +37,10 @@ public class FileView extends JFrame {
 
         setMenuBar();
         setDateRange();
-        setUserDataFile();
-        setHistoryFile();
+        setFirstBus();
+        setSecondBus();
+        setThirdBus();
+        setFourthBus();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 688, 471);
@@ -31,82 +49,123 @@ public class FileView extends JFrame {
         contentPane.setLayout(null);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(44, 131, 575, 260);
+        scrollPane.setBounds(44, 175, 575, 220);
         contentPane.add(scrollPane);
     }
 
     private void setMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu settingMenu = getSettingMenuOnMenuBar();
+        JMenu runningMenu = getRunMenuOnMenuBar();
         menuBar.add(settingMenu);
+        menuBar.add(runningMenu);
         setJMenuBar(menuBar);
-    }
-
-    private void setDateRange() {
-        JLabel fromLabel = new JLabel("시작 일자");
-        fromLabel.setBounds(55, 103, 70, 15);
-        contentPane.add(fromLabel);
-
-        JTextField dateFrom = new JTextField(10);
-        dateFrom.setBounds(126, 100, 100, 23);
-        dateFrom.setText("yyyy-dd-mm");
-        contentPane.add(dateFrom);
-
-        JLabel toLabel = new JLabel("종료 일자");
-        toLabel.setBounds(250, 103, 70, 15);
-        contentPane.add(toLabel);
-
-        JTextField dateTo = new JTextField(10);
-        dateTo.setBounds(321, 100, 100, 23);
-        dateTo.setText("yyyy-dd-mm");
-        contentPane.add(dateTo);
     }
 
     private JMenu getSettingMenuOnMenuBar() {
         JMenu settingMenu = new JMenu("Setting");
-
-        // 설정 메뉴 생성
-        settingMenu.add(new JMenuItem("새 파일"));
-        settingMenu.getItem(0).setAccelerator
-                (KeyStroke.getKeyStroke('N', InputEvent.CTRL_MASK ^ InputEvent.ALT_MASK)); //단축키설정
-        settingMenu.add(new JMenuItem("열기"));
-        settingMenu.add(new JMenuItem("저장"));
-        settingMenu.addSeparator(); //구분선 추가
-        settingMenu.add(new JMenuItem("종료"));
+        settingMenu.add(new JMenuItem("저장 경로 변경"));
+        settingMenu.add(new JMenuItem("도움말"));
 
         return settingMenu;
     }
 
-    private void setUserDataFile() {
-        JLabel lblNewLabel = new JLabel("사원 정보");
-        lblNewLabel.setBounds(55, 42, 70, 15);
-        contentPane.add(lblNewLabel);
+    private JMenu getRunMenuOnMenuBar() {
+        JMenu runningMenu = new JMenu("Run");
 
-        JButton readFileBtn = new JButton("파일 열기");
-        readFileBtn.setBounds(499, 39, 120, 23);
-        contentPane.add(readFileBtn);
+        JMenuItem executeBtn = new JMenuItem("실행");
+        runningMenu.add(executeBtn);
 
-        JTextField txtFileName = new JTextField();
-        readFileBtn.addActionListener(e -> txtFileName.setText(readFilePath()));
-        txtFileName.setBounds(126, 40, 361, 21);
-        contentPane.add(txtFileName);
-        txtFileName.setColumns(10);
+        executeBtn.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("start");
+                search();
+            }
+        });
+        return runningMenu;
     }
 
-    private void setHistoryFile() {
-        JLabel lblNewLabel = new JLabel("이용 내역");
-        lblNewLabel.setBounds(55, 72, 70, 15);
+    private void search(){
+        List<String> dataPaths = new ArrayList<>();
+        dataPaths.add(firstBusFilePath.getText());
+        dataPaths.add(secondBusFilePath.getText());
+        dataPaths.add(thirdBusFilePath.getText());
+        dataPaths.add(fourthBusFilePath.getText());
+
+        LocalDate fromDate = parseToLocalDate(dateFrom);
+        LocalDate toDate = parseToLocalDate(dateTo);
+
+        MainController mainController = new MainController(dataPaths, fromDate, toDate);
+        mainController.run();
+    }
+
+    private LocalDate parseToLocalDate(JTextField dateField){
+        String[] dates = dateFrom.getText().split("-");
+        int year = Integer.parseInt(dates[0]);
+        int month = Integer.parseInt(dates[1]);
+        int day = Integer.parseInt(dates[2]);
+        return LocalDate.of(year, month, day);
+    }
+
+    private void setFirstBus() {
+        JLabel lblNewLabel = new JLabel("평택 버스");
+        lblNewLabel.setBounds(55, 22, 70, 15);
         contentPane.add(lblNewLabel);
 
         JButton readFileBtn = new JButton("파일 열기");
-        readFileBtn.setBounds(499, 69, 120, 23);
+        readFileBtn.setBounds(499, 19, 120, 23);
         contentPane.add(readFileBtn);
 
-        JTextField txtFileName = new JTextField();
-        readFileBtn.addActionListener(e -> txtFileName.setText(readFilePath()));
-        txtFileName.setBounds(126, 70, 361, 21);
-        contentPane.add(txtFileName);
-        txtFileName.setColumns(10);
+        readFileBtn.addActionListener(e -> firstBusFilePath.setText(readFilePath()));
+        firstBusFilePath.setBounds(126, 20, 361, 21);
+        contentPane.add(firstBusFilePath);
+        firstBusFilePath.setColumns(10);
+    }
+
+    private void setSecondBus() {
+        JLabel lblNewLabel = new JLabel("교대 버스");
+        lblNewLabel.setBounds(55, 52, 70, 15);
+        contentPane.add(lblNewLabel);
+
+        JButton readFileBtn = new JButton("파일 열기");
+        readFileBtn.setBounds(499, 49, 120, 23);
+        contentPane.add(readFileBtn);
+
+        readFileBtn.addActionListener(e -> secondBusFilePath.setText(readFilePath()));
+        secondBusFilePath.setBounds(126, 50, 361, 21);
+        contentPane.add(secondBusFilePath);
+        secondBusFilePath.setColumns(10);
+    }
+
+    private void setThirdBus() {
+        JLabel lblNewLabel = new JLabel("사당 버스");
+        lblNewLabel.setBounds(55, 82, 70, 15);
+        contentPane.add(lblNewLabel);
+
+        JButton readFileBtn = new JButton("파일 열기");
+        readFileBtn.setBounds(499, 79, 120, 23);
+        contentPane.add(readFileBtn);
+
+        readFileBtn.addActionListener(e -> thirdBusFilePath.setText(readFilePath()));
+        thirdBusFilePath.setBounds(126, 80, 361, 21);
+        contentPane.add(thirdBusFilePath);
+        thirdBusFilePath.setColumns(10);
+    }
+
+    private void setFourthBus() {
+        JLabel lblNewLabel = new JLabel("천안 버스");
+        lblNewLabel.setBounds(55, 112, 70, 15);
+        contentPane.add(lblNewLabel);
+
+        JButton readFileBtn = new JButton("파일 열기");
+        readFileBtn.setBounds(499, 109, 120, 23);
+        contentPane.add(readFileBtn);
+
+        readFileBtn.addActionListener(e -> fourthBusFilePath.setText(readFilePath()));
+        fourthBusFilePath.setBounds(126, 110, 361, 21);
+        contentPane.add(fourthBusFilePath);
+        fourthBusFilePath.setColumns(10);
     }
 
     private String readFilePath() {
@@ -115,5 +174,23 @@ public class FileView extends JFrame {
             return jfc.getSelectedFile().toString();
         }
         return null;
+    }
+
+    private void setDateRange() {
+        JLabel fromLabel = new JLabel("시작 일자");
+        fromLabel.setBounds(55, 143, 70, 15);
+        contentPane.add(fromLabel);
+
+        dateFrom.setBounds(126, 140, 100, 23);
+        dateFrom.setText("yyyy-dd-mm");
+        contentPane.add(dateFrom);
+
+        JLabel toLabel = new JLabel("종료 일자");
+        toLabel.setBounds(250, 143, 70, 15);
+        contentPane.add(toLabel);
+
+        dateTo.setBounds(321, 140, 100, 23);
+        dateTo.setText("yyyy-dd-mm");
+        contentPane.add(dateTo);
     }
 }

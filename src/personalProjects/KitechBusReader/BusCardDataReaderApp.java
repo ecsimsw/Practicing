@@ -15,21 +15,19 @@ import java.time.LocalDate;
 public class BusCardDataReaderApp {
 
     public static void main(String[] args){
-//        MainView mainView = new MainView();
-//
-//        FileView.run();
+        FileView.run();
+
 //        MainController mainController = new MainController();
 //        mainController.run();
 
-        TextDataHandler textDataHandler = new TextDataHandler();
-        textDataHandler.readHistory("", LocalDate.of(2020,11,01), LocalDate.of(2020,12,01));
-
-
-        ExcelDataHandler excelDataHandler = ExcelDataHandler.getInstance();
-        excelDataHandler.readUserData("");
-
-        Search.search();
-
-        ResultRepository.printAll();
+//        TextDataHandler textDataHandler = new TextDataHandler();
+//        textDataHandler.readHistory("", LocalDate.of(2020,11,01), LocalDate.of(2020,12,01));
+//
+//        ExcelDataHandler excelDataHandler = ExcelDataHandler.getInstance();
+//        excelDataHandler.readUserData("");
+//
+//        Search.search();
+//
+//        ResultRepository.printAll();
     }
 }

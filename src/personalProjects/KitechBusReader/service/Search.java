@@ -36,6 +36,8 @@ public class Search {
             if(!userTable.containsKey(pid)){
                 index_history++;
             }
+
+            System.out.println(index_history);
         }
     }
 
