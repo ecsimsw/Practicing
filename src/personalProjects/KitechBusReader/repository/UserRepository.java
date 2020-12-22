@@ -2,24 +2,27 @@ package personalProjects.KitechBusReader.repository;
 
 import personalProjects.KitechBusReader.dto.User;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserRepository {
     private UserRepository() {
     }
 
-    private static final List<User> userList = new LinkedList<>();
+    private static final Map<String, User> userTable = new HashMap<>();
 
     public static void addUser(User user) {
-        userList.add(user);
+        userTable.put(user.getPid(), user);
     }
 
     public static void printAll() {
-        userList.stream().forEach(user -> System.out.println(user));
+        for(User user : userTable.values()){
+            System.out.println(user);
+        }
     }
 
-    public static List<User> getUserList(){
-        return userList;
+    public static Map<String, User> getUserTable(){
+        return userTable;
     }
 }

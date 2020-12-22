@@ -9,25 +9,43 @@ import personalProjects.KitechBusReader.repository.UserRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Search {
 
     public static void search(){
         List<History> histories = HistoryRepository.getHistories();
-        List<User> users = UserRepository.getUserList();
-
-
-    }
-
-    private static void sortData(){
-        List<History> histories = HistoryRepository.getHistories();
-        List<User> users = UserRepository.getUserList();
-
         Collections.sort(histories);
-        Collections.sort(users);
+
+        Map<String, User> userTable = UserRepository.getUserTable();
+
+        int size_history = histories.size();
+
+        int index_history = 0;
+
+        while(index_history < size_history){
+            String pid = histories.get(index_history).getPid();
+            if(userTable.containsKey(pid)){
+                User user = userTable.get(pid);
+                List<History> sameUsers = HistoryRepository.getAllSameUsers(user);
+
+                saveResult(user, sameUsers);
+                index_history += sameUsers.size();
+            }
+            if(!userTable.containsKey(pid)){
+                index_history++;
+            }
+        }
     }
 
     private static void saveResult(User user, History history){
         ResultRepository.addResult(new Result(user, history));
+    }
+
+    private static void saveResult(User user, List<History> historiesSameUser){
+        for(History history : historiesSameUser){
+            ResultRepository.addResult(new Result(user, history));
+        }
     }
 }

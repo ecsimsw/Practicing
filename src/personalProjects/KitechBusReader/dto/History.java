@@ -22,6 +22,10 @@ public class History implements Comparable<History>{
         return current.format(formatter);
     }
 
+    public String getPid(){
+        return pid;
+    }
+
     @Override
     public int compareTo(History o) {
         return this.pid.compareTo(o.pid);

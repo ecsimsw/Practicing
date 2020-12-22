@@ -18,6 +18,10 @@ public class User implements Comparable<User>{
         return this.pid.equals(pid);
     }
 
+    public String getPid(){
+        return this.pid;
+    }
+
     @Override
     public int compareTo(User o) {
         return this.pid.compareTo(o.pid);

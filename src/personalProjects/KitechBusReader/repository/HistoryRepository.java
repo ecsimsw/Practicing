@@ -1,9 +1,11 @@
 package personalProjects.KitechBusReader.repository;
 
 import personalProjects.KitechBusReader.dto.History;
+import personalProjects.KitechBusReader.dto.User;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class HistoryRepository {
 
@@ -22,5 +24,11 @@ public class HistoryRepository {
 
     public static List<History> getHistories(){
         return histories;
+    }
+
+    public static List<History> getAllSameUsers(User user){
+        return histories.stream()
+                .filter(history -> history.isUser(user))
+                .collect(Collectors.toList());
     }
 }
