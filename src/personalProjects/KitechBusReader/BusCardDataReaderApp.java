@@ -7,6 +7,8 @@ import personalProjects.KitechBusReader.service.TextDataHandler;
 import personalProjects.KitechBusReader.view.FileView;
 import personalProjects.KitechBusReader.view.MainView;
 
+import java.time.LocalDate;
+
 public class BusCardDataReaderApp {
 
     public static void main(String[] args){
@@ -17,7 +19,7 @@ public class BusCardDataReaderApp {
 //        mainController.run();
 
         TextDataHandler textDataHandler = new TextDataHandler();
-        textDataHandler.readHistory("");
+        textDataHandler.readHistory("", LocalDate.of(2020,11,01), LocalDate.of(2020,12,01));
 
         HistoryRepository.printAll();
     }
