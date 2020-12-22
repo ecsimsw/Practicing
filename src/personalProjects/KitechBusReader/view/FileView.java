@@ -42,7 +42,7 @@ public class FileView extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    private void setDateRange(){
+    private void setDateRange() {
         JLabel fromLabel = new JLabel("시작 일자");
         fromLabel.setBounds(55, 103, 70, 15);
         contentPane.add(fromLabel);

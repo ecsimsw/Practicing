@@ -36,10 +36,6 @@ public class ExcelDataHandler {
         return excelDataHandler;
     }
 
-    public void search(Date from, Date to, String user, String history) {
-
-    }
-
     public void readUserData(String path) {
         try {
             FileInputStream file = new FileInputStream("C:\\Users\\user\\Desktop\\버스직원데이터_test.xls");
@@ -63,13 +59,11 @@ public class ExcelDataHandler {
         }
     }
 
-
-
-    private void saveInRepository(String pid, String name, String section, String cardId){
+    private void saveInRepository(String pid, String name, String section, String cardId) {
         UserRepository.addUser(new User(pid, name, section, cardId));
     }
 
-    private String getCellData(HSSFCell cell){
+    private String getCellData(HSSFCell cell) {
         CellType cellType = null;
         String value = "";
         try {
@@ -83,7 +77,7 @@ public class ExcelDataHandler {
         }
 
         if (cellType == CellType.NUMERIC) {
-            value = ((int)cell.getNumericCellValue()) + "";
+            value = ((int) cell.getNumericCellValue()) + "";
         }
 
         if (cellType == CellType.STRING) {

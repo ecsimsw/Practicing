@@ -27,7 +27,6 @@ public class TextDataHandler {
 
     public void readHistory(String filePath, LocalDate from, LocalDate to) {
         try {
-            //파일 객체 생성
             File file = new File("C:\\Users\\user\\Desktop\\GLOG_003.TXT");
 
             if (file.exists()) {
@@ -35,18 +34,18 @@ public class TextDataHandler {
 
                 String line = null;
                 inFile.readLine();
-                while ((line = inFile.readLine()) != null){
+                while ((line = inFile.readLine()) != null) {
                     String[] splited = line.split(SEPARATOR);
                     String no = splited[NO_INDEX];
-                    String pid= String.format("%06d", Integer.parseInt(splited[PID_INDEX]));
+                    String pid = String.format("%06d", Integer.parseInt(splited[PID_INDEX]));
                     LocalDateTime dateTime = LocalDateTime.parse(splited[DATE_INDEX],
                             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-                    if(isInvalidPID(pid)){
+                    if (isInvalidPID(pid)) {
                         continue;
                     }
 
-                    if(isNotInRange(from, to, dateTime)){
+                    if (isNotInRange(from, to, dateTime)) {
                         continue;
                     }
 
@@ -58,15 +57,15 @@ public class TextDataHandler {
         }
     }
 
-    private boolean isInvalidPID(String pid){
+    private boolean isInvalidPID(String pid) {
         return pid.equals(INVALID_PID_CODE);
     }
 
-    private boolean isNotInRange(LocalDate from, LocalDate to, LocalDateTime dateTime){
-        return dateTime.isBefore(from.atTime(0,0)) || dateTime.isAfter(to.atTime(12,50));
+    private boolean isNotInRange(LocalDate from, LocalDate to, LocalDateTime dateTime) {
+        return dateTime.isBefore(from.atTime(0, 0)) || dateTime.isAfter(to.atTime(12, 50));
     }
 
-    private void saveInRepository(History history){
+    private void saveInRepository(History history) {
         HistoryRepository.addHistory(history);
     }
 }

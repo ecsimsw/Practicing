@@ -8,7 +8,7 @@ public class History {
     private String pid;
     private LocalDateTime localDateTime;
 
-    public History(String no, String pid, LocalDateTime localDateTime){
+    public History(String no, String pid, LocalDateTime localDateTime) {
         this.no = no;
         this.pid = pid;
         this.localDateTime = localDateTime;

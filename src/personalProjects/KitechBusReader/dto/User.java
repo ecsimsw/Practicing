@@ -7,7 +7,7 @@ public class User {
     private String section;
     private String cardId;
 
-    public User(String pid, String name, String section, String cardId){
+    public User(String pid, String name, String section, String cardId) {
         this.cardId = cardId;
         this.name = name;
         this.pid = pid;
@@ -15,15 +15,15 @@ public class User {
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o instanceof User){
+    public boolean equals(Object o) {
+        if (o instanceof User) {
             return ((User) o).pid == this.pid;
         }
         return false;
     }
 
     @Override
-    public String toString(){
-        return pid + " " + name +" " + section + " "+cardId;
+    public String toString() {
+        return pid + " " + name + " " + section + " " + cardId;
     }
 }
