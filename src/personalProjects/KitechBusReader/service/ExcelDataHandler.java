@@ -45,11 +45,9 @@ public class ExcelDataHandler {
             FileInputStream file = new FileInputStream("C:\\Users\\user\\Desktop\\버스직원데이터_test.xls");
             HSSFWorkbook workbook = new HSSFWorkbook(file);
 
-            int rowindex = 0;
-            int columnindex = 0;
             HSSFSheet sheet = workbook.getSheetAt(0);
             int rows = sheet.getPhysicalNumberOfRows();
-            for (rowindex = 0; rowindex < rows; rowindex++) {
+            for (int rowindex = 0; rowindex < rows; rowindex++) {
                 HSSFRow row = sheet.getRow(rowindex);
                 if (row != null) {
                     String pid = getCellData(row.getCell(PID_INDEX));
@@ -64,6 +62,8 @@ public class ExcelDataHandler {
             e.printStackTrace();
         }
     }
+
+
 
     private void saveInRepository(String pid, String name, String section, String cardId){
         UserRepository.addUser(new User(pid, name, section, cardId));

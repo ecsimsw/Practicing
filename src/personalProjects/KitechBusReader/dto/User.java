@@ -14,10 +14,6 @@ public class User {
         this.section = section;
     }
 
-    public boolean isCardId(String cardId){
-        return this.cardId.equals(cardId);
-    }
-
     @Override
     public boolean equals(Object o){
         if(o instanceof User){
@@ -30,5 +26,4 @@ public class User {
     public String toString(){
         return pid + " " + name +" " + section + " "+cardId;
     }
-
 }
