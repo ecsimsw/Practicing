@@ -1,9 +1,7 @@
 package personalProjects.KitechBusReader;
 
-import personalProjects.KitechBusReader.backUp.FileViewBackup;
-import personalProjects.KitechBusReader.service.SearchService;
-import personalProjects.KitechBusReader.view.FileView;
-import personalProjects.KitechBusReader.view.MainView;
+import personalProjects.KitechBusReader.controller.MainController;
+import personalProjects.KitechBusReader.service.ExcelDataHandler;
 
 public class BusCardDataReaderApp {
 
@@ -11,7 +9,7 @@ public class BusCardDataReaderApp {
 //        MainView mainView = new MainView();
 
 //        FileView.run();
-        SearchService searchService = SearchService.getInstance();
-        searchService.readUserData("");
+        MainController mainController = new MainController();
+        mainController.run();
     }
 }
