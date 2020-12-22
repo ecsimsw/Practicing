@@ -1,6 +1,6 @@
 package personalProjects.KitechBusReader.dto;
 
-public class User {
+public class User implements Comparable<User>{
 
     private String pid;
     private String name;
@@ -14,6 +14,15 @@ public class User {
         this.section = section;
     }
 
+    public boolean isPid(String pid){
+        return this.pid.equals(pid);
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.pid.compareTo(o.pid);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof User) {
@@ -24,6 +33,6 @@ public class User {
 
     @Override
     public String toString() {
-        return pid + " " + name + " " + section + " " + cardId;
+        return pid + ", " + name + ", " + section + ", " + cardId;
     }
 }

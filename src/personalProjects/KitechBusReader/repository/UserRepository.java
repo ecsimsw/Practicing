@@ -19,4 +19,7 @@ public class UserRepository {
         userList.stream().forEach(user -> System.out.println(user));
     }
 
+    public static List<User> getUserList(){
+        return userList;
+    }
 }

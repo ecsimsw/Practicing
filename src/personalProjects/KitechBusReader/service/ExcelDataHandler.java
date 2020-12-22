@@ -11,9 +11,6 @@ import org.apache.poi.ss.usermodel.CellType;
 import personalProjects.KitechBusReader.dto.User;
 import personalProjects.KitechBusReader.repository.UserRepository;
 
-
-import java.util.Date;
-
 public class ExcelDataHandler {
     private static final int PID_INDEX = 0;
     private static final int NAME_INDEX = 1;
@@ -21,9 +18,6 @@ public class ExcelDataHandler {
     private static final int CARDID_INDEX = 3;
 
     private static ExcelDataHandler excelDataHandler;
-
-    private Date dateFrom;
-    private Date dateTo;
 
     private ExcelDataHandler() {
 

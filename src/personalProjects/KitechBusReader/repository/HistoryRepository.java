@@ -10,7 +10,7 @@ public class HistoryRepository {
     private HistoryRepository() {
     }
 
-    public static List<History> histories = new LinkedList<>();
+    private static List<History> histories = new LinkedList<>();
 
     public static void addHistory(History history) {
         histories.add(history);
@@ -18,5 +18,9 @@ public class HistoryRepository {
 
     public static void printAll() {
         histories.stream().forEach(history -> System.out.println(history));
+    }
+
+    public static List<History> getHistories(){
+        return histories;
     }
 }

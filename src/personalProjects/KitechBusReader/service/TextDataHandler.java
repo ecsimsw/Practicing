@@ -36,7 +36,6 @@ public class TextDataHandler {
                 inFile.readLine();
                 while ((line = inFile.readLine()) != null) {
                     String[] splited = line.split(SEPARATOR);
-                    String no = splited[NO_INDEX];
                     String pid = String.format("%06d", Integer.parseInt(splited[PID_INDEX]));
                     LocalDateTime dateTime = LocalDateTime.parse(splited[DATE_INDEX],
                             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -49,7 +48,7 @@ public class TextDataHandler {
                         continue;
                     }
 
-                    saveInRepository(new History(no, pid, dateTime));
+                    saveInRepository(new History(pid, dateTime));
                 }
             }
         } catch (Exception e) {
