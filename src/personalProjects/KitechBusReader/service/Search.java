@@ -19,13 +19,14 @@ public class Search {
         Collections.sort(histories);
 
         Map<String, User> userTable = UserRepository.getUserTable();
-
         int size_history = histories.size();
+        System.out.println(size_history);
 
         int index_history = 0;
 
         while(index_history < size_history){
             String pid = histories.get(index_history).getPid();
+
             if(userTable.containsKey(pid)){
                 User user = userTable.get(pid);
                 List<History> sameUsers = HistoryRepository.getAllSameUsers(user);
@@ -36,8 +37,6 @@ public class Search {
             if(!userTable.containsKey(pid)){
                 index_history++;
             }
-
-            System.out.println(index_history);
         }
     }
 

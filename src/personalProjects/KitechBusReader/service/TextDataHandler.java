@@ -27,8 +27,9 @@ public class TextDataHandler {
 
     public void readHistory(String filePath, LocalDate from, LocalDate to) {
         try {
-            File file = new File("C:\\Users\\user\\Desktop\\GLOG_003.TXT");
-
+            String path = filePath.replaceAll("\\\\", "\\\\\\\\");
+            File file = new File(path);
+            System.out.print(path);
             if (file.exists()) {
                 BufferedReader inFile = new BufferedReader(new FileReader(file));
 
@@ -53,6 +54,7 @@ public class TextDataHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.print(e.getMessage());
         }
     }
 

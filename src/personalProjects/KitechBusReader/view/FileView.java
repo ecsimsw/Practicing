@@ -1,5 +1,6 @@
 package personalProjects.KitechBusReader.view;
 
+import WoowarCoursePractice.racingCar.src.view.OutputView;
 import personalProjects.KitechBusReader.controller.MainController;
 import personalProjects.KitechBusReader.view.buttonListener.MenuActionListener;
 
@@ -79,7 +80,7 @@ public class FileView extends JFrame {
         executeBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.print("start");
+                System.out.print("start\n");
                 search();
             }
         });
@@ -101,7 +102,7 @@ public class FileView extends JFrame {
     }
 
     private LocalDate parseToLocalDate(JTextField dateField){
-        String[] dates = dateFrom.getText().split("-");
+        String[] dates = dateField.getText().split("-");
         int year = Integer.parseInt(dates[0]);
         int month = Integer.parseInt(dates[1]);
         int day = Integer.parseInt(dates[2]);

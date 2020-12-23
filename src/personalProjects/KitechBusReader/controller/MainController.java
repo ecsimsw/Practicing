@@ -26,7 +26,6 @@ public class MainController {
         String userDataPath = "C:\\Users\\user\\Desktop\\버스직원데이터_test.xls";
         excelDataHandler.readUserData(userDataPath);
 
-
         TextDataHandler textDataHandler = new TextDataHandler();
         for(String historyPath : historyPaths){
             textDataHandler.readHistory(historyPath, dateFrom, dateTo);

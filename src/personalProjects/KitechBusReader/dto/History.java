@@ -17,9 +17,8 @@ public class History implements Comparable<History>{
     }
 
     public String getDateTimeString(){
-        LocalDateTime current = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return current.format(formatter);
+        return localDateTime.format(formatter);
     }
 
     public String getPid(){
