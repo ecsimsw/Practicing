@@ -16,7 +16,6 @@ public class MainController {
     private final static String userDataPath = "C:\\Users\\user\\Desktop\\버스직원데이터_test.xls";
     private final static int[] prices = new int[]{500,1500,1500,500};
     private final static String[] busNames = new String[]{"평택", "교대", "사당", "천안"};
-//    private final static String[] busNames = new String[]{"평택", "교대", "사당", "천안"};
     //
 
     // XXX :: READ BY VIEW
