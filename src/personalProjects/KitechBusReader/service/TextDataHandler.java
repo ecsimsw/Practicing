@@ -25,7 +25,7 @@ public class TextDataHandler {
     public TextDataHandler() {
     }
 
-    public void readHistory(String filePath, LocalDate from, LocalDate to) {
+    public void readHistory(String filePath, LocalDate from, LocalDate to, String busName, int price) {
         try {
             String path = filePath.replaceAll("\\\\", "\\\\\\\\");
             File file = new File(path);
@@ -49,7 +49,7 @@ public class TextDataHandler {
                         continue;
                     }
 
-                    saveInRepository(new History(pid, dateTime));
+                    saveInRepository(new History(pid, dateTime, busName, price));
                 }
             }
         } catch (Exception e) {

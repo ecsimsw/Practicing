@@ -13,7 +13,7 @@ public class Result implements Comparable<Result>{
 
     @Override
     public String toString(){
-        return user.toString() + ", " + history.getDateTimeString();
+        return user.toString() + ", " + history.toString();
     }
 
     @Override

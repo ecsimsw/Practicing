@@ -11,6 +11,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainController {
+    private final static String userDataPath = "C:\\Users\\user\\Desktop\\버스직원데이터_test.xls";
+    private final static int[] prices = new int[]{500,1500,1500,500};
+    private final static String[] busNames = new String[]{"평택", "교대", "사당", "천안"};
+
     private final List<String> historyPaths;
     private final LocalDate dateFrom;
     private final LocalDate dateTo;
@@ -23,12 +27,14 @@ public class MainController {
 
     public void run() {
         ExcelDataHandler excelDataHandler = ExcelDataHandler.getInstance();
-        String userDataPath = "C:\\Users\\user\\Desktop\\버스직원데이터_test.xls";
         excelDataHandler.readUserData(userDataPath);
 
         TextDataHandler textDataHandler = new TextDataHandler();
-        for(String historyPath : historyPaths){
-            textDataHandler.readHistory(historyPath, dateFrom, dateTo);
+
+        for(int busIndex =0; busIndex<historyPaths.size(); busIndex++){
+            String busName= busNames[busIndex];
+            int price = prices[busIndex];
+            textDataHandler.readHistory(historyPaths.get(busIndex), dateFrom, dateTo, busName, price);
         }
 
         Search.search();

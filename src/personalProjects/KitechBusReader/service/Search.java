@@ -46,6 +46,7 @@ public class Search {
 
     private static void saveResult(User user, List<History> historiesSameUser){
         for(History history : historiesSameUser){
+            user.updatePrice(history.getPrice());
             ResultRepository.addResult(new Result(user, history));
         }
     }

@@ -5,11 +5,15 @@ import java.time.format.DateTimeFormatter;
 
 public class History implements Comparable<History>{
     private String pid;
+    private String busName;
     private LocalDateTime localDateTime;
+    private int price;
 
-    public History(String pid, LocalDateTime localDateTime) {
+    public History(String pid, LocalDateTime localDateTime, String busName, int price) {
         this.pid = pid;
         this.localDateTime = localDateTime;
+        this.busName = busName;
+        this.price = price;
     }
 
     public boolean isUser(User user){
@@ -25,6 +29,10 @@ public class History implements Comparable<History>{
         return pid;
     }
 
+    public int getPrice(){
+        return price;
+    }
+
     @Override
     public int compareTo(History o) {
         return this.pid.compareTo(o.pid);
@@ -32,6 +40,6 @@ public class History implements Comparable<History>{
 
     @Override
     public String toString() {
-        return pid + " " + localDateTime.toString();
+        return busName + ", " +localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }
