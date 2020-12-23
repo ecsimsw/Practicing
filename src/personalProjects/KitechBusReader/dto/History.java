@@ -33,6 +33,10 @@ public class History implements Comparable<History>{
         return price;
     }
 
+    public String getBusName(){
+        return busName;
+    }
+
     @Override
     public int compareTo(History o) {
         return this.pid.compareTo(o.pid);

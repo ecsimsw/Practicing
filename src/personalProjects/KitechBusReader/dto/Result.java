@@ -11,6 +11,42 @@ public class Result implements Comparable<Result>{
         this.history = dateTime;
     }
 
+    public User getUser(){
+        return user;
+    }
+
+    public String getPid(){
+        return user.getPid();
+    }
+
+    public String getName(){
+        return user.getName();
+    }
+
+    public String getSection() {
+        return user.getSection();
+    }
+
+    public String getCardId(){
+        return user.getCardId();
+    }
+
+    public int getTotalPrice(){
+        return user.getPrice();
+    }
+
+    public int getBusPrice(){
+        return history.getPrice();
+    }
+
+    public String getBusName(){
+        return history.getBusName();
+    }
+
+    public String getUsageTime(){
+        return history.getDateTimeString();
+    }
+
     @Override
     public String toString(){
         return user.toString() + ", " + history.toString();

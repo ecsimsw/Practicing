@@ -21,6 +21,7 @@ public class TextDataHandler {
     private static final int DATE_INDEX = 9;
     private static final String SEPARATOR = "\t";
     private static final String INVALID_PID_CODE = "-00001";
+    private static final String TEST_PID_CODE = "000005";
 
     public TextDataHandler() {
     }
@@ -59,7 +60,7 @@ public class TextDataHandler {
     }
 
     private boolean isInvalidPID(String pid) {
-        return pid.equals(INVALID_PID_CODE);
+        return pid.equals(INVALID_PID_CODE) || pid.equals(TEST_PID_CODE);
     }
 
     private boolean isNotInRange(LocalDate from, LocalDate to, LocalDateTime dateTime) {

@@ -16,6 +16,10 @@ public class ResultRepository {
         results.add(result);
     }
 
+    public static List<Result> getResults(){
+        return results;
+    }
+
     public static void printAll() {
         results.stream().forEach(result -> System.out.println(result));
     }

@@ -24,6 +24,22 @@ public class User implements Comparable<User>{
         return this.pid;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
+    public String getSection(){
+        return this.section;
+    }
+
+    public String getCardId(){
+        return this.cardId;
+    }
+
+    public int getPrice(){
+        return this.price;
+    }
+
     public void updatePrice(int additionPrice){
         price += additionPrice;
     }
