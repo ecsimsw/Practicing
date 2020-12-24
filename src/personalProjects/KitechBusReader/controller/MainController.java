@@ -1,5 +1,6 @@
 package personalProjects.KitechBusReader.controller;
 
+import personalProjects.KitechBusReader.repository.HistoryRepository;
 import personalProjects.KitechBusReader.repository.ResultRepository;
 import personalProjects.KitechBusReader.repository.UserRepository;
 import personalProjects.KitechBusReader.service.ExcelDataHandler;
@@ -46,6 +47,7 @@ public class MainController {
                 String busName = busNames[busIndex];
                 int price = prices[busIndex];
                 textDataHandler.readHistory(historyPaths.get(busIndex), dateFrom, dateTo, busName, price);
+//                HistoryRepository.printAllHistory();
             }
         }catch (Exception e){
             return "잘못된 버스 데이터 파일 입력입니다.";

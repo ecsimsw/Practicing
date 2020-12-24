@@ -30,27 +30,41 @@ public class TextDataHandler {
     public void readHistory(String filePath, LocalDate from, LocalDate to, String busName, int price) throws IOException {
         String path = filePath.replaceAll("\\\\", "\\\\\\\\");
         File file = new File(path);
-        if (file.exists()) {
-            BufferedReader inFile = new BufferedReader(new FileReader(file));
+        try {
 
-            String line = null;
-            inFile.readLine();
-            while ((line = inFile.readLine()) != null) {
-                String[] splited = line.split(SEPARATOR);
-                String pid = String.format("%06d", Integer.parseInt(splited[PID_INDEX]));
-                LocalDateTime dateTime = LocalDateTime.parse(splited[DATE_INDEX],
-                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            if (file.exists()) {
+                System.out.println(path);
+                BufferedReader inFile = new BufferedReader(new FileReader(file));
 
-                if (isInvalidPID(pid)) {
-                    continue;
+                String line = null;
+                inFile.readLine();
+                while ((line = inFile.readLine()) != null) {
+                    String[] splited = line.split(SEPARATOR);
+                    String pid = String.format("%06d", Integer.parseInt(splited[PID_INDEX]));
+
+                    LocalDateTime dateTime;
+                    try{
+                        dateTime = LocalDateTime.parse(splited[DATE_INDEX],
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    }
+                    catch (Exception e){
+                        dateTime = LocalDateTime.parse(splited[DATE_INDEX],
+                                DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+                    }
+
+                    if (isInvalidPID(pid)) {
+                        continue;
+                    }
+
+                    if (isNotInRange(from, to, dateTime)) {
+                        continue;
+                    }
+
+                    saveInRepository(new History(pid, dateTime, busName, price));
                 }
-
-                if (isNotInRange(from, to, dateTime)) {
-                    continue;
-                }
-
-                saveInRepository(new History(pid, dateTime, busName, price));
             }
+        }catch (Exception e){
+            System.out.print(e.getMessage());
         }
     }
 
@@ -59,7 +73,7 @@ public class TextDataHandler {
     }
 
     private boolean isNotInRange(LocalDate from, LocalDate to, LocalDateTime dateTime) {
-        return dateTime.isBefore(from.atTime(0, 0)) || dateTime.isAfter(to.atTime(12, 50));
+        return dateTime.isBefore(from.atTime(0, 0)) || dateTime.isAfter(to.atTime(23, 59));
     }
 
     private void saveInRepository(History history) {

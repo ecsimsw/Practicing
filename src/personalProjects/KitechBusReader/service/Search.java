@@ -34,9 +34,14 @@ public class Search {
                 index_history += sameUsers.size();
             }
             if(!userTable.containsKey(pid)){
+                saveResult(new User(pid, "없는 사용자", "사원 파일에 없는 사용자 입니다.", "FFFFFF"),HistoryRepository.getHistory(index_history));
                 index_history++;
             }
         }
+    }
+
+    private static void saveResult(User user,History history){
+        ResultRepository.addResult(new Result(user, history));
     }
 
     private static void saveResult(User user, List<History> historiesSameUser){

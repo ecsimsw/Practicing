@@ -33,7 +33,7 @@ public class ExcelDataHandler {
     }
 
     public void readUserData(String path) throws IOException {
-        FileInputStream file = new FileInputStream("C:\\Users\\user\\Desktop\\버스직원데이터_test.xls");
+        FileInputStream file = new FileInputStream(path);
         HSSFWorkbook workbook = new HSSFWorkbook(file);
 
         HSSFSheet sheet = workbook.getSheetAt(0);

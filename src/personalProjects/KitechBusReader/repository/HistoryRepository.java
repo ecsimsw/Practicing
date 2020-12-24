@@ -27,4 +27,16 @@ public class HistoryRepository {
                 .filter(history -> history.isUser(user))
                 .collect(Collectors.toList());
     }
+
+    public static History getHistory(int index){
+        return histories.get(index);
+    }
+
+    public static void printAllHistory(){
+        histories.stream()
+                .forEach(history -> {
+                    System.out.println(history.getPid());
+                    System.out.println(history);
+                });
+    }
 }
