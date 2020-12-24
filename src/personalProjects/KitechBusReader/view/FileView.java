@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class FileView extends JFrame {
     private final JTextField dateFrom = new JTextField(10);
     private final JTextField dateTo = new JTextField(10);
     private final JPanel contentPane = new JPanel();
+    private final JTextArea textArea = new JTextArea();
 
     public static void run() {
         try {
@@ -49,7 +51,7 @@ public class FileView extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JScrollPane scrollPane = new JScrollPane();
+        JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setBounds(44, 175, 575, 220);
         contentPane.add(scrollPane);
     }
@@ -76,12 +78,11 @@ public class FileView extends JFrame {
 
         JMenuItem executeBtn = new JMenuItem("실행");
         runningMenu.add(executeBtn);
-
         executeBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.print("start\n");
                 search();
+                textArea.append("end\n");
             }
         });
         return runningMenu;
@@ -102,11 +103,15 @@ public class FileView extends JFrame {
     }
 
     private LocalDate parseToLocalDate(JTextField dateField){
-        String[] dates = dateField.getText().split("-");
-        int year = Integer.parseInt(dates[0]);
-        int month = Integer.parseInt(dates[1]);
-        int day = Integer.parseInt(dates[2]);
-        return LocalDate.of(year, month, day);
+        try{
+            String[] dates = dateField.getText().split("-");
+            int year = Integer.parseInt(dates[0]);
+            int month = Integer.parseInt(dates[1]);
+            int day = Integer.parseInt(dates[2]);
+            return LocalDate.of(year, month, day);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     private void setFirstBus() {

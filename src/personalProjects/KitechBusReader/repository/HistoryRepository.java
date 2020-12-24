@@ -18,10 +18,6 @@ public class HistoryRepository {
         histories.add(history);
     }
 
-    public static void printAll() {
-        histories.stream().forEach(history -> System.out.println(history));
-    }
-
     public static List<History> getHistories(){
         return histories;
     }

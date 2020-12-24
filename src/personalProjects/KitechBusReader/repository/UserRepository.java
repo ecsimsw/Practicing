@@ -16,12 +16,6 @@ public class UserRepository {
         userTable.put(user.getPid(), user);
     }
 
-    public static void printAll() {
-        for(User user : userTable.values()){
-            System.out.println(user);
-        }
-    }
-
     public static Map<String, User> getUserTable(){
         return userTable;
     }

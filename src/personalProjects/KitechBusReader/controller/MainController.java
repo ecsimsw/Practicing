@@ -43,7 +43,6 @@ public class MainController {
         }
 
         Search.search();
-        ResultRepository.printAll();
 
         ExcelWriter excelWriter = new ExcelWriter("C:\\Users\\user\\Desktop\\버스데이터");
         excelWriter.writeExcelFile();

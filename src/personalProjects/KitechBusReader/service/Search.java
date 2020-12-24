@@ -20,7 +20,6 @@ public class Search {
 
         Map<String, User> userTable = UserRepository.getUserTable();
         int size_history = histories.size();
-        System.out.println(size_history);
 
         int index_history = 0;
 

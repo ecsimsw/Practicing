@@ -30,7 +30,6 @@ public class TextDataHandler {
         try {
             String path = filePath.replaceAll("\\\\", "\\\\\\\\");
             File file = new File(path);
-            System.out.print(path);
             if (file.exists()) {
                 BufferedReader inFile = new BufferedReader(new FileReader(file));
 
@@ -55,7 +54,6 @@ public class TextDataHandler {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.print(e.getMessage());
         }
     }
 
