@@ -16,6 +16,10 @@ public class ResultRepository {
         results.add(result);
     }
 
+    public static int getSize(){
+        return results.size();
+    }
+
     public static List<Result> getResults(){
         return results;
     }

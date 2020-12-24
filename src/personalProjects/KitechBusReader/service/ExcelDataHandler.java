@@ -1,6 +1,8 @@
 package personalProjects.KitechBusReader.service;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import WoowarCoursePractice.racingCar.src.view.OutputView;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -30,26 +32,21 @@ public class ExcelDataHandler {
         return excelDataHandler;
     }
 
-    public void readUserData(String path) {
-        try {
-            FileInputStream file = new FileInputStream("C:\\Users\\user\\Desktop\\버스직원데이터_test.xls");
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
+    public void readUserData(String path) throws IOException {
+        FileInputStream file = new FileInputStream("C:\\Users\\user\\Desktop\\버스직원데이터_test.xls");
+        HSSFWorkbook workbook = new HSSFWorkbook(file);
 
-            HSSFSheet sheet = workbook.getSheetAt(0);
-            int rows = sheet.getPhysicalNumberOfRows();
-            for (int rowindex = 0; rowindex < rows; rowindex++) {
-                HSSFRow row = sheet.getRow(rowindex);
-                if (row != null) {
-                    String pid = String.format("%06d", Integer.parseInt(getCellData(row.getCell(PID_INDEX))));
-                    String name = getCellData(row.getCell(NAME_INDEX));
-                    String section = getCellData(row.getCell(SECTION_INDEX));
-                    String cardId = getCellData(row.getCell(CARDID_INDEX));
-                    saveInRepository(pid, name, section, cardId);
-                }
+        HSSFSheet sheet = workbook.getSheetAt(0);
+        int rows = sheet.getPhysicalNumberOfRows();
+        for (int rowindex = 0; rowindex < rows; rowindex++) {
+            HSSFRow row = sheet.getRow(rowindex);
+            if (row != null) {
+                String pid = String.format("%06d", Integer.parseInt(getCellData(row.getCell(PID_INDEX))));
+                String name = getCellData(row.getCell(NAME_INDEX));
+                String section = getCellData(row.getCell(SECTION_INDEX));
+                String cardId = getCellData(row.getCell(CARDID_INDEX));
+                saveInRepository(pid, name, section, cardId);
             }
-        } catch (
-                Exception e) {
-            e.printStackTrace();
         }
     }
 

@@ -10,12 +10,14 @@ import personalProjects.KitechBusReader.service.TextDataHandler;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainController {
     // XXX :: CONSTANT
     private final static String userDataPath = "C:\\Users\\user\\Desktop\\버스직원데이터_test.xls";
     private final static int[] prices = new int[]{500,1500,1500,500};
     private final static String[] busNames = new String[]{"평택", "교대", "사당", "천안"};
+    private final static String basePath = "C:\\Users\\user\\Desktop\\버스데이터";
     //
 
     // XXX :: READ BY VIEW
@@ -30,21 +32,38 @@ public class MainController {
         this.dateTo = dateTo;
     }
 
-    public void run() {
-        ExcelDataHandler excelDataHandler = ExcelDataHandler.getInstance();
-        excelDataHandler.readUserData(userDataPath);
+    public String run() {
+        try {
+            ExcelDataHandler excelDataHandler = ExcelDataHandler.getInstance();
+            excelDataHandler.readUserData(userDataPath);
+        } catch (Exception e) {
+            return "잘못된 사원 정보 파일입니다.";
+        }
 
-        TextDataHandler textDataHandler = new TextDataHandler();
-
-        for(int busIndex =0; busIndex<historyPaths.size(); busIndex++){
-            String busName= busNames[busIndex];
-            int price = prices[busIndex];
-            textDataHandler.readHistory(historyPaths.get(busIndex), dateFrom, dateTo, busName, price);
+        try {
+            TextDataHandler textDataHandler = TextDataHandler.getInstance();
+            for (int busIndex = 0; busIndex < historyPaths.size(); busIndex++) {
+                String busName = busNames[busIndex];
+                int price = prices[busIndex];
+                textDataHandler.readHistory(historyPaths.get(busIndex), dateFrom, dateTo, busName, price);
+            }
+        }catch (Exception e){
+            return "잘못된 버스 데이터 파일 입력입니다.";
         }
 
         Search.search();
 
-        ExcelWriter excelWriter = new ExcelWriter("C:\\Users\\user\\Desktop\\버스데이터");
-        excelWriter.writeExcelFile();
+        try{
+            ExcelWriter excelWriter = new ExcelWriter(basePath);
+            excelWriter.writeExcelFile();
+        }catch (Exception e){
+            return "잘못된 결과 목록 엑셀 파일 생성 위치입니다.";
+        }
+
+        return "검색 완료 : "+getDataCount()+"\n";
+    }
+    
+    public int getDataCount(){
+        return ResultRepository.getSize();
     }
 }

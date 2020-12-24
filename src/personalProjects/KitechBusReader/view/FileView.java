@@ -1,18 +1,12 @@
 package personalProjects.KitechBusReader.view;
 
-import WoowarCoursePractice.racingCar.src.view.OutputView;
 import personalProjects.KitechBusReader.controller.MainController;
-import personalProjects.KitechBusReader.view.buttonListener.MenuActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,37 +75,40 @@ public class FileView extends JFrame {
         executeBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                search();
-                textArea.append("end\n");
+                String result = search();
+                textArea.append(result+"\n");
             }
         });
         return runningMenu;
     }
 
-    private void search(){
+    private String search(){
         List<String> dataPaths = new ArrayList<>();
         dataPaths.add(firstBusFilePath.getText());
         dataPaths.add(secondBusFilePath.getText());
         dataPaths.add(thirdBusFilePath.getText());
         dataPaths.add(fourthBusFilePath.getText());
 
-        LocalDate fromDate = parseToLocalDate(dateFrom);
-        LocalDate toDate = parseToLocalDate(dateTo);
+        LocalDate fromDate;
+        LocalDate toDate;
+
+        try{
+            fromDate = parseToLocalDate(dateFrom);
+            toDate = parseToLocalDate(dateTo);
+        }catch (Exception e){
+            return "올바르지 않은 형식의 날짜 입력입니다.\n";
+        }
 
         MainController mainController = new MainController(dataPaths, fromDate, toDate);
-        mainController.run();
+        return mainController.run();
     }
 
     private LocalDate parseToLocalDate(JTextField dateField){
-        try{
-            String[] dates = dateField.getText().split("-");
-            int year = Integer.parseInt(dates[0]);
-            int month = Integer.parseInt(dates[1]);
-            int day = Integer.parseInt(dates[2]);
-            return LocalDate.of(year, month, day);
-        }catch (Exception e){
-            return null;
-        }
+        String[] dates = dateField.getText().split("-");
+        int year = Integer.parseInt(dates[0]);
+        int month = Integer.parseInt(dates[1]);
+        int day = Integer.parseInt(dates[2]);
+        return LocalDate.of(year, month, day);
     }
 
     private void setFirstBus() {

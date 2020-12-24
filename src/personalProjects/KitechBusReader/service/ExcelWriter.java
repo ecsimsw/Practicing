@@ -8,6 +8,7 @@ import personalProjects.KitechBusReader.dto.User;
 import personalProjects.KitechBusReader.repository.ResultRepository;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,26 +22,22 @@ public class ExcelWriter {
         this.basePath = basePath;
     }
 
-    public void writeExcelFile(){
-        FileOutputStream fos = null;
-        XSSFWorkbook workbook = null;
+    public String writeExcelFile() throws FileNotFoundException {
+        String path = makeFilePath();
 
-        try{
-            File file = new File(makeFilePath());
-            fos = new FileOutputStream(file);
-            workbook = new XSSFWorkbook();
-            XSSFSheet sheet = workbook.createSheet("data");
-            writeResult(sheet);
-        }catch (IOException e ) {
+        File file = new File(path);
+        FileOutputStream fos = new FileOutputStream(file);
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("data");
+        writeResult(sheet);
+        try {
+            workbook.write(fos);
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                workbook.write(fos);
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
+
+        return path;
     }
 
     private String makeFilePath(){
