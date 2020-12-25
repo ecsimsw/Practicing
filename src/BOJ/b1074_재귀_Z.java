@@ -9,35 +9,51 @@ public class b1074_재귀_Z {
         String[] str = br.readLine().split(" ");
 
         int N = Integer.parseInt(str[0]);
-        d_s = Integer.parseInt(str[1]);
-        d_g = Integer.parseInt(str[2]);
+        find_s = Integer.parseInt(str[1]);
+        find_g = Integer.parseInt(str[2]);
 
-        int n = z((int)Math.pow(2,N),0,0);
+        z((int) Math.pow(2,N),0,0);
 
-        System.out.println(n);
+        System.out.print(order-1);
     }
 
-    static int d_s =0;
-    static int d_g =0;
-    static int n=0;
+    private static int order = 0;
+    private static boolean isFound = false;
+    private static int find_s;
+    private static int find_g;
 
-    static int z(int count, int s, int g){
-        if(count == 1){
-            if(s == d_s && g == d_g){
-                return n;
-            }
-            n++;
-            return 0;
+    private static void z(int N, int s, int g){
+        if(isFound){
+            return;
         }
-        count /= 2;
 
-        int r=0;
+        if(N==1){
+            checkIsFindIndex(s,g);
+            order++;
+            return;
+        }
 
-        r += z(count,s,g);
-        r += z(count,s,g+count);
-        r += z(count,s+count, g);
-        r += z(count,s+count, g+count);
+        if(!isInRange(N, s, g)){
+            order += N*N;
+            return;
+        }
 
-        return r;
+        z(N/2, s, g);
+        z(N/2, s, g+N/2);
+        z(N/2, s+N/2, g);
+        z(N/2, s+N/2, g+N/2);
+    }
+
+    private static void checkIsFindIndex(int s, int g){
+        if(s == find_s && g == find_g){
+            isFound = true;
+        }
+    }
+
+    private static boolean isInRange(int N, int s, int g){
+        if(s<= find_s && g<= find_g && s+N > find_s && g+N >= find_g){
+            return true;
+        }
+        return false;
     }
 }
