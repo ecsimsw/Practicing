@@ -5,15 +5,15 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class StopWatch {
-    static public void main(String[] args) throws Exception{
+class StopWatch {
+    static public void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("press any key");
         br.readLine();
 
         Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String startTime = format.format(date.getTime());
 
         System.out.println("시작 시간 : "+startTime);
