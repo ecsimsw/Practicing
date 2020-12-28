@@ -11,7 +11,7 @@ public class b10814_정렬_나이순정렬 {
 
         int n = Integer.parseInt(br.readLine());
 
-        LinkedList<Member> list = new LinkedList<>();
+        LinkedList<Member_10814> list = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
             String[] str = br.readLine().split(" ");
@@ -19,26 +19,26 @@ public class b10814_정렬_나이순정렬 {
             int age = Integer.parseInt(str[0]);
             String name = str[1];
 
-            boolean add = list.add(new Member(age, name));
+            list.add(new Member_10814(age, name));
         }
 
         Collections.sort(list);
 
-        for (Member m : list) System.out.println(m.toString());
+        for (Member_10814 m : list) System.out.println(m.toString());
     }
 
-    static class Member implements Comparable {
+    static class Member_10814 implements Comparable {
         int age;
         String name;
 
-        public Member(int age, String name) {
+        public Member_10814(int age, String name) {
             this.age = age;
             this.name = name;
         }
 
         public int compareTo(Object o) {
-            if (o instanceof Member) {
-                Member temp = (Member) o;
+            if (o instanceof Member_10814) {
+                Member_10814 temp = (Member_10814) o;
 
                 if (temp.age < this.age) return 1;
                 else if (temp.age == this.age) return 0;
