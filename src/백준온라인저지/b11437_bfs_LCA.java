@@ -7,6 +7,7 @@ import java.util.LinkedList;
 public class b11437_bfs_LCA {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         n = Integer.parseInt(br.readLine());
 
@@ -28,32 +29,48 @@ public class b11437_bfs_LCA {
             nodes[b.getValue()] = b;
         }
 
-        getParentListOf(10);
+        int m = Integer.parseInt(br.readLine());
+        for(int i=0; i<m; i++){
+            String[] AB = br.readLine().split(" ");
+            int a = Integer.parseInt(AB[0]);
+            int b = Integer.parseInt(AB[1]);
+            parentListA = getParentListOf(a);
 
-        for (int n : parentList) {
-            System.out.print(n + " ");
+            printList(parentListA);
+
+//            sb.append(findFirstMatch(parentListA,parentListB)+"\n");
         }
+
+        System.out.print(sb.toString());
+    }
+
+    private static void printList(LinkedList<Integer> list){
+        for(int i : list){
+            System.out.print(i + "  ");
+        }
+        System.out.println();
     }
 
     private static int n;
     private static Node[] nodes;
-    private static LinkedList<Integer> parentList = new LinkedList<>();
+    private static LinkedList<Integer> parentListA;
+    private static LinkedList<Integer> parentListB;
+
     private static LinkedList<Integer> searchedList;
 
     private static boolean[] isUsed;
 
-    private static void getParentListOf(int find) {
+    private static LinkedList<Integer> getParentListOf(int find) {
         isUsed = new boolean[n + 1];
         searchedList = new LinkedList<>();
 
         Node startNode = nodes[1];
         isUsed[startNode.getValue()] = true;
         searchedList.add(startNode.getValue());
-        dfs(startNode, find);
+        return dfs(startNode, find);
     }
 
-    private static void dfs(Node node, int find) {
-        System.out.println(node.getValue());
+    private static LinkedList<Integer> dfs(Node node, int find) {
         if (node.getValue() != find) {
             LinkedList<Node> linked = node.getLinked();
             for (Node son : linked) {
@@ -64,9 +81,26 @@ public class b11437_bfs_LCA {
                     searchedList.pop();
                 }
             }
-        } else if (node.getValue() == find) {
-            parentList = new LinkedList<>(searchedList);
         }
+
+        if(node.getValue() == find){
+            return new LinkedList<>(searchedList);
+        }
+
+        return null;
+    }
+
+    private static int findFirstMatch(LinkedList<Integer> listA, LinkedList<Integer> listB){
+        int firstMatched = 0;
+        for(int i=0; i<listB.size(); i++){
+            for(int j=0; j<listA.size(); j++){
+                if(listB.get(i) == listA.get(j)){
+                    firstMatched = listA.get(i);
+                    return firstMatched;
+                }
+            }
+        }
+        return firstMatched;
     }
 }
 
@@ -89,4 +123,6 @@ class Node {
     public LinkedList<Node> getLinked() {
         return linked;
     }
+
+
 }
