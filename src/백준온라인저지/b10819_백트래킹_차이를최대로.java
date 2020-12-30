@@ -27,7 +27,6 @@ public class b10819_백트래킹_차이를최대로 {
     private static int max = 0;
     private static int[] nums;
     private static boolean[] isUsed;
-    private static LinkedList<Integer> list = new LinkedList<>();
 
     private static void makeSum(int n, int before, int sum) {
         if (n == nums.length) {
@@ -50,16 +49,8 @@ public class b10819_백트래킹_차이를최대로 {
             }
 
             isUsed[i] = true;
-            list.addLast(nums[i]);
             makeSum(n + 1, nums[i], sum + Math.abs(before - nums[i]));
-            list.removeLast();
             isUsed[i] = false;
         }
-    }
-
-    private static boolean isDuplicated(LinkedList<Integer> list) {
-        return list.size() != list.stream()
-                .distinct()
-                .count();
     }
 }
