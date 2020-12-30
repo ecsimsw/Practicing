@@ -2,61 +2,41 @@ package 백준온라인저지.동적계획;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class b2293_동적계획법_동전1 {
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
         String[] NK = br.readLine().split(" ");
         int n = Integer.parseInt(NK[0]);
         int k = Integer.parseInt(NK[1]);
 
-        units = new Integer[n];
+        moneys = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            units[i] = Integer.parseInt(br.readLine());
+        for(int i=0; i<n; i++){
+            moneys[i] = Integer.parseInt(br.readLine());
         }
 
-        Arrays.sort(units, Collections.reverseOrder());
+        dpBoard = new int[k+1];
 
-        dpBoard = new int[k + 1];
-
-        dp(k);
-
-        for (int i : dpBoard) {
-            System.out.print(i + "  ");
-        }
+        dp();
+        System.out.print(dpBoard[k]);
     }
 
     private static int[] dpBoard;
-    private static Integer[] units;
+    private static int[] moneys;
 
-    private static int dp(int money) {
-        if (dpBoard[money] != 0) {
-            return dpBoard[money];
+    private static void dp(){
+        dpBoard[0] = 1;
+
+        for(int i=0; i<moneys.length; i++) {
+            for (int j = 1; j < dpBoard.length; j++) {
+                dpBoard[j] = dpBoard[j] + dpBoard[j - moneys[i]];
+            }
+            for(int d : dpBoard){
+                System.out.print(d+ " ");
+            }
+            System.out.println();
         }
-
-        int count = 0;
-        for (int unit : units) {
-            if (money < unit) {
-                continue;
-            }
-
-            if (unit == money) {
-                count += 1;
-                continue;
-            }
-
-            if (unit < money - unit) {
-                count += dp(unit);
-                continue;
-            }
-            count += (dp(unit) + dp(money - unit));
-        }
-
-        dpBoard[money] = count;
-        return count;
     }
 }
