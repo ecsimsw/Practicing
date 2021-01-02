@@ -31,12 +31,11 @@ public class b2293_동적계획법_동전1 {
 
         for(int i=0; i<moneys.length; i++) {
             for (int j = 1; j < dpBoard.length; j++) {
+                if (j - moneys[i] < 0) {
+                    continue;
+                }
                 dpBoard[j] = dpBoard[j] + dpBoard[j - moneys[i]];
             }
-            for(int d : dpBoard){
-                System.out.print(d+ " ");
-            }
-            System.out.println();
         }
     }
 }
