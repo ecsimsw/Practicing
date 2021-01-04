@@ -24,16 +24,14 @@ public class b11722_동저계획법_가장긴감소하는부분수열 {
 
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < i; j++) {
-                if (dp[i] > dp[j] + 1 && arr[j] > arr[i]) {
-                    dp[i] = dp[j]++;
-                    System.out.println(i + " " + j);
+                if (dp[j] >= dp[i] && arr[j] > arr[i]) {
+                    dp[i] = dp[j] + 1;
                 }
             }
         }
 
         int max = 0;
         for (int i = 0; i < n; i++) {
-            System.out.print(dp[i] + " ");
             max = Math.max(dp[i], max);
         }
 
