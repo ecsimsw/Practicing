@@ -54,6 +54,7 @@ public class b2644_트리_촌수계산 {
 
         boolean isConnected = false;
 
+        int farFromParent = 0;
         while(parentsA != null && parentsB != null){
             if(parentsA.num == parentsB.num){
                 isConnected = true;
@@ -62,11 +63,11 @@ public class b2644_트리_촌수계산 {
 
             parentsA = parentsA.parent;
             parentsB = parentsB.parent;
-            dif++;
+            farFromParent++;
         }
 
         if(isConnected){
-            System.out.print(dif);
+            System.out.print(dif + 2 * farFromParent);
         } else{
             System.out.print("-1");
         }
