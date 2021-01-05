@@ -1,9 +1,7 @@
 package 백준온라인저지;
 
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class b4949_스택_균형잡힌세상 {
@@ -22,7 +20,7 @@ public class b4949_스택_균형잡힌세상 {
 
             stack = new Stack<>();
 
-            boolean isOk = true;
+            boolean isBalanced = true;
             for (String s : line.split("")) {
                 if (s.equals("(")) {
                     stack.push("(");
@@ -30,8 +28,7 @@ public class b4949_스택_균형잡힌세상 {
 
                 if (s.equals(")")) {
                     if (stack.isEmpty() || stack.pop().equals("[")) {
-                        sb.append("no\n");
-                        isOk = false;
+                        isBalanced = false;
                         break;
                     }
                 }
@@ -42,22 +39,18 @@ public class b4949_스택_균형잡힌세상 {
 
                 if (s.equals("]")) {
                     if (stack.isEmpty() || stack.pop().equals("(")) {
-                        sb.append("no\n");
-                        isOk = false;
+                        isBalanced = false;
                         break;
                     }
                 }
             }
 
-            if (isOk == false) {
+            if (isBalanced == false || !stack.isEmpty()) {
+                sb.append("no\n");
                 continue;
             }
 
-            if (!stack.isEmpty()) {
-                sb.append("no\n");
-            } else {
-                sb.append("yes\n");
-            }
+            sb.append("yes\n");
         }
 
         System.out.print(sb.toString());
