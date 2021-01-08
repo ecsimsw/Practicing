@@ -32,11 +32,12 @@ public class b2294_동적계획법_동전2 {
                     continue;
                 }
 
-                if (j / money[i] != 0) {
-                    continue;
+                int count = j / money[i];
+                if (money[i] * count == j) {
+                    dpBoard[j] = dpBoard[j - money[i] * count];
+                } else {
+                    dpBoard[j] = dpBoard[j - money[i] * count] + dpBoard[money[i] * count];
                 }
-
-                dpBoard[j] = dpBoard[j] + dpBoard[j - money[i]];
             }
 
             for (int d = 0; d <= k; d++) {
