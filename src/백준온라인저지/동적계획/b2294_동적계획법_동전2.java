@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class b2294_동적계획법_동전2 {
+class b2294_동적계획법_동전2_해설확인 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] nums = br.readLine().split(" ");
@@ -17,9 +17,36 @@ public class b2294_동적계획법_동전2 {
             money[i] = Integer.parseInt(br.readLine());
         }
 
-        int[] price = new int[k + 1];
-        for (int i = 0; i <= k; i++) {
-            price[i] = i;
+        int[] dpBoard = new int[k + 1];
+        Arrays.fill(dpBoard, 100001);
+        dpBoard[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = money[i]; j <= k; j++) {
+                dpBoard[j] = Math.min(dpBoard[j], dpBoard[j - money[i]] + 1);
+            }
+        }
+
+        if (dpBoard[k] == 100001) {
+            System.out.print(-1);
+            return;
+        }
+
+        System.out.print(dpBoard[k]);
+    }
+}
+
+class b2294_동적계획법_동전2_오답 {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] nums = br.readLine().split(" ");
+
+        int n = Integer.parseInt(nums[0]);
+        int k = Integer.parseInt(nums[1]);
+
+        int[] money = new int[n];
+        for (int i = 0; i < n; i++) {
+            money[i] = Integer.parseInt(br.readLine());
         }
 
         int[] dpBoard = new int[k + 1];
@@ -34,22 +61,14 @@ public class b2294_동적계획법_동전2 {
 
                 int count = j / money[i];
                 if (money[i] * count == j) {
-                    dpBoard[j] = dpBoard[j - money[i] * count];
+                    dpBoard[j] = count * dpBoard[j - money[i] * count];
                 } else {
-                    dpBoard[j] = dpBoard[j - money[i] * count] + dpBoard[money[i] * count];
+                    dpBoard[j] = Math.min(dpBoard[j], dpBoard[j - money[i] * count] + count * dpBoard[money[i]]);
                 }
             }
-
-            for (int d = 0; d <= k; d++) {
-                System.out.print(dpBoard[d] + " ");
-            }
-
-            System.out.println();
         }
 
-        for (int i = 0; i <= k; i++) {
-            System.out.print(dpBoard[i] + " ");
-        }
+        System.out.print(dpBoard[k]);
     }
 }
 
