@@ -20,49 +20,49 @@ class b1107_브루트포스_리모컨_위아래탐색 {
                 brokenNums[Integer.parseInt(brokenNumber[i])] = false;
             }
         }
-        moveMin = arrowPad(n, 100);
+        minMove = arrowButton(n, 100);
 
         for (int i = n; i > -1; i--) {
             int move = 0;
-            int moveByNumPad = numPad(i);
+            int moveByNumPad = numberButton(i);
 
             if (moveByNumPad == -1) {
                 continue;
             }
 
             move += moveByNumPad;
-            move += arrowPad(n, i);
+            move += arrowButton(n, i);
 
-            moveMin = Math.min(moveMin, move);
+            minMove = Math.min(minMove, move);
             break;
         }
 
         for (int i = n; i <= 1000000; i++) {
             int move = 0;
-            int moveByNumPad = numPad(i);
+            int moveByNumPad = numberButton(i);
 
             if (moveByNumPad == -1) {
                 continue;
             }
 
             move += moveByNumPad;
-            move += arrowPad(n, i);
+            move += arrowButton(n, i);
 
-            moveMin = Math.min(moveMin, move);
+            minMove = Math.min(minMove, move);
             break;
         }
 
-        System.out.print(moveMin);
+        System.out.print(minMove);
     }
 
-    private static int moveMin = 0;
+    private static int minMove = 0;
     private static boolean[] brokenNums = new boolean[10];
 
-    private static int arrowPad(int n, int now) {
+    private static int arrowButton(int n, int now) {
         return Math.abs(n - now);
     }
 
-    private static int numPad(int i) {
+    private static int numberButton(int i) {
         if (i == 100) {
             return 0;
         }
@@ -76,15 +76,13 @@ class b1107_브루트포스_리모컨_위아래탐색 {
 
         int moveCnt = 0;
 
-        int digit;
         while (i > 0) {
-            digit = i % 10;
+            int digit = i % 10;
             i /= 10;
 
             if (brokenNums[digit] == false) {
                 return -1;
             }
-
             moveCnt++;
         }
 
@@ -94,6 +92,9 @@ class b1107_브루트포스_리모컨_위아래탐색 {
 
 
 class b1107_브루트포스_리모컨_전부비교 {
+    private static int minMove = 0;
+    private static boolean[] brokenNums = new boolean[10];
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Arrays.fill(brokenNums, true);
@@ -109,7 +110,7 @@ class b1107_브루트포스_리모컨_전부비교 {
                 brokenNums[Integer.parseInt(brokenNumber[i])] = false;
             }
         }
-        moveMin = arrowPad(n, 100);
+        minMove = arrowPad(n, 100);
 
         for (int i = 0; i <= 1000000; i++) {
             int move = 0;
@@ -122,14 +123,11 @@ class b1107_브루트포스_리모컨_전부비교 {
             move += moveByNumPad;
             move += arrowPad(n, i);
 
-            moveMin = Math.min(moveMin, move);
+            minMove = Math.min(minMove, move);
         }
 
-        System.out.print(moveMin);
+        System.out.print(minMove);
     }
-
-    private static int moveMin = 0;
-    private static boolean[] brokenNums = new boolean[10];
 
     private static int arrowPad(int n, int now) {
         return Math.abs(n - now);
@@ -149,9 +147,8 @@ class b1107_브루트포스_리모컨_전부비교 {
 
         int moveCnt = 0;
 
-        int digit;
         while (i > 0) {
-            digit = i % 10;
+            int digit = i % 10;
             i /= 10;
 
             if (brokenNums[digit] == false) {
