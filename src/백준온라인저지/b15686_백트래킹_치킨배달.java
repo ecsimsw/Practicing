@@ -60,7 +60,13 @@ class b15686_백트래킹_치킨배달 {
             return;
         }
 
-        for (int i = start; i < chickens.size(); i++) {  /// track의 시작을 0에서 하는 게 아니라, 이전 선택 값 이후부터
+        /*
+           track의 시작을 0에서 하는 게 아니라, 이전 선택 값 이후부터
+           0부터 시작한다면 순열로 중복된 치킨 집을 선택할 것이다. (2번 치킨집 - 1번 치킨집 , 1번 치킨집 - 2번 치킨집)
+           i = start로 조합을 구해 치킨 집의 중복을 제거한다. (1번 치킨집 - 2번 치킨집)
+         */
+
+        for (int i = start; i < chickens.size(); i++) {
             if (isUsed[i] == false) {
                 isUsed[i] = true;
                 track(i+1, count + 1); /// ** track(i+1, count+1) 꼴 잘보기
