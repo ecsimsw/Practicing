@@ -2,6 +2,7 @@ package 백준온라인저지;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class b2914_구현_저작권 {
     public static void main(String[] args)throws Exception{
@@ -29,6 +30,28 @@ class b10886_구현_notCuteOrCute{
             System.out.println("Junhee is cute!");
         }else{
             System.out.println("Junhee is not cute!");
+        }
+    }
+}
+
+class b2752_구현_세수정렬{
+    public static void main(String[] args)throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int[] arr = new int[3];
+
+        String[] nums = br.readLine().split(" ");
+
+        for(int i=0; i<3; i++){
+            int n = Integer.parseInt(nums[i]);
+
+            arr[i] = n;
+        }
+
+        Arrays.sort(arr);
+
+        for(int i : arr){
+            System.out.print(i+ " ");
         }
     }
 }
