@@ -55,3 +55,11 @@ class b2752_구현_세수정렬{
         }
     }
 }
+
+class b5337_구현_웰컴{
+    public static void main(String[] args) throws Exception{
+        System.out.print(".  .   .\n" +
+                "|  | _ | _. _ ._ _  _\n" +
+                "|/\\|(/.|(_.(_)[ | )(/.");
+    }
+}
