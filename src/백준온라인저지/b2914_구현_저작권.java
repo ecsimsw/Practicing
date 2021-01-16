@@ -100,3 +100,27 @@ class b5086_구현_배수와약수{
         System.out.println(sb.toString());
     }
 }
+
+class b10789_구현_세로읽기{
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder ans = new StringBuilder();
+
+        String[] lines = new String[5];
+
+        for(int i =0; i<5; i++){
+            lines[i] = br.readLine();
+        }
+
+        for(int i=0; i<15; i++){
+            for(int j=0; j<5; j++){
+                if(lines[j].length() <= i){
+                    continue;
+                }
+                ans.append(lines[j].charAt(i));
+            }
+        }
+
+        System.out.println(ans.toString());
+    }
+}
