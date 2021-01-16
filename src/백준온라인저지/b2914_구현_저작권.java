@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class b2914_구현_저작권 {
+class b2914_구현_저작권 {
     public static void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] AI = br.readLine().split(" ");
@@ -61,5 +61,42 @@ class b5337_구현_웰컴{
         System.out.print(".  .   .\n" +
                 "|  | _ | _. _ ._ _  _\n" +
                 "|/\\|(/.|(_.(_)[ | )(/.");
+    }
+}
+
+class b5086_구현_배수와약수{
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+
+        while(true){
+            String[] NM = br.readLine().split(" ");
+            int n = Integer.parseInt(NM[0]);
+            int m = Integer.parseInt(NM[1]);
+
+            if(n == 0 && m ==0){
+                break;
+            }
+
+            if(n%m == 0 || m%n ==0){
+                if(n % m ==0 && m % n ==0){
+                    throw new Exception();
+                }
+
+                if(n % m == 0){
+                    System.out.println("multiple");
+                }
+
+                if(m % n == 0){
+                    System.out.println("factor");
+                }
+
+                continue;
+            }
+
+            System.out.println("neither");
+        }
+
+        System.out.println(sb.toString());
     }
 }
