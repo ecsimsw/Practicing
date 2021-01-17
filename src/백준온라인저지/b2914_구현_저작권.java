@@ -124,3 +124,4 @@ class b10789_구현_세로읽기{
         System.out.println(ans.toString());
     }
 }
+
