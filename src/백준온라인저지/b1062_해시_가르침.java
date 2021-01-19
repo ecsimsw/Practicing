@@ -2,6 +2,7 @@ package 백준온라인저지;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class b1062_해시_가르침 {
@@ -18,12 +19,17 @@ public class b1062_해시_가르침 {
             lines[i] = br.readLine();
         }
 
-        usedAlphabet = new LinkedList<>();
-        usedAlphabet.add("a");
-        usedAlphabet.add("n");
-        usedAlphabet.add("t");
-        usedAlphabet.add("i");
-        usedAlphabet.add("c");
+        if(k < 5){
+            System.out.print("0");
+            return;
+        }
+
+        if(k >= 26){
+            System.out.print(n);
+            return;
+        }
+
+        usedAlphabet = new ArrayList<>();
 
         for(int i =0; i<n; i++){
             String[] characters = lines[i].split("");
@@ -47,25 +53,37 @@ public class b1062_해시_가르침 {
     }
 
     private static boolean[] learned;
-    private static LinkedList<String> usedAlphabet;
+    private static ArrayList<String> usedAlphabet;
     private static String[] lines;
     private static int n;
     private static int k;
 
     private static int max =0;
 
-    private static void findMax(int learnedCnt, int fromIndex){
-        if(learnedCnt == k) {
+    private static void findMax(int learnedCnt, int fromIndex) {
+        if (learnedCnt == k) {
             int cnt = countLearnedWord();
-            max = Math.max(max, cnt);
+            if(max < cnt){
+                for(int i =0; i<learned.length; i++){
+                    if(learned[i] == false) {
+                        continue;
+                    }
+                    if(!usedAlphabet.contains((char)(i+'a')+"")){
+                        throw new RuntimeException((char)(i+'a')+"");
+                    }
+                }
+                max = cnt;
+            }
             return;
         }
 
-        for(int i = fromIndex; i<usedAlphabet.size(); i++){
-            int index = (char)usedAlphabet.get(i).charAt(0) - 'a';
-            if(learned[index] == false){
+        for (int i = fromIndex; i < 26; i++) {
+            int index = i;
+//            int index = (char) usedAlphabet.get(i).charAt(0) - 'a';
+            // 이렇게 하면 안되는 이유 찾기
+            if (learned[index] == false) {
                 learned[index] = true;
-                findMax(learnedCnt+1, i);
+                findMax(learnedCnt + 1, i + 1);
                 learned[index] = false;
             }
         }
