@@ -42,17 +42,14 @@ public class b10825_구현_국영수 {
         public int compareTo(Student o) {
             if(this.kor == o.kor){
                 if(this.eng == o.eng){
-                    if(this.mat == o.mat){
+                    if(this.mat == o.mat) {
                         return this.name.compareTo(o.name);
-                    }else {
-                        return o.mat - this.mat;
                     }
-                }else{
-                    return this.eng - o.eng;
+                    return o.mat - this.mat;
                 }
-            }else{
-                return o.kor - this.kor;
+                return this.eng - o.eng;
             }
+            return o.kor - this.kor;
         }
 
         @Override
