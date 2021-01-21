@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-public class b2252_정렬_줄세우기 {
+class b2252_위상정렬_줄세우기 {
     public static void main(String[] args) throws Exception{
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
