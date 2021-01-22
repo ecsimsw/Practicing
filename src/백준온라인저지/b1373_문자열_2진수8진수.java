@@ -20,7 +20,7 @@ class b1373_문자열_2진수8진수 {
     }
 }
 
-class b1373_문자열_2진수8진수_시간초 {
+class b1373_문자열_2진수8진수_시간초과 {
     public static void main(String[] args) throws Exception{
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 
