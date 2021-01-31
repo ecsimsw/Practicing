@@ -32,3 +32,20 @@ public class b1120_문자열다루기_문자열 {
         return score;
     }
 }
+
+class b2845_구현_파티가끝난뒤{
+    //5 20
+    //99 101 1000 0 97
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] NL = br.readLine().split(" ");
+        String[] nums = br.readLine().split(" ");
+
+        int real = Integer.parseInt(NL[0]) * Integer.parseInt(NL[1]);
+
+        for(String s : nums){
+            System.out.print(Integer.parseInt(s) - real + " ");
+        }
+    }
+}
