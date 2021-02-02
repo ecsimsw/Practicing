@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Enum을아십니까 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println(VehicleType.valueOf("BUS") == VehicleType.BUS);
         System.out.println(VehicleType.valueOf("BUS").equals(VehicleType.BUS));
 
@@ -19,45 +19,45 @@ public class Enum을아십니까 {
     }
 }
 
-enum VehicleType{
-    BUS(1500, ()-> System.out.println("DRIVING")){
+enum VehicleType {
+    BUS(1500, () -> System.out.println("DRIVING")) {
         @Override
         int calculateFee(int person) {
             return person * price;
         }
     },
-    AIRPLANE(500000, ()->System.out.println("FLYING")){
+    AIRPLANE(500000, () -> System.out.println("FLYING")) {
         @Override
         int calculateFee(int person) {
             int additionalFee = 30000;
-            return person * price + additionalFee*person;
+            return person * price + additionalFee * person;
         }
     },
-    TAXI(30000, ()->System.out.println("DRIVING")) {
+    TAXI(30000, () -> System.out.println("DRIVING")) {
         @Override
         int calculateFee(int person) {
             return price;
         }
     };
 
-//    private  int price;    Non-static field 'price' cannot be referenced from a static context -> 익명클래스라
+    //    private  int price;    Non-static field 'price' cannot be referenced from a static context -> 익명클래스라
     protected int price;
     protected Runnable go;
 
-    VehicleType(int price, Runnable go){
+    VehicleType(int price, Runnable go) {
         this.price = price;
         this.go = go;
     }
 
     abstract int calculateFee(int person);
 
-    void run(){
+    void run() {
         go.run();
     }
 }
 
 class MyEnum을아십니까 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         MyVehicleType bus = MyVehicleType.BUS;
         System.out.println(bus.equals(MyVehicleType.AIRPLANE));
         System.out.println(MyVehicleType.BUS.name());
@@ -69,36 +69,36 @@ class MyEnum을아십니까 {
     }
 }
 
-abstract class MyEnum<T extends MyEnum> implements Comparable<T>{
+abstract class MyEnum<T extends MyEnum> implements Comparable<T> {
     private static int index = 0;
     private static List<MyEnum> enumList = new ArrayList<>();
     private int ordinal;
     private String name;
 
-    protected MyEnum(String name){
+    protected MyEnum(String name) {
         this.name = name;
         enumList.add(this);
         ordinal = index++;
     }
 
-    protected String name(){
+    protected String name() {
         return name;
     }
 
-    protected int ordinal(){
+    protected int ordinal() {
         return ordinal;
     }
 
     @Override
-    public boolean equals(Object object){
+    public boolean equals(Object object) {
         return object == this;
     }
 
-    public static List<MyEnum> values(){
+    public static List<MyEnum> values() {
         return enumList;
     }
 
-    public MyEnum valueOf(String name){
+    public MyEnum valueOf(String name) {
         return enumList.stream()
                 .filter(e -> e.name.equals(name))
                 .findFirst()
@@ -111,21 +111,21 @@ abstract class MyEnum<T extends MyEnum> implements Comparable<T>{
     }
 }
 
-abstract class MyVehicleType extends MyEnum{
-    public static final MyVehicleType BUS = new MyVehicleType("BUS", 1500, ()->System.out.println("DRIVING")){
+abstract class MyVehicleType extends MyEnum {
+    public static final MyVehicleType BUS = new MyVehicleType("BUS", 1500, () -> System.out.println("DRIVING")) {
         @Override
         int calculateFee(int person) {
             return person * price;
         }
     };
-    public static final MyVehicleType AIRPLANE = new MyVehicleType("AIRPLANE", 500000, ()-> System.out.println("FLYING")){
+    public static final MyVehicleType AIRPLANE = new MyVehicleType("AIRPLANE", 500000, () -> System.out.println("FLYING")) {
         @Override
         int calculateFee(int person) {
             int additionalFee = 30000;
-            return person * price + additionalFee*person;
+            return person * price + additionalFee * person;
         }
     };
-    public static final MyVehicleType TAXI = new MyVehicleType("TAXI",30000, ()-> System.out.println("DRIVING")){
+    public static final MyVehicleType TAXI = new MyVehicleType("TAXI", 30000, () -> System.out.println("DRIVING")) {
         @Override
         int calculateFee(int person) {
             return price;
@@ -135,7 +135,7 @@ abstract class MyVehicleType extends MyEnum{
     protected int price;
     protected Runnable go;
 
-    MyVehicleType(String name, int price, Runnable go){
+    MyVehicleType(String name, int price, Runnable go) {
         super(name);
         this.price = price;
         this.go = go;
@@ -143,7 +143,7 @@ abstract class MyVehicleType extends MyEnum{
 
     abstract int calculateFee(int person);
 
-    void run(){
+    void run() {
         go.run();
     }
 }
