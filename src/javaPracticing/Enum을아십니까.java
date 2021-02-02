@@ -3,6 +3,47 @@ package javaPracticing;
 import java.util.ArrayList;
 import java.util.List;
 
+class Typesafe한_자바의Enum {
+    public static void main(String[] args) {
+//        UserInputButton input = getUserInput();
+//
+//        if(input == 0){
+//            // Typesafe하지 않는, 0은 매직 넘버
+//        }
+//
+//        if(input == MyErrorCode.IllegalArgumentException){
+//            // Typesafe하지 않는, 비논리적
+//        }
+//
+//        if(input == UserInputButton.Yes){
+//            // Typesafe한
+//        }
+    }
+
+    enum DayOfWeek {
+        Sunday,
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday
+    }
+
+    enum Numbers {
+        One,
+        Two,
+        Three,
+        Four,
+        Five
+    }
+
+    enum UserInputButton {
+        Yes, No
+    }
+}
+
+
 public class Enum을아십니까 {
     public static void main(String[] args) {
         System.out.println(VehicleType.valueOf("BUS") == VehicleType.BUS);
