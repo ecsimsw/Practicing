@@ -44,56 +44,56 @@ class Typesafe한_자바의Enum {
 }
 
 
-public class Enum을아십니까 {
-    public static void main(String[] args) {
-        System.out.println(VehicleType.valueOf("BUS") == VehicleType.BUS);
-        System.out.println(VehicleType.valueOf("BUS").equals(VehicleType.BUS));
+enum Vehicle {
+    BUS(1500), AIRPLANE(30000), TAXI(30000);
 
-        System.out.println(VehicleType.values());
+    private int fee;
 
-        System.out.println(VehicleType.BUS.price);
-        System.out.println(VehicleType.BUS.ordinal());
-        System.out.println(VehicleType.BUS.name());
-        System.out.println(VehicleType.BUS.calculateFee(3));
-        System.out.println(VehicleType.BUS.compareTo(VehicleType.TAXI));
-        VehicleType.BUS.run();
+    Vehicle(int fee) {
+        this.fee = fee;
+    }
+
+    int calculateAmount(int person) {
+        return fee * person;
     }
 }
 
 enum VehicleType {
-    BUS(1500, () -> System.out.println("DRIVING")) {
+    BUS(1500) {
         @Override
-        int calculateFee(int person) {
-            return person * price;
+        int calculateAmount(int person) {
+            return person * fee;
         }
     },
-    AIRPLANE(500000, () -> System.out.println("FLYING")) {
+    AIRPLANE(300000) {
         @Override
-        int calculateFee(int person) {
+        int calculateAmount(int person) {
             int additionalFee = 30000;
-            return person * price + additionalFee * person;
+            return person * fee + additionalFee * person;
         }
     },
-    TAXI(30000, () -> System.out.println("DRIVING")) {
+    TAXI(30000) {
         @Override
-        int calculateFee(int person) {
-            return price;
+        int calculateAmount(int person) {
+            return fee;
         }
     };
 
     //    private  int price;    Non-static field 'price' cannot be referenced from a static context -> 익명클래스라
-    protected int price;
-    protected Runnable go;
+    protected int fee;
 
-    VehicleType(int price, Runnable go) {
-        this.price = price;
-        this.go = go;
+    VehicleType(int fee) {
+        this.fee = fee;
     }
 
-    abstract int calculateFee(int person);
+    abstract int calculateAmount(int person);
+}
 
-    void run() {
-        go.run();
+public class Enum을아십니까 {
+    public static void main(String[] args) {
+
+
+        System.out.println(Vehicle.BUS.calculateAmount(3));
     }
 }
 
@@ -106,11 +106,11 @@ class MyEnum을아십니까 {
         System.out.println(MyVehicleType.BUS.ordinal());
         System.out.println(MyVehicleType.AIRPLANE.ordinal());
 
-        System.out.println(MyVehicleType.BUS.compareTo(MyVehicleType.AIRPLANE));
+        System.out.println(MyVehicleType.BUS.compareTo(My.a));
     }
 }
 
-abstract class MyEnum<T extends MyEnum> implements Comparable<T> {
+abstract class MyEnum<T extends MyEnum<T>> implements Comparable<T> {
     private static int index = 0;
     private static List<MyEnum> enumList = new ArrayList<>();
     private int ordinal;
@@ -149,6 +149,16 @@ abstract class MyEnum<T extends MyEnum> implements Comparable<T> {
     @Override
     public int compareTo(T o) {
         return this.ordinal - o.ordinal();
+    }
+}
+
+abstract class My extends MyEnum {
+    public static final My a = new My("a") {
+
+    };
+
+    My(String name) {
+        super(name);
     }
 }
 
