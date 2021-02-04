@@ -21,3 +21,4 @@
 - Stream
 - Synchronize : [자바 깊이 알기 / 자바의 동기화 방식 / synchronized, volatile, atomic](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%9D%98-%EB%8F%99%EA%B8%B0%ED%99%94-%EB%B0%A9%EC%8B%9D-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B0%80%EC%8B%9C%EC%84%B1%EC%9D%B4%EB%9E%80-synchronized-volatile-atomic?category=887812)
 - Call by value : [자바 깊이 알기 / 자바는 항상 Call by value](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94%EB%8A%94-Call-by-Value-%EC%9D%B4%EB%8B%A4)
+- Enum : [자바 깊이 알기 / Enum의 원리와 구현](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B9%8A%EC%9D%B4-%EC%95%8C%EA%B8%B0-Enum%EC%9D%98-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84)
