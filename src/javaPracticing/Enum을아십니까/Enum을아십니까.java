@@ -1,4 +1,4 @@
-package javaPracticing;
+package javaPracticing.Enum을아십니까;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,4 +198,3 @@ abstract class MyVehicleType extends MyEnum {
         go.run();
     }
 }
-
