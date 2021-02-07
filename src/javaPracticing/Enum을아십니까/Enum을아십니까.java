@@ -102,7 +102,6 @@ class MyEnum을아십니까 {
         MyVehicleType bus = MyVehicleType.BUS;
         System.out.println(bus.equals(MyVehicleType.AIRPLANE));
         System.out.println(MyVehicleType.BUS.name());
-        System.out.println(MyVehicleType.values());
         System.out.println(MyVehicleType.BUS.ordinal());
         System.out.println(MyVehicleType.AIRPLANE.ordinal());
 
@@ -112,13 +111,11 @@ class MyEnum을아십니까 {
 
 abstract class MyEnum<T extends MyEnum<T>> implements Comparable<T> {
     private static int index = 0;
-    private static List<MyEnum> enumList = new ArrayList<>();
     private int ordinal;
     private String name;
 
     protected MyEnum(String name) {
         this.name = name;
-        enumList.add(this);
         ordinal = index++;
     }
 
@@ -135,16 +132,17 @@ abstract class MyEnum<T extends MyEnum<T>> implements Comparable<T> {
         return object == this;
     }
 
-    public static List<MyEnum> values() {
-        return enumList;
-    }
+    // values()와 valueOf()는 컴파일러에 의해 생성된다.
+//    public static List<MyEnum> values() {
+//        return enumList;
+//    }
 
-    public MyEnum valueOf(String name) {
-        return enumList.stream()
-                .filter(e -> e.name.equals(name))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
-    }
+//    public MyEnum valueOf(String name) {
+//        return enumList.stream()
+//                .filter(e -> e.name.equals(name))
+//                .findFirst()
+//                .orElseThrow(IllegalArgumentException::new);
+//    }
 
     @Override
     public int compareTo(T o) {
