@@ -6,6 +6,28 @@ import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectStreamException;
 
+class TestClass {
+    public static void main(String[] main) {
+        TempA.a.compareTo(TempB.b);
+    }
+}
+
+class TempA extends Enum {
+    public static final TempA a = new TempA("a");
+
+    TempA(String name) {
+        super(name, 1);
+    }
+}
+
+class TempB extends Enum {
+    public static final TempB b = new TempB("b");
+
+    TempB(String name) {
+        super(name, 1);
+    }
+}
+
 abstract class Enum<E extends Enum<E>>
         implements Comparable<E>, Serializable {
 
