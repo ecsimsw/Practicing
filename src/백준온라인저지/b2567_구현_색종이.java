@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class b2567_구현_색종이 {
-    static boolean[][] board = new boolean[101][101];
-    static int already = 0;
+    static boolean[][] board = new boolean[102][102];
+    static int line = 0;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,45 +17,28 @@ public class b2567_구현_색종이 {
             int x = Integer.parseInt(line[0]);
             int y = Integer.parseInt(line[1]);
 
-            draw(x, y);
+            drawBox(y, x);
         }
 
-        System.out.println(40 * n - already * 2);
+        for (int i = 0; i <= 100; i++) {
+            for (int j = 0; j <= 100; j++) {
+                if (board[i][j] != board[i][j + 1]) {
+                    line++;
+                }
+
+                if (board[i][j] != board[i + 1][j]) {
+                    line++;
+                }
+            }
+        }
+
+        System.out.println(line);
     }
 
-    static void draw(int y, int x) {
-
-        for (int i = x; i < 10; i++) {
-            if (board[y][x + i] == true) {
-                System.out.println(y + " " + x + i);
-                already++;
-            }
-        }
-
-        for (int i = x; i < 10; i++) {
-            if (board[y + 10][x + i] == true) {
-                System.out.println((y + 10) + " " + x + i);
-                already++;
-            }
-        }
-
-        for (int i = y; i < 10; i++) {
-            if (board[y + i][x] == true) {
-                System.out.println(y + i + " " + x);
-                already++;
-            }
-        }
-
-        for (int i = y; i < 10; i++) {
-            if (board[y + i][x + 10] == true) {
-                System.out.println(y + i + " " + (x + 10));
-                already++;
-            }
-        }
-
+    static void drawBox(int y, int x) {
         for (int i = x; i < x + 10; i++) {
             for (int j = y; j < y + 10; j++) {
-                board[j][i] = true;
+                board[j + 1][i + 1] = true;
             }
         }
     }
