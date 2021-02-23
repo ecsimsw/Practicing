@@ -22,3 +22,4 @@
 - Call by value : [자바 깊이 알기 / 자바는 항상 Call by value](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94%EB%8A%94-Call-by-Value-%EC%9D%B4%EB%8B%A4)
 - Enum : [자바 깊이 알기 / Enum의 원리와 구현](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B9%8A%EC%9D%B4-%EC%95%8C%EA%B8%B0-Enum%EC%9D%98-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84)
 - Effectively final : [왜 inner class, Lambda는 effectively final 변수만 접근할 수 있을까.](https://ecsimsw.tistory.com/entry/왜-anonymous-inner-class는-final-변수만-접근할-수-있을까)
+- Generic : [헷갈렸던-제네릭-클래스-상속-정리](https://ecsimsw.tistory.com/entry/헷갈렸던-제네릭-클래스-상속-정리)
