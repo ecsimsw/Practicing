@@ -1,4 +1,4 @@
-package javaPracticing;
+package javaPracticing.스트림사용시주의점;
 
 interface Ifunction{
     int add(int a, int b);
