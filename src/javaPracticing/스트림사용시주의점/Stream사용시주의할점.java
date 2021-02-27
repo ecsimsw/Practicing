@@ -2,7 +2,9 @@ package javaPracticing.스트림사용시주의점;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class Stream사용시주의할점 {
