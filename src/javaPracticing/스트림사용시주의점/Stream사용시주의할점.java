@@ -1,6 +1,7 @@
 package javaPracticing.스트림사용시주의점;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -52,45 +53,96 @@ class 직접원하는값넣기 {
 
 class 헷갈리는동작순서_findFirst {
     public static void main(String[] args) {
-        Arrays.stream(new String[]{"c", "python", "java"})
-                .filter(word -> {
-                    System.out.println("Call filter method: " + word);
-                    return word.length() > 3;
+        boolean hasOdd = Stream.of(2, 4, 6, 3, 7)
+                .peek(i -> {
+                    System.out.println(i);
                 })
-                .map(word -> {
-                    System.out.println("Call map method: " + word);
-                    return word.substring(0, 3);
-                }).findFirst();
-
-        /*
-        Call filter method: c
-        Call filter method: python
-        Call map method: python
-
-        수행에 맞는 결과를 하나라도 찾는다면 이후 요소를 연산하지 않는다.
-         */
+                .allMatch(i -> i % 2 == 0);
     }
 }
 
 class Stream은Loop가아니다 {
     public static void main(String[] args) {
-        usingFindFirst();
+        till99_();
     }
 
     public static void till99() {
         IntStream.range(1, 100).forEach(i -> {
-            //Do Something
             if (i > 50) {
-                System.out.println(i);
                 return;
             }
+            System.out.println(i);
         });
+    }
+
+    public static void till99_() {
+        IntStream.range(1, 10)
+                .map(i -> {
+                    System.out.println(i);
+                    return i;
+                })
+                .forEach(System.out::println);
     }
 
     public static void usingFindFirst() {
         IntStream.range(1, 100)
-                .peek(System.out::println)
-                .filter(i -> i >= 50)
-                .findFirst();
+                .filter(i -> {
+                    System.out.println(i);
+                    return i < 5;
+                })
+                .findAny();
+    }
+
+    public static void usingLimit() {
+        IntStream.range(1, 15)
+                .limit(5)
+                .filter(i -> {
+                    System.out.println(i);
+                    return i > 5;
+                })
+                .forEach(System.out::println);
+    }
+}
+
+class findAny와findFirst {
+    public static void main(String[] args) {
+
+        int firstFirst = IntStream.of(2, 2, 4, 6, 8, 8, 2, 2, 3, 7, 8).parallel()
+                .filter(i -> i % 2 != 0)
+                .findFirst()
+                .getAsInt();
+
+        int findAny = IntStream.of(2, 2, 4, 6, 8, 8, 2, 2, 3, 7, 8).parallel()
+                .filter(i -> i % 2 != 0)
+                .findAny()
+                .getAsInt();
+
+        System.out.println(firstFirst + " " + findAny);
+    }
+}
+
+class iterate와generate의차이 {
+    public static void foo(String[] args) {
+        Stream.iterate(1, i -> i += 1)
+                .limit(5)
+                .forEach(System.out::println);
+
+        Stream.generate(() -> 1)
+                .limit(5)
+                .forEach(System.out::println);
+
+        Stream.generate(Math::random)
+                .limit(5)
+                .forEach(System.out::println);
+    }
+
+    public static void main(String[] args) {
+//        IntStream intStream = Stream.iterate(1, i-> i+=1)
+//                .limit(5);
+
+        IntStream intStream = Stream.iterate(1, i -> i += 1)
+                .limit(5)
+                .mapToInt(Integer::valueOf);
+
     }
 }
