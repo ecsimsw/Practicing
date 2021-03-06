@@ -63,7 +63,7 @@ class 헷갈리는동작순서_findFirst {
 
 class Stream은Loop가아니다 {
     public static void main(String[] args) {
-        till99_();
+        usingFindFirst();
     }
 
     public static void till99() {
@@ -86,21 +86,20 @@ class Stream은Loop가아니다 {
 
     public static void usingFindFirst() {
         IntStream.range(1, 100)
-                .filter(i -> {
-                    System.out.println(i);
-                    return i < 5;
+                .takeWhile(i -> {
+                    System.out.println(i); // 1 ~ 50
+                    return i < 50;  // 50 -> false
                 })
-                .findAny();
+                .forEach(System.out::println); // 1 ~ 49
     }
 
     public static void usingLimit() {
-        IntStream.range(1, 15)
-                .limit(5)
+        IntStream.range(1, 100)
                 .filter(i -> {
-                    System.out.println(i);
-                    return i > 5;
+                    System.out.println(i); // 1 ~ 51
+                    return i > 50;
                 })
-                .forEach(System.out::println);
+                .findAny(); // true -> optional
     }
 }
 

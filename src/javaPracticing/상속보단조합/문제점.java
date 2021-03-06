@@ -10,17 +10,18 @@ public class 문제점 {
 }
 
 class Document {
-    String value;
+    final String value;
+    private int length;
 
     public Document(String value) {
         this.value = value;
     }
 
     public int length() {
-        return value.length();
+        return content().length();
     }
 
-    public String content() {
+    String content() {
         return value;
     }
 }
@@ -31,8 +32,13 @@ class EncryptedDocument extends Document {
         super(value);
     }
 
+    @Override
+    public String toString() {
+        return content();
+    }
+
+    @Override
     public String content() {
-        // decrypt encrypted
         String decryptedValue = "something";
         return decryptedValue;
     }
