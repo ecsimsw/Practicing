@@ -7,10 +7,6 @@
 ### HashTable 
 [Hash Table 원리와 구현](https://ecsimsw.tistory.com/entry/Hash-Table-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84?category=887812)  
 
-### Immutable  
-[Immutable 객체와 메모리 구성](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B9%8A%EC%9D%B4-%EC%95%8C%EA%B8%B0-Immutable-%EA%B0%9D%EC%B2%B4%EC%99%80-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%84%B1)   
-[UnmodifiableList은 만능이 아니다. / 방어적 복사](https://ecsimsw.tistory.com/entry/unmodifiableList은-만능이-아니다)  
-
 ### Stream과 Lambda  
 [스트림 사용 시 주의점](https://ecsimsw.tistory.com/entry/작성-중-스트림-사용-시-주의할-점)  
 [자주 쓰이는 Stream 사용 패턴](https://ecsimsw.tistory.com/entry/TODO-자주-쓰이는-Stream-Optional-사용-패턴)
@@ -34,6 +30,13 @@
 
 ### Enum
 [Enum의 원리와 구현](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B9%8A%EC%9D%B4-%EC%95%8C%EA%B8%B0-Enum%EC%9D%98-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84)  
+
+### 상속과 구현
+[상속보단 컴포지션](https://ecsimsw.tistory.com/entry/TODO-36-상속과-컴포지젼-공부하기)  
+
+### Immutable  
+[Immutable 객체와 메모리 구성](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94-%EA%B9%8A%EC%9D%B4-%EC%95%8C%EA%B8%B0-Immutable-%EA%B0%9D%EC%B2%B4%EC%99%80-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B5%AC%EC%84%B1)   
+[UnmodifiableList은 만능이 아니다. / 방어적 복사](https://ecsimsw.tistory.com/entry/unmodifiableList은-만능이-아니다)  
 
 
 <br>
