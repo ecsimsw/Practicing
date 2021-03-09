@@ -9,7 +9,7 @@
 
 ### Stream과 Lambda  
 [스트림 사용 시 주의점](https://ecsimsw.tistory.com/entry/작성-중-스트림-사용-시-주의할-점)  
-[자주 쓰이는 Stream 사용 패턴](https://ecsimsw.tistory.com/entry/TODO-자주-쓰이는-Stream-Optional-사용-패턴)
+[자주 쓰이는 Stream 사용 패턴](https://ecsimsw.tistory.com/entry/TODO-자주-쓰이는-Stream-Optional-사용-패턴)  
 [왜 inner class, Lambda는 effectively final 변수만 접근할 수 있을까.](https://ecsimsw.tistory.com/entry/왜-anonymous-inner-class는-final-변수만-접근할-수-있을까)  
 
 ### Synchronize
