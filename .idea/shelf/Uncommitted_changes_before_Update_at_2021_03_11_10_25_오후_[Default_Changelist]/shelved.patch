@@ -1,0 +1,36 @@
+Index: src/javaPracticing/HashSet과Hash/HashSetExample.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/javaPracticing/HashSet과Hash/HashSetExample.java b/src/javaPracticing/HashSet과Hash/HashSetExample.java
+new file mode 100644
+--- /dev/null	(date 1615385921689)
++++ b/src/javaPracticing/HashSet과Hash/HashSetExample.java	(date 1615385921689)
+@@ -0,0 +1,26 @@
++package javaPracticing.HashSet과Hash;
++
++import java.util.HashSet;
++import java.util.Objects;
++
++public class HashSetExample {
++    public static void main(String[] args) {
++        HashSet<Object> hashSet = new HashSet<>();
++        hashSet.add(1);
++        hashSet.add(2);
++        hashSet.add(3);
++        hashSet.add(10);
++        hashSet.add(11111);
++        hashSet.add("1");
++        hashSet.add("2");
++        hashSet.add("10");
++        hashSet.add("1003230");
++        hashSet.add("1103230");
++        hashSet.add("1113230");
++        hashSet.add("1013230");
++
++        for(Object o : hashSet){
++            System.out.println(o);
++        }
++    }
++}
