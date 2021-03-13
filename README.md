@@ -4,8 +4,9 @@
 <br>
 
 ## 자바 공부
-### HashTable 
-[Hash Table 원리와 구현](https://ecsimsw.tistory.com/entry/Hash-Table-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84?category=887812)  
+### Collections API 
+[HashTable 원리와 구현](https://ecsimsw.tistory.com/entry/Hash-Table-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B5%AC%ED%98%84?category=887812)  
+[HashSet의 원리](https://ecsimsw.tistory.com/entry/%EC%9E%91%EC%84%B1-%EC%A4%91-%EC%9E%90%EB%B0%94-HashSet%EC%9D%98-%EC%9B%90%EB%A6%AC)
 
 ### Stream과 Lambda  
 [스트림 사용 시 주의점](https://ecsimsw.tistory.com/entry/작성-중-스트림-사용-시-주의할-점)  
