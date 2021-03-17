@@ -12,7 +12,7 @@
 [스트림 사용 시 주의점](https://ecsimsw.tistory.com/entry/작성-중-스트림-사용-시-주의할-점)  
 [자주 쓰이는 Stream 사용 패턴](https://ecsimsw.tistory.com/entry/TODO-자주-쓰이는-Stream-Optional-사용-패턴)  
 [왜 inner class, Lambda는 effectively final 변수만 접근할 수 있을까.](https://ecsimsw.tistory.com/entry/왜-anonymous-inner-class는-final-변수만-접근할-수-있을까)  
-[Optional / null](https://ecsimsw.tistory.com/entry/%EC%9E%91%EC%84%B1-%EC%A4%91-Optional%EA%B3%BC-null)
+[Optional 정리하기 / Optional로 Null을 체크하자](https://ecsimsw.tistory.com/entry/%EC%9E%91%EC%84%B1-%EC%A4%91-Optional%EA%B3%BC-null)
 
 ### Synchronize
 [자바의 동기화 방식 / synchronized, volatile, atomic](https://ecsimsw.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%9D%98-%EB%8F%99%EA%B8%B0%ED%99%94-%EB%B0%A9%EC%8B%9D-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B0%80%EC%8B%9C%EC%84%B1%EC%9D%B4%EB%9E%80-synchronized-volatile-atomic?category=887812)  
