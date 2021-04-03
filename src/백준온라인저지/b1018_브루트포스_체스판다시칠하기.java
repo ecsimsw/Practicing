@@ -3,7 +3,7 @@ package 백준온라인저지;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class b1018_브루트포스_체스판다시칠하기 {
+public class    b1018_브루트포스_체스판다시칠하기 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
