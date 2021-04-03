@@ -1,4 +1,4 @@
-package 프로그래머스.codingTest;
+package 프로그래머스.codingTest.WC_2020;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package 프로그래머스.codingTest;
+package 프로그래머스.codingTest.UATC;
 
 import java.util.Arrays;
 import java.util.Collections;
