@@ -7,7 +7,8 @@ public class 여행경로 {
 
     public static void main(String[] args) {
         tickets = new String[][]{
-                {"ICN","A"},{"A","B"},{"A","C"},{"C","A"},{"B","D"}
+//                {"ICN", "JFK"}, {"HND", "IAD"}, {"JFK", "HND"}
+                {"ICN", "JFK"}, {"ICN", "JFK"}, {"JFK", "ICN"}
         };
         used = new boolean[tickets.length];
 
