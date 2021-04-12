@@ -26,13 +26,12 @@ public class 여행경로 {
     private static List<String> answerList = new LinkedList<>();
 
     private static void dfs(String source, List<String> visited) {
-        if (visited.size() == tickets.length + 1) {
-
-            if (answerList.size() > 0) {
-                answerList = compare(answerList, visited);
+        if (usedAll()) {
+            if (!answerList.isEmpty()) {
+                System.out.println(visited);
+//                answerList = compare(answerList, visited);
                 return;
             }
-
             answerList = new LinkedList<>(visited);
             return;
         }
@@ -57,14 +56,23 @@ public class 여행경로 {
             String firstOne = first.get(i);
             String secondOne = second.get(i);
 
-            if (firstOne.compareTo(secondOne) >= 1) {
+            if (firstOne.compareTo(secondOne) > 0) {
                 return new LinkedList<>(second);
             }
 
-            if (firstOne.compareTo(secondOne) <= -1) {
+            if (firstOne.compareTo(secondOne) < 0) {
                 return new LinkedList<>(first);
             }
         }
-        return new LinkedList<>(first);
+        throw new IllegalArgumentException("asfd");
+    }
+
+    private static boolean usedAll(){
+        for(boolean b : used){
+            if(!b){
+                return false;
+            }
+        }
+        return true;
     }
 }
